@@ -1,0 +1,94 @@
+.tweet-card {
+  position: relative;
+  padding: 0.8rem;
+  //   display: grid;
+  //   grid-template-columns: 2fr 14fr 1fr;
+  //   gap: 0.5rem;
+
+  //   border-top: 1px solid var(--color-light-gray);
+  border-bottom: 1px solid var(--color-light-gray);
+
+  &__grid-container {
+    display: grid;
+    grid-template-columns: 2fr 14fr 1fr;
+    gap: 0.5rem;
+  }
+
+  &__like-box,
+  &__retweet-box {
+    position: absolute;
+    top: 0.5rem;
+    left: 2.5rem;
+    color: var(--color-light-gray);
+    font-size: 0.8rem;
+
+    & > div {
+      display: flex;
+      align-items: center;
+    }
+
+    &-icon {
+      width: 0.8rem;
+      fill: var(--color-dark-gray);
+      margin-right: 0.5rem;
+    }
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  &__user {
+    display: flex;
+    gap: 0.5rem;
+
+    &-img {
+      height: 3.5rem;
+      width: 3.5rem;
+      border-radius: 50%;
+    }
+    &-name {
+      font-size: 0.9rem;
+    }
+  }
+  &__user-handle,
+  &__tweet-date {
+    font-size: 0.9rem;
+    color: var(--color-light-gray);
+  }
+  &__tweet {
+    font-size: 0.9rem;
+    padding-top: 0.5rem;
+  }
+
+  &__img {
+    width: 100%;
+    margin: 1rem 0;
+    border-radius: 1rem;
+  }
+  &__icon-container {
+    padding-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  &__icon-field {
+    display: flex;
+    align-items: center;
+    color: var(--color-light-gray);
+    font-weight: 700;
+    &-icon {
+      width: 1.25rem;
+      fill: var(--color-light-gray);
+      margin-right: 0.5rem;
+    }
+  }
+
+  &__dropdown {
+    &-icon {
+      width: 1rem;
+      fill: var(--color-light-gray);
+    }
+  }
+}

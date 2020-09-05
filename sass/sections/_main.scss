@@ -1,0 +1,128 @@
+.homebar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0.8rem;
+  border-bottom: 0.1px solid lightgrey;
+  position: fixed;
+  height: 50px;
+  z-index: 5;
+  background: #fff;
+  width: inherit;
+
+  &__title {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  &__icon {
+    height: 25px;
+    width: 25px;
+    fill: var(--color-primary);
+  }
+}
+
+.tweetbar {
+  display: flex;
+
+  padding-top: 50px;
+  margin: 0.8rem;
+  &__img {
+    margin-top: 1rem;
+    height: 55px;
+    width: 55px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+  }
+
+  &__content {
+    width: 100%;
+  }
+  &__input-field {
+    padding-top: 2rem;
+  }
+
+  &__input {
+    font-size: 1.2rem;
+    color: var(--color-light-gray);
+    border: none;
+
+    &:focus {
+      outline: none;
+      color: var(--color-black);
+    }
+
+    &:focus ~ .tweetbar__tagline {
+      .tweetbar__tagline-text {
+        display: inline-block;
+      }
+      .tweetbar__tagline-img {
+        display: inline-block;
+      }
+      .tweetbar__border {
+        display: block;
+        height: 300px;
+      }
+    }
+    &:focus .tweetbar__border {
+      display: none;
+    }
+  }
+  &__tagline {
+    display: flex;
+    align-items: center;
+    padding-top: 1rem;
+
+    // display: none;
+    &-img {
+      height: 20px;
+      width: 20px;
+      fill: var(--color-primary);
+      margin-right: 0.5rem;
+      display: none;
+    }
+    &-text {
+      color: var(--color-primary);
+      font-size: 0.8rem;
+      font-weight: bold;
+      display: none;
+    }
+  }
+  &__border {
+    border-bottom: 0.5px solid lightgrey;
+
+    display: block;
+    padding-top: 0.4rem;
+  }
+}
+
+.tweetbar-menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.8rem;
+
+  &__icon {
+    height: 25px;
+    width: 25px;
+    fill: var(--color-primary);
+    margin-right: 1rem;
+  }
+}
+
+.tweets {
+}
+
+/* Welcome page that shows if you do not fallow anyone */
+.welcome {
+  padding-top: 3rem;
+  text-align: center;
+  margin: 0 2rem;
+  &__title {
+    font-size: 1.4rem;
+  }
+  &__tagline {
+    font-size: 1rem;
+    color: lightgray;
+    padding: 1rem 0rem;
+  }
+}

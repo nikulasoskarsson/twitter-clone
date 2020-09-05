@@ -1,0 +1,26 @@
+.user {
+  display: grid;
+  align-items: center;
+
+  grid-template-columns: 1fr 5fr 1fr;
+  &__img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+  }
+
+  &__name {
+    font-size: 1rem;
+    font-weight: 700;
+  }
+  &__handler {
+    font-size: 0.8rem;
+    font-weight: 100;
+  }
+
+  &__icon {
+    height: 18px;
+    width: 18px;
+    color: var(--color-gray);
+  }
+}

@@ -1,0 +1,11 @@
+#main {
+  border-left: 1px solid #444;
+  border-right: 1px solid #444;
+
+  position: relative;
+  width: 100%;
+}
+
+.border__thick {
+  border-bottom: 12px solid var(--color-lighter-gray);
+}
