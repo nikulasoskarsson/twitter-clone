@@ -1,0 +1,102 @@
+.auth {
+  &__left {
+    // Background image
+    height: 100vh;
+    width: 100%;
+    display: block;
+    background-image: url('../img/twitter-logo.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: var(--color-primary-light);
+
+    &-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      & > div {
+        text-align: left;
+      }
+    }
+
+    &-tagline-field {
+      display: flex;
+      padding: 1rem 0;
+      &-icon {
+        width: 1.6rem;
+        fill: #fff;
+        margin-right: 0.5rem;
+      }
+      &-heading {
+        color: #fff;
+        font-size: 1.4rem;
+        font-weight: 700;
+      }
+    }
+  }
+  &__right {
+    position: relative;
+  }
+
+  &__cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 6rem;
+    width: 50%;
+    margin: 0 auto;
+
+    & > div {
+      text-align: left;
+    }
+    &-logo {
+      width: 3.5rem;
+      align-self: flex-start;
+      margin: 0;
+      padding: 0;
+      transform: translateX(-0.5rem);
+    }
+    &-heading {
+      font-weight: 700;
+      font-size: 1.8rem;
+      padding-top: 1rem;
+    }
+    &-tagline {
+      padding-top: 6rem;
+      font-size: 1rem;
+      font-weight: var(--fw-bold);
+    }
+  }
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+
+  color: var(--color-dark-gray);
+  &__input-field {
+    padding: 0.5rem;
+    background: var(--color-very-light-gray);
+    border-bottom: 2px solid var(--color-dark-gray);
+    margin: 1rem;
+    position: relative;
+
+    & > .link {
+      position: absolute;
+      left: 0;
+      bottom: -1.5rem;
+    }
+  }
+  &__label {
+    display: block;
+  }
+  &__input {
+    border: none;
+    background: transparent;
+    padding-bottom: 0.5rem;
+  }
+}

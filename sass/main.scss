@@ -7,11 +7,14 @@
 @import 'components/tweetsbar';
 @import 'components/user-card';
 
+@import 'grids/auth-grid';
 @import 'grids/page-grid';
 @import 'grids/main-grid';
 
 @import 'layout/navigation';
 @import 'layout/side-menu';
+
+@import 'pages/auth';
 
 @import 'sections/main';
 

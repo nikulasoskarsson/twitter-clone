@@ -10,7 +10,7 @@ body {
   font-size: 62.5%; // 1rem = 10px
   // font-weight: 300;
   height: 100vh;
-  padding: 0 10%;
+
   overflow: hidden;
   overflow-y: scroll;
 }
@@ -22,4 +22,7 @@ ul {
 }
 button {
   cursor: pointer;
+}
+#page {
+  padding: 0 10%;
 }

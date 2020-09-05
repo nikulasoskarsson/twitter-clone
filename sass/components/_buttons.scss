@@ -23,13 +23,14 @@
 }
 
 .button-inverted-small {
+  font-weight: 700;
   color: var(--color-primary);
   background-color: transparent;
   border: 1px solid var(--color-primary);
   border-radius: 25rem;
   width: 5rem;
   height: 2rem;
-  font-weight: bold;
+
   font-size: 0.9rem;
   transition: background 0.5s;
 
@@ -38,6 +39,26 @@
   }
 }
 
+.button-long-primary,
+.button-long-inverted {
+  font-weight: 700;
+  border-radius: 25rem;
+  width: 25rem;
+  height: 2.5rem;
+  font-size: 0.9rem;
+  transition: background 0.5s;
+  margin: 0.5rem 0;
+}
+.button-long-primary {
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+}
+.button-long-inverted {
+  background: #fff;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
 .link {
   display: inline-block;
   color: var(--color-primary);
