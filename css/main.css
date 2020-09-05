@@ -199,17 +199,14 @@ button {
 .border__thick {
   border-bottom: 12px solid var(--color-lighter-gray); }
 
-.menu-fixed > div {
-  position: fixed; }
-
 #menu {
   height: 100vh;
-  overflow: hidden;
   display: grid;
-  grid-template-rows: 8fr 3fr 1fr; }
+  grid-template-rows: 8fr 3fr 1fr;
+  position: sticky;
+  top: 0; }
 
 .navigation {
-  overflow: hidden;
   height: 100%; }
   .navigation__list {
     height: 100%;
@@ -414,11 +411,11 @@ button {
   align-items: center;
   padding: 0 0.8rem;
   border-bottom: 0.1px solid lightgrey;
-  position: fixed;
+  position: sticky;
+  top: 0;
   height: 50px;
   z-index: 5;
-  background: #fff;
-  width: inherit; }
+  background: #fff; }
   .homebar__title {
     font-size: 1.2rem;
     font-weight: bold; }
@@ -429,7 +426,6 @@ button {
 
 .tweetbar {
   display: flex;
-  padding-top: 50px;
   margin: 0.8rem; }
   .tweetbar__img {
     margin-top: 1rem;

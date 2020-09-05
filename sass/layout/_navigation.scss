@@ -1,16 +1,14 @@
-.menu-fixed > div {
-  position: fixed;
-}
 #menu {
   height: 100vh;
-  overflow: hidden;
   display: grid;
   grid-template-rows: 8fr 3fr 1fr;
+  position: sticky;
+  top: 0;
 }
 
 .navigation {
-  overflow: hidden;
   height: 100%;
+
   &__list {
     height: 100%;
     display: grid;
