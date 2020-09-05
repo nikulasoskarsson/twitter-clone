@@ -173,7 +173,7 @@ button {
 .border__thick {
   border-bottom: 12px solid var(--color-lighter-gray); }
 
-#menu-fixed > div {
+.menu-fixed > div {
   position: fixed; }
 
 #menu {
