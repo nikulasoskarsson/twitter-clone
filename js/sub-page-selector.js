@@ -4,7 +4,21 @@ const subPageContainers = document.querySelectorAll('.subpage');
 
 //functions
 function handlePageChange() {
-  const id = event.target.getAttribute('data-id');
+  let navLink;
+  let id;
+
+  // if somebody click and element inside of the li
+  if (event.target.tagName == 'A' || event.target.tagName == 'svg') {
+    navLink = event.target.parentElement;
+  } else if (event.target.tagName == 'path') {
+    navLink = event.target.parentElement.parentElement.parentElement;
+  }
+  // if somebody click on the
+  else {
+    navLink = event.target;
+  }
+
+  id = navLink.getAttribute('data-id');
 
   // add active state
   //   navigationLinks.forEach((link) => {
