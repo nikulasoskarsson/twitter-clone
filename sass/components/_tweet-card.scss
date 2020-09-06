@@ -91,9 +91,44 @@
       fill: var(--color-light-gray);
     }
   }
+}
 
-  &__retweet-card {
-    border: var(--border-primary);
-    border-radius: 0.5rem;
+.retweet-card {
+  border: var(--border-primary);
+  border-radius: 0.5rem;
+  @extend .tweet-card;
+
+  &__grid-container {
+    display: grid;
+    grid-template-columns: 1fr 14fr 1fr;
+    gap: 0.5rem;
+  }
+
+  &__info {
+    @extend .tweet-card__info;
+  }
+
+  &__user {
+    @extend .tweet-card__user;
+
+    &-img {
+      height: 1.5rem;
+      width: 1.5rem;
+      border-radius: 50%;
+    }
+    &-name {
+      @extend .tweet-card__user-name;
+    }
+  }
+  &__user-handle,
+  &__tweet-date {
+    @extend .tweet-card__tweet-date;
+  }
+  &__tweet {
+    @extend .tweet-card__tweet;
+  }
+
+  &__img {
+    @extend .tweet-card__img;
   }
 }

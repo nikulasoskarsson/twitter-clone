@@ -105,7 +105,7 @@ button {
   font-size: var(--font-sm);
   font-weight: var(--fw-regular); }
 
-.tweet-card {
+.tweet-card, .retweet-card {
   position: relative;
   padding: 0.8rem;
   border-bottom: var(--border-primary); }
@@ -126,26 +126,26 @@ button {
       width: 0.8rem;
       fill: var(--color-dark-gray);
       margin-right: 0.5rem; }
-  .tweet-card__info {
+  .tweet-card__info, .retweet-card__info {
     display: flex;
     align-items: center;
     gap: 0.5rem; }
-  .tweet-card__user {
+  .tweet-card__user, .retweet-card__user {
     display: flex;
     gap: 0.5rem; }
     .tweet-card__user-img {
       height: 3.5rem;
       width: 3.5rem;
       border-radius: 50%; }
-    .tweet-card__user-name {
+    .tweet-card__user-name, .retweet-card__user-name {
       font-size: 0.9rem; }
-  .tweet-card__user-handle, .tweet-card__tweet-date {
+  .tweet-card__user-handle, .tweet-card__tweet-date, .retweet-card__user-handle, .retweet-card__tweet-date {
     font-size: 0.9rem;
     color: var(--color-light-gray); }
-  .tweet-card__tweet {
+  .tweet-card__tweet, .retweet-card__tweet {
     font-size: 0.9rem;
     padding-top: 0.5rem; }
-  .tweet-card__img {
+  .tweet-card__img, .retweet-card__img {
     width: 100%;
     margin: 1rem 0;
     border-radius: 1rem; }
@@ -165,9 +165,18 @@ button {
   .tweet-card__dropdown-icon {
     width: 1rem;
     fill: var(--color-light-gray); }
-  .tweet-card__retweet-card {
-    border: var(--border-primary);
-    border-radius: 0.5rem; }
+
+.retweet-card {
+  border: var(--border-primary);
+  border-radius: 0.5rem; }
+  .retweet-card__grid-container {
+    display: grid;
+    grid-template-columns: 1fr 14fr 1fr;
+    gap: 0.5rem; }
+  .retweet-card__user-img {
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 50%; }
 
 .user {
   display: grid;
