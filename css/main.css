@@ -218,8 +218,12 @@ button {
     grid-template-rows: repeat(9, 1fr); }
   .navigation__list-item {
     list-style: none;
+    cursor: pointer;
     display: flex;
     align-items: center; }
+    .navigation__list-item:hover {
+      background-color: var(--color-primary-light);
+      color: var(--color-primary); }
   .navigation__link {
     font-size: 1.1rem;
     font-weight: 700;

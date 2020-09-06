@@ -1,3 +1,3 @@
 <div>
-    This is the subpage
+    This is the explore page
 </div>

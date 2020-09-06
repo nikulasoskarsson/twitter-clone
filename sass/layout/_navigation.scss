@@ -15,9 +15,14 @@
   }
   &__list-item {
     list-style: none;
+    cursor: pointer;
 
     display: flex;
     align-items: center;
+    &:hover {
+      background-color: var(--color-primary-light);
+      color: var(--color-primary);
+    }
   }
   &__link {
     font-size: 1.1rem;
