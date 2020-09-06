@@ -2,25 +2,19 @@
 const navigationLinks = document.querySelectorAll('.navigation__list-item');
 const subPageContainers = document.querySelectorAll('.subpage');
 
-//functions
-function handlePageChange() {
-  let navLink;
-  let id;
-
-  // if somebody click and element inside of the li
-  if (event.target.tagName == 'A' || event.target.tagName == 'svg') {
-    navLink = event.target.parentElement;
-  } else if (event.target.tagName == 'path') {
-    navLink = event.target.parentElement.parentElement.parentElement;
+// Get the correct li element even if somebody clicks the svg or link inside
+function getNavLink(target) {
+  if (target.tagName == 'A' || target.tagName == 'svg') {
+    return target.parentElement;
+  } else if (target.tagName == 'path') {
+    return target.parentElement.parentElement.parentElement;
+  } else {
+    return event.target;
   }
-  // if somebody click on the
-  else {
-    navLink = event.target;
-  }
+}
 
-  id = navLink.getAttribute('data-id');
-
-  //   add active state
+// Add and remove classes to show active state on the icon and link
+function setActiveState(navLink) {
   navigationLinks.forEach((link) => {
     if (link == navLink) {
       link.children[0].classList.add('navigation__icon-active');
@@ -30,7 +24,10 @@ function handlePageChange() {
       link.children[1].classList.remove('navigation__link-active');
     }
   });
+}
 
+// Show the correct page and hide the others based on the id
+function changePage(id) {
   // show correct page and hide others
   subPageContainers.forEach((page) => {
     if (page.getAttribute('id') === id) {
@@ -41,6 +38,14 @@ function handlePageChange() {
       page.classList.remove('subpage-visible');
     }
   });
+}
+
+function handlePageChange() {
+  const navLink = getNavLink(event.target);
+  const id = navLink.getAttribute('data-id'); // Get the data-id att that will match the id on the page to be shown
+
+  setActiveState(navLink);
+  changePage(id);
 }
 
 // Click events
