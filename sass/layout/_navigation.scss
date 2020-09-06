@@ -13,7 +13,8 @@
     display: grid;
     grid-template-rows: repeat(9, 1fr);
   }
-  &__list-item {
+  &__list-item,
+  &__logo {
     list-style: none;
     cursor: pointer;
 
@@ -36,7 +37,8 @@
   &__icon {
     width: 11%;
     margin-right: 1rem;
-    &-active {
+    &-active,
+    &-fill {
       fill: var(--color-primary);
     }
   }

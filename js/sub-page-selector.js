@@ -20,15 +20,16 @@ function handlePageChange() {
 
   id = navLink.getAttribute('data-id');
 
-  // add active state
-  //   navigationLinks.forEach((link) => {
-  //     // !match
-  //     if (link == event.target) {
-  //       link.classList.add('yo');
-  //     } else {
-  //       console.log('no match');
-  //     }
-  //   });
+  //   add active state
+  navigationLinks.forEach((link) => {
+    if (link == navLink) {
+      link.children[0].classList.add('navigation__icon-active');
+      link.children[1].classList.add('navigation__link-active');
+    } else {
+      link.children[0].classList.remove('navigation__icon-active');
+      link.children[1].classList.remove('navigation__link-active');
+    }
+  });
 
   // show correct page and hide others
   subPageContainers.forEach((page) => {
