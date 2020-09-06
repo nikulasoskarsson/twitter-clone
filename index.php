@@ -38,7 +38,7 @@
             <a href="#" class="navigation__link">Explore</a>
           </li>
 
-          <li class="navigation__list-item">
+          <li class="navigation__list-item" data-id="subpage-notifications">
             <svg viewBox="0 0 24 24" class="navigation__icon">
               <g>
                 <path d="M21.697 16.468c-.02-.016-2.14-1.64-2.103-6.03.02-2.532-.812-4.782-2.347-6.335C15.872 2.71 14.01 1.94 12.005 1.93h-.013c-2.004.01-3.866.78-5.242 2.174-1.534 1.553-2.368 3.802-2.346 6.334.037 4.33-2.02 5.967-2.102 6.03-.26.193-.366.53-.265.838.102.308.39.515.712.515h4.92c.102 2.31 1.997 4.16 4.33 4.16s4.226-1.85 4.327-4.16h4.922c.322 0 .61-.206.71-.514.103-.307-.003-.645-.263-.838zM12 20.478c-1.505 0-2.73-1.177-2.828-2.658h5.656c-.1 1.48-1.323 2.66-2.828 2.66zM4.38 16.32c.74-1.132 1.548-3.028 1.524-5.896-.018-2.16.644-3.982 1.913-5.267C8.91 4.05 10.397 3.437 12 3.43c1.603.008 3.087.62 4.18 1.728 1.27 1.285 1.933 3.106 1.915 5.267-.024 2.868.785 4.765 1.525 5.896H4.38z"></path>
@@ -47,7 +47,7 @@
             <a href="#" class="navigation__link">Notifications</a>
           </li>
 
-          <li class="navigation__list-item">
+          <li class="navigation__list-item" data-id="subpage-messages">
             <svg viewBox="0 0 24 24" class="navigation__icon">
               <g>
                 <path d="M19.25 3.018H4.75C3.233 3.018 2 4.252 2 5.77v12.495c0 1.518 1.233 2.753 2.75 2.753h14.5c1.517 0 2.75-1.235 2.75-2.753V5.77c0-1.518-1.233-2.752-2.75-2.752zm-14.5 1.5h14.5c.69 0 1.25.56 1.25 1.25v.714l-8.05 5.367c-.273.18-.626.182-.9-.002L3.5 6.482v-.714c0-.69.56-1.25 1.25-1.25zm14.5 14.998H4.75c-.69 0-1.25-.56-1.25-1.25V8.24l7.24 4.83c.383.256.822.384 1.26.384.44 0 .877-.128 1.26-.383l7.24-4.83v10.022c0 .69-.56 1.25-1.25 1.25z"></path>
@@ -56,7 +56,7 @@
             <a href="#" class="navigation__link">Messages</a>
           </li>
 
-          <li class="navigation__list-item">
+          <li class="navigation__list-item" data-id="subpage-bookmarks">
             <svg viewBox="0 0 24 24" class="navigation__icon">
               <g>
                 <path d="M19.9 23.5c-.157 0-.312-.05-.442-.144L12 17.928l-7.458 5.43c-.228.164-.53.19-.782.06-.25-.127-.41-.385-.41-.667V5.6c0-1.24 1.01-2.25 2.25-2.25h12.798c1.24 0 2.25 1.01 2.25 2.25v17.15c0 .282-.158.54-.41.668-.106.055-.223.082-.34.082zM12 16.25c.155 0 .31.048.44.144l6.71 4.883V5.6c0-.412-.337-.75-.75-.75H5.6c-.413 0-.75.338-.75.75v15.677l6.71-4.883c.13-.096.285-.144.44-.144z"></path>
@@ -65,7 +65,7 @@
             <a href="#" class="navigation__link">Bookmarks</a>
           </li>
 
-          <li class="navigation__list-item">
+          <li class="navigation__list-item" data-id="subpage-lists">
             <svg viewBox="0 0 24 24" class="navigation__icon">
               <g>
                 <path d="M19.75 22H4.25C3.01 22 2 20.99 2 19.75V4.25C2 3.01 3.01 2 4.25 2h15.5C20.99 2 22 3.01 22 4.25v15.5c0 1.24-1.01 2.25-2.25 2.25zM4.25 3.5c-.414 0-.75.337-.75.75v15.5c0 .413.336.75.75.75h15.5c.414 0 .75-.337.75-.75V4.25c0-.413-.336-.75-.75-.75H4.25z"></path>
@@ -75,7 +75,7 @@
             <a href="#" class="navigation__link">Lists</a>
           </li>
 
-          <li class="navigation__list-item">
+          <li class="navigation__list-item" data-id="subpage-profile">
             <svg viewBox="0 0 24 24" class="navigation__icon">
               <g>
                 <path d="M12.225 12.165c-1.356 0-2.872-.15-3.84-1.256-.814-.93-1.077-2.368-.805-4.392.38-2.826 2.116-4.513 4.646-4.513s4.267 1.687 4.646 4.513c.272 2.024.008 3.46-.806 4.392-.97 1.106-2.485 1.255-3.84 1.255zm5.849 9.85H6.376c-.663 0-1.25-.28-1.65-.786-.422-.534-.576-1.27-.41-1.968.834-3.53 4.086-5.997 7.908-5.997s7.074 2.466 7.91 5.997c.164.698.01 1.434-.412 1.967-.4.505-.985.785-1.648.785z"></path>
@@ -84,7 +84,7 @@
             <a href="#" class="navigation__link">Profile</a>
           </li>
 
-          <li class="navigation__list-item">
+          <li class="navigation__list-item" data-id="subpage-more">
             <svg viewBox="0 0 24 24" class="navigation__icon">
               <g>
                 <path d="M16.5 10.25c-.965 0-1.75.787-1.75 1.75s.784 1.75 1.75 1.75c.964 0 1.75-.786 1.75-1.75s-.786-1.75-1.75-1.75zm0 2.5c-.414 0-.75-.336-.75-.75 0-.413.337-.75.75-.75s.75.336.75.75c0 .413-.336.75-.75.75zm-4.5-2.5c-.966 0-1.75.787-1.75 1.75s.785 1.75 1.75 1.75 1.75-.786 1.75-1.75-.784-1.75-1.75-1.75zm0 2.5c-.414 0-.75-.336-.75-.75 0-.413.337-.75.75-.75s.75.336.75.75c0 .413-.336.75-.75.75zm-4.5-2.5c-.965 0-1.75.787-1.75 1.75s.785 1.75 1.75 1.75c.964 0 1.75-.786 1.75-1.75s-.787-1.75-1.75-1.75zm0 2.5c-.414 0-.75-.336-.75-.75 0-.413.337-.75.75-.75s.75.336.75.75c0 .413-.336.75-.75.75z"></path>
@@ -112,12 +112,37 @@
       </div>
     </div>
     <main id="main">
+
       <div class="subpage subpage-visible" id="subpage-home">
         <?php require_once('php/subpages/home.php'); ?>
       </div>
 
       <div class="subpage subpage-hidden" id="subpage-explore">
         <?php require_once('php/subpages/explore.php'); ?>
+      </div>
+
+      <div class="subpage subpage-hidden" id="subpage-notifications">
+        <?php require_once('php/subpages/notifications.php'); ?>
+      </div>
+
+      <div class="subpage subpage-hidden" id="subpage-messages">
+        <?php require_once('php/subpages/messages.php'); ?>
+      </div>
+
+      <div class="subpage subpage-hidden" id="subpage-bookmarks">
+        <?php require_once('php/subpages/bookmarks.php'); ?>
+      </div>
+
+      <div class="subpage subpage-hidden" id="subpage-lists">
+        <?php require_once('php/subpages/lists.php'); ?>
+      </div>
+
+      <div class="subpage subpage-hidden" id="subpage-profile">
+        <?php require_once('php/subpages/profile.php'); ?>
+      </div>
+
+      <div class="subpage subpage-hidden" id="subpage-more">
+        <?php require_once('php/subpages/more.php'); ?>
       </div>
 
 
