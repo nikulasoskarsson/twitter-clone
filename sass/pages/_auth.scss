@@ -69,6 +69,29 @@
       font-weight: var(--fw-bold);
     }
   }
+
+  &__footer {
+    height: 3rem;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    &-container {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 12rem;
+      background-color: #fff;
+    }
+
+    &-link,
+    &-copyright {
+      font-size: var(--font-xs);
+      color: var(--color-dark-gray);
+    }
+  }
 }
 
 .login {

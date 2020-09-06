@@ -3,12 +3,12 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 0.8rem;
-  border-bottom: 0.1px solid lightgrey;
-  position: fixed;
+  border-bottom: var(--border-primary);
+  position: sticky;
+  top: 0;
   height: 50px;
   z-index: 5;
   background: #fff;
-  width: inherit;
 
   &__title {
     font-size: 1.2rem;
@@ -24,7 +24,6 @@
 .tweetbar {
   display: flex;
 
-  padding-top: 50px;
   margin: 0.8rem;
   &__img {
     margin-top: 1rem;
@@ -88,7 +87,7 @@
     }
   }
   &__border {
-    border-bottom: 0.5px solid lightgrey;
+    border-bottom: var(--border-primary);
 
     display: block;
     padding-top: 0.4rem;
@@ -124,5 +123,15 @@
     font-size: 1rem;
     color: lightgray;
     padding: 1rem 0rem;
+  }
+}
+
+// Styles for the subpage selection functinality
+.subpage {
+  &-hidden {
+    display: none;
+  }
+  &-visible {
+    display: block;
   }
 }

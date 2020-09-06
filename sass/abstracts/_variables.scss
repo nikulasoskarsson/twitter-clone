@@ -7,15 +7,21 @@
   --color-lighter-gray: #e1e8ed;
   --color-very-light-gray: #f5f8fa;
 
-  --font-lg: 1.8rem;
-  --font-md: 1.4rem;
-  --font-regular: 1.2rem;
+  --font-xl: 1.8rem;
+  --font-lg: 1.4rem;
+  --font-md: 1.2rem;
   --font-sm: 1rem;
   --font-xs: 0.8rem;
+  --font-xxs: 0.6rem;
 
   --fw-bold: 700;
   --fw-medium: 500;
   --fw-regular: 400;
   --fw-light: 300;
   --fw-extra-light: 100;
+
+  --border-primary: 1px solid var(--color-lighter-gray);
+
+  --padding-lg: padding 1rem;
+  --padding-md: padding 0.8rem;
 }
