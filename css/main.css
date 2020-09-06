@@ -520,6 +520,11 @@ button {
     color: lightgray;
     padding: 1rem 0rem; }
 
+.subpage-hidden {
+  display: none; }
+.subpage-visible {
+  display: block; }
+
 .padding-bottom-1 {
   padding-top: 1rem; }
 

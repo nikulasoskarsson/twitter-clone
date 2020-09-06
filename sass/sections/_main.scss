@@ -127,3 +127,11 @@
 }
 
 // Styles for the subpage selection functinality
+.subpage {
+  &-hidden {
+    display: none;
+  }
+  &-visible {
+    display: block;
+  }
+}

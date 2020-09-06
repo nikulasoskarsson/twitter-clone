@@ -1,18 +1,29 @@
 // Get elements from the dom
 const navigationLinks = document.querySelectorAll('.navigation__list-item');
-const subPageContainers = document.querySelectorAll;
+const subPageContainers = document.querySelectorAll('.subpage');
 
 //functions
 function handlePageChange() {
-  console.log(event.target);
+  const id = event.target.getAttribute('data-id');
 
   // add active state
-  navigationLinks.forEach((link) => {
-    if (link == event.target) {
-      console.log('match');
-      link.classList.add('yo');
+  //   navigationLinks.forEach((link) => {
+  //     // !match
+  //     if (link == event.target) {
+  //       link.classList.add('yo');
+  //     } else {
+  //       console.log('no match');
+  //     }
+  //   });
+
+  // show correct page and hide others
+  subPageContainers.forEach((page) => {
+    if (page.getAttribute('id') === id) {
+      page.classList.remove('subpage-hidden');
+      page.classList.add('subpage-visible');
     } else {
-      console.log('no match');
+      page.classList.add('subpage-hidden');
+      page.classList.remove('subpage-visible');
     }
   });
 }
