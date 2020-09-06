@@ -91,4 +91,9 @@
       fill: var(--color-light-gray);
     }
   }
+
+  &__retweet-card {
+    border: var(--border-primary);
+    border-radius: 0.5rem;
+  }
 }

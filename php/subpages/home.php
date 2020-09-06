@@ -81,7 +81,7 @@
 <div class="tweets">
     <div class="tweet-card">
         <div class="tweet-card__grid-container">
-            <img class="tweet-card__user-img" src="img/follow1.jpg"/>
+            <img class="tweet-card__user-img" src="img/follow1.jpg" />
             <div>
                 <div class="tweet-card__info">
                     <div class="tweet-card__user">
@@ -365,4 +365,6 @@
             </g>
         </svg>
     </div>
+    <?php
+    require("php/components/retweet-box.php"); ?>
 </div>
