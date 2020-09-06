@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 0.8rem;
-  border-bottom: 0.1px solid lightgrey;
+  border-bottom: var(--border-primary);
   position: sticky;
   top: 0;
   height: 50px;
@@ -87,7 +87,7 @@
     }
   }
   &__border {
-    border-bottom: 0.5px solid lightgrey;
+    border-bottom: var(--border-primary);
 
     display: block;
     padding-top: 0.4rem;

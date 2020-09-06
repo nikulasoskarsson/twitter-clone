@@ -5,7 +5,6 @@
   position: sticky;
   top: 0;
 }
-
 .navigation {
   height: 100%;
 
@@ -30,7 +29,7 @@
     }
   }
   &__icon {
-    width: 6%;
+    width: 11%;
     margin-right: 1rem;
     &-active {
       fill: var(--color-primary);

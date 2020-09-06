@@ -7,16 +7,20 @@
   --color-light-gray: #aab8c2;
   --color-lighter-gray: #e1e8ed;
   --color-very-light-gray: #f5f8fa;
-  --font-lg: 1.8rem;
-  --font-md: 1.4rem;
-  --font-regular: 1.2rem;
+  --font-xl: 1.8rem;
+  --font-lg: 1.4rem;
+  --font-md: 1.2rem;
   --font-sm: 1rem;
   --font-xs: 0.8rem;
+  --font-xxs: 0.6rem;
   --fw-bold: 700;
   --fw-medium: 500;
   --fw-regular: 400;
   --fw-light: 300;
-  --fw-extra-light: 100; }
+  --fw-extra-light: 100;
+  --border-primary: 1px solid var(--color-lighter-gray);
+  --padding-lg: padding 1rem;
+  --padding-md: padding 0.8rem; }
 
 * {
   margin: 0;
@@ -104,7 +108,7 @@ button {
 .tweet-card {
   position: relative;
   padding: 0.8rem;
-  border-bottom: 1px solid var(--color-light-gray); }
+  border-bottom: var(--border-primary); }
   .tweet-card__grid-container {
     display: grid;
     grid-template-columns: 2fr 14fr 1fr;
@@ -191,8 +195,8 @@ button {
   grid-gap: 0.1rem; }
 
 #main {
-  border-left: 1px solid #444;
-  border-right: 1px solid #444;
+  border-left: var(--border-primary);
+  border-right: var(--border-primary);
   position: relative;
   width: 100%; }
 
@@ -224,7 +228,7 @@ button {
     .navigation__link-active {
       color: var(--color-primary); }
   .navigation__icon {
-    width: 6%;
+    width: 11%;
     margin-right: 1rem; }
     .navigation__icon-active {
       fill: var(--color-primary); }
@@ -381,6 +385,22 @@ button {
     padding-top: 6rem;
     font-size: 1rem;
     font-weight: var(--fw-bold); }
+.auth__footer {
+  height: 3rem;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0; }
+  .auth__footer-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12rem;
+    background-color: #fff; }
+  .auth__footer-link, .auth__footer-copyright {
+    font-size: var(--font-xs);
+    color: var(--color-dark-gray); }
 
 .login {
   display: flex;
@@ -410,7 +430,7 @@ button {
   justify-content: space-between;
   align-items: center;
   padding: 0 0.8rem;
-  border-bottom: 0.1px solid lightgrey;
+  border-bottom: var(--border-primary);
   position: sticky;
   top: 0;
   height: 50px;
@@ -469,7 +489,7 @@ button {
       font-weight: bold;
       display: none; }
   .tweetbar__border {
-    border-bottom: 0.5px solid lightgrey;
+    border-bottom: var(--border-primary);
     display: block;
     padding-top: 0.4rem; }
 

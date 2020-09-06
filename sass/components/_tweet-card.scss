@@ -6,7 +6,7 @@
   //   gap: 0.5rem;
 
   //   border-top: 1px solid var(--color-light-gray);
-  border-bottom: 1px solid var(--color-light-gray);
+  border-bottom: var(--border-primary);
 
   &__grid-container {
     display: grid;
