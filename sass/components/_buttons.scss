@@ -8,6 +8,7 @@
   font-weight: 700;
   border: none;
   border-radius: 50px;
+  @include button-primary-animation;
 }
 
 .button-primary-small {
@@ -20,6 +21,7 @@
   font-weight: 700;
   border: none;
   border-radius: 50px;
+  @include button-primary-animation;
 }
 
 .button-inverted-small {
@@ -32,11 +34,7 @@
   height: 2rem;
 
   font-size: 0.9rem;
-  transition: background 0.5s;
-
-  &:hover {
-    background: var(--color-primary-light);
-  }
+  @include button-inverted-animation;
 }
 
 .button-long-primary,
@@ -53,11 +51,13 @@
   background: var(--color-primary);
   color: #fff;
   border: none;
+  @include button-primary-animation;
 }
 .button-long-inverted {
   background: #fff;
   color: var(--color-primary);
   border: 1px solid var(--color-primary);
+  @include button-inverted-animation;
 }
 .link {
   display: inline-block;

@@ -20,9 +20,19 @@
 
     display: flex;
     align-items: center;
-    &:hover {
+    a {
+      position: relative;
+    }
+    &:hover a::after {
+      content: '';
+      height: 150%;
+      width: 200%;
+      position: absolute;
+      top: 0;
+      left: -50%;
       background-color: var(--color-primary-light);
       color: var(--color-primary);
+      border-radius: 55px;
     }
   }
   &__link {

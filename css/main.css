@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap");
 :root {
   --color-primary: #1da1f2;
+  --color-primary-dark: #1a91da;
   --color-primary-light: #1da1f260;
   --color-black: #14171a;
   --color-dark-gray: #657786;
@@ -54,7 +55,10 @@ button {
   font-size: 1.2rem;
   font-weight: 700;
   border: none;
-  border-radius: 50px; }
+  border-radius: 50px;
+  transition: background 0.5s; }
+  .button-primary:hover {
+    background: var(--color-primary-dark); }
 
 .button-primary-small {
   background-color: var(--color-primary-light);
@@ -64,7 +68,10 @@ button {
   font-size: 1rem;
   font-weight: 700;
   border: none;
-  border-radius: 50px; }
+  border-radius: 50px;
+  transition: background 0.5s; }
+  .button-primary-small:hover {
+    background: var(--color-primary-dark); }
 
 .button-inverted-small {
   font-weight: 700;
@@ -92,12 +99,18 @@ button {
 .button-long-primary {
   background: var(--color-primary);
   color: #fff;
-  border: none; }
+  border: none;
+  transition: background 0.5s; }
+  .button-long-primary:hover {
+    background: var(--color-primary-dark); }
 
 .button-long-inverted {
   background: #fff;
   color: var(--color-primary);
-  border: 1px solid var(--color-primary); }
+  border: 1px solid var(--color-primary);
+  transition: background 0.5s; }
+  .button-long-inverted:hover {
+    background: var(--color-primary-light); }
 
 .link {
   display: inline-block;
@@ -233,9 +246,18 @@ button {
     cursor: pointer;
     display: flex;
     align-items: center; }
-    .navigation__list-item:hover, .navigation__logo:hover {
+    .navigation__list-item a, .navigation__logo a {
+      position: relative; }
+    .navigation__list-item:hover a::after, .navigation__logo:hover a::after {
+      content: '';
+      height: 150%;
+      width: 200%;
+      position: absolute;
+      top: 0;
+      left: -50%;
       background-color: var(--color-primary-light);
-      color: var(--color-primary); }
+      color: var(--color-primary);
+      border-radius: 55px; }
   .navigation__link {
     font-size: 1.1rem;
     font-weight: 700;
@@ -301,17 +323,33 @@ button {
     .who-to-follow__topbar-icon {
       height: 20px;
       width: 20px;
-      fill: var(--color-primary); }
+      fill: var(--color-primary);
+      transition: background 0.5s; }
+      .trends__topbar-icon:hover,
+      .who-to-follow__topbar-icon:hover {
+        background-color: var(--color-primary-light);
+        border-radius: 50%;
+        z-index: 1; }
   .trends__footer,
   .who-to-follow__footer {
-    margin: 1rem; }
+    margin: 1rem;
+    transition: background 0.5s; }
+    .trends__footer:hover,
+    .who-to-follow__footer:hover {
+      background-color: var(--color-lighter-gray);
+      z-index: 1; }
 
 .trends__card {
   border-bottom: 1px solid var(--color-lighter-gray);
   padding: 1rem;
   display: flex;
   align-items: flex-start;
-  justify-content: space-between; }
+  justify-content: space-between;
+  cursor: pointer;
+  transition: background 0.5s; }
+  .trends__card:hover {
+    background-color: var(--color-lighter-gray);
+    z-index: 1; }
   .trends__card-location, .trends__card-tweets-nr {
     font-size: var(--font-xs);
     font-weight: var(--fw-light);
@@ -331,7 +369,12 @@ button {
   align-items: center;
   padding: 1rem;
   border-bottom: 1px solid var(--color-lighter-gray);
-  justify-content: space-between; }
+  justify-content: space-between;
+  cursor: pointer;
+  transition: background 0.5s; }
+  .who-to-follow__card:hover {
+    background-color: var(--color-lighter-gray);
+    z-index: 1; }
   .who-to-follow__card-user {
     display: flex;
     align-items: center; }

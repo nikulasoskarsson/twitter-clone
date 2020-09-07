@@ -1,0 +1,35 @@
+@mixin button-primary-animation {
+  transition: background 0.5s;
+
+  &:hover {
+    background: var(--color-primary-dark);
+  }
+}
+
+@mixin button-inverted-animation {
+  transition: background 0.5s;
+
+  &:hover {
+    background: var(--color-primary-light);
+  }
+}
+
+@mixin icon-hover {
+  transition: background 0.5s;
+
+  &:hover {
+    background-color: var(--color-primary-light);
+    border-radius: 50%;
+    z-index: 1;
+  }
+}
+
+@mixin gray-card-hover {
+  transition: background 0.5s;
+
+  &:hover {
+    background-color: var(--color-lighter-gray);
+
+    z-index: 1;
+  }
+}
