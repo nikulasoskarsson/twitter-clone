@@ -98,7 +98,7 @@
         </ul>
       </nav>
       <div>
-        <button class="button-primary">Tweet</button>
+        <button id="open-tweet-modal" class="button-primary">Tweet</button>
       </div>
       <div class="user">
         <img src="img/placeholder.jpg" alt="Placeholder image" class="user__img" />
@@ -284,6 +284,7 @@
     </div>
   </div>
   <script src="js/sub-page-selector.js"></script>
+  <script src="js/modals.js"></script>
 </body>
 
 </html>

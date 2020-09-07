@@ -1,7 +1,7 @@
-<div class="modal-container">
-    <div class="tweet-modal">
+<div id="modal-container" class="modal-container display-hidden">
+    <div id="tweet-modal" class="tweet-modal display-hidden">
         <div class="tweet-modal__header">
-            <h3>X</h3>
+            <h3 id="close-modal">X</h3>
         </div>
         <div class="tweet-modal__content">
 
