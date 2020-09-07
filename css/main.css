@@ -119,6 +119,46 @@ button {
   font-size: var(--font-sm);
   font-weight: var(--fw-regular); }
 
+#page {
+  z-index: 699; }
+
+.modal-container {
+  height: 100%;
+  width: 100%;
+  background-color: #444;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.tweet-modal {
+  background: #fff;
+  border-radius: 25px;
+  z-index: 701;
+  position: relative; }
+  .tweet-modal__header {
+    width: 100%;
+    border-bottom: var(--border-primary);
+    display: flex;
+    align-items: center;
+    height: 3rem; }
+    .tweet-modal__header h3 {
+      margin-left: 2rem;
+      font-size: 1.2rem;
+      color: var(--color-primary);
+      font-weight: var(--fw-bold);
+      cursor: pointer; }
+  .tweet-modal__img {
+    float: left; }
+  .tweet-modal__content {
+    padding: 0.5rem 2rem; }
+  .tweet-modal__input-field {
+    display: flex;
+    align-items: center; }
+
 .tweet-card, .retweet-card {
   position: relative;
   padding: 0.8rem;
@@ -521,22 +561,15 @@ button {
     width: 100%; }
   .tweetbar__input-field {
     padding-top: 2rem; }
-  .tweetbar__input {
-    font-size: 1.2rem;
-    color: var(--color-light-gray);
-    border: none; }
-    .tweetbar__input:focus {
-      outline: none;
-      color: var(--color-black); }
-    .tweetbar__input:focus ~ .tweetbar__tagline .tweetbar__tagline-text {
-      display: inline-block; }
-    .tweetbar__input:focus ~ .tweetbar__tagline .tweetbar__tagline-img {
-      display: inline-block; }
-    .tweetbar__input:focus ~ .tweetbar__tagline .tweetbar__border {
-      display: block;
-      height: 300px; }
-    .tweetbar__input:focus .tweetbar__border {
-      display: none; }
+  .tweetbar__input:focus ~ .tweetbar__tagline .tweetbar__tagline-text {
+    display: inline-block; }
+  .tweetbar__input:focus ~ .tweetbar__tagline .tweetbar__tagline-img {
+    display: inline-block; }
+  .tweetbar__input:focus ~ .tweetbar__tagline .tweetbar__border {
+    display: block;
+    height: 300px; }
+  .tweetbar__input:focus .tweetbar__border {
+    display: none; }
   .tweetbar__tagline {
     display: flex;
     align-items: center;
@@ -585,6 +618,18 @@ button {
 .subpage-visible {
   display: block; }
 
+.img-round-md {
+  height: 55px;
+  width: 55px;
+  border-radius: 50%;
+  margin-right: 0.5rem; }
+
+.icon-25px-primary {
+  height: 25px;
+  width: 25px;
+  fill: var(--color-primary);
+  margin-right: 1rem; }
+
 .padding-bottom-1 {
   padding-top: 1rem; }
 
@@ -596,5 +641,27 @@ button {
   font-size: inherit;
   color: var(--color-primary);
   font-weight: 700; }
+
+.input-placeholder-large {
+  font-size: 1.2rem;
+  color: var(--color-light-gray);
+  border: none; }
+  .input-placeholder-large:focus {
+    outline: none;
+    color: var(--color-black); }
+
+.tagline-primary-md {
+  display: flex;
+  align-items: center;
+  padding-top: 1rem; }
+  .tagline-primary-md-img {
+    height: 20px;
+    width: 20px;
+    fill: var(--color-primary);
+    margin-right: 0.5rem; }
+  .tagline-primary-md-text {
+    color: var(--color-primary);
+    font-size: 0.8rem;
+    font-weight: bold; }
 
 /*# sourceMappingURL=main.css.map */

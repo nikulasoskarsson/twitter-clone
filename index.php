@@ -9,6 +9,8 @@
 </head>
 
 <body>
+
+  <?php require('php/components/tweet-modal.php'); ?>
   <div id="page">
     <div id="menu">
       <nav class="navigation">

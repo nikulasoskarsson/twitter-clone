@@ -1,0 +1,50 @@
+#page {
+  z-index: 699;
+}
+.modal-container {
+  height: 100%;
+  width: 100%;
+  background-color: #444;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tweet-modal {
+  background: #fff;
+
+  border-radius: 25px;
+  z-index: 701;
+  position: relative;
+
+  &__header {
+    width: 100%;
+    border-bottom: var(--border-primary);
+    display: flex;
+    align-items: center;
+    height: 3rem;
+    h3 {
+      margin-left: 2rem;
+      font-size: 1.2rem;
+      color: var(--color-primary);
+      font-weight: var(--fw-bold);
+      cursor: pointer;
+    }
+  }
+
+  &__img {
+    float: left;
+  }
+  &__content {
+    padding: 0.5rem 2rem;
+  }
+
+  &__input-field {
+    display: flex;
+    align-items: center;
+  }
+}

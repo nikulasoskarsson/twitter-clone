@@ -41,15 +41,6 @@
   }
 
   &__input {
-    font-size: 1.2rem;
-    color: var(--color-light-gray);
-    border: none;
-
-    &:focus {
-      outline: none;
-      color: var(--color-black);
-    }
-
     &:focus ~ .tweetbar__tagline {
       .tweetbar__tagline-text {
         display: inline-block;
