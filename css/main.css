@@ -3,6 +3,7 @@
   --color-primary: #1da1f2;
   --color-primary-dark: #1a91da;
   --color-primary-light: #1da1f260;
+  --color-primary-very-light: #1da1f220;
   --color-black: #14171a;
   --color-dark-gray: #657786;
   --color-light-gray: #aab8c2;
@@ -248,16 +249,20 @@ button {
     align-items: center; }
     .navigation__list-item a, .navigation__logo a {
       position: relative; }
-    .navigation__list-item:hover a::after, .navigation__logo:hover a::after {
+    .navigation__list-item:hover a::before, .navigation__logo:hover a::before {
       content: '';
-      height: 150%;
-      width: 200%;
       position: absolute;
-      top: 0;
-      left: -50%;
-      background-color: var(--color-primary-light);
+      top: -50%;
+      left: -50px;
+      background: var(--color-primary-very-light);
       color: var(--color-primary);
-      border-radius: 55px; }
+      border-radius: 55px;
+      width: calc(100px + 100%);
+      height: 200%; }
+    .navigation__list-item:hover a, .navigation__logo:hover a {
+      color: var(--color-primary); }
+    .navigation__list-item:hover svg, .navigation__logo:hover svg {
+      fill: var(--color-primary); }
   .navigation__link {
     font-size: 1.1rem;
     font-weight: 700;
