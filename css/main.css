@@ -131,50 +131,58 @@ button {
   justify-content: center;
   align-items: center; }
 
-.tweet-modal {
+.modal {
   background: #fff;
   border-radius: 25px;
   z-index: 701;
   position: relative; }
-  .tweet-modal__header {
-    width: 100%;
-    border-bottom: var(--border-primary);
-    display: flex;
-    align-items: center;
-    height: 3rem; }
-    .tweet-modal__header h3 {
-      margin-left: 2rem;
-      font-size: 1.2rem;
-      color: var(--color-primary);
-      font-weight: var(--fw-bold);
-      cursor: pointer; }
-  .tweet-modal__content {
-    padding: 1rem 2rem;
-    display: grid;
-    grid-template-columns: 1fr 8fr; }
-    .tweet-modal__content > div {
-      padding-top: 1rem; }
-  .tweet-modal__img {
-    object-fit: cover;
-    margin-right: 2rem; }
-  .tweet-modal__input-field-border {
-    border-bottom: var(--border-primary);
-    margin: 1rem 0; }
-  .tweet-modal__input {
-    padding-bottom: 8rem; }
-  .tweet-modal__menu {
+
+.tweet-modal__header {
+  width: 100%;
+  border-bottom: var(--border-primary);
+  display: flex;
+  align-items: center;
+  height: 3rem; }
+  .tweet-modal__header h3 {
+    margin-left: 2rem;
+    font-size: 1.2rem;
+    color: var(--color-primary);
+    font-weight: var(--fw-bold);
+    cursor: pointer; }
+.tweet-modal__content {
+  padding: 1rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr 8fr; }
+  .tweet-modal__content > div {
+    padding-top: 1rem; }
+.tweet-modal__img {
+  object-fit: cover;
+  margin-right: 2rem; }
+.tweet-modal__input-field-border {
+  border-bottom: var(--border-primary);
+  margin: 1rem 0; }
+.tweet-modal__input {
+  padding-bottom: 8rem; }
+.tweet-modal__menu {
+  display: flex;
+  justify-content: space-between;
+  align-self: center; }
+
+.signup-modal {
+  padding: 2rem 0;
+  width: 40%; }
+  .signup-modal__header {
     display: flex;
     justify-content: space-between;
-    align-self: center; }
-
-.display-hidden {
-  display: none; }
-
-.display-inline-block {
-  display: inline-block; }
-
-.display-flex {
-  display: flex; }
+    align-items: center; }
+    .signup-modal__header-icon {
+      margin-right: 0 !important; }
+  .signup-modal .display-hidden {
+    display: none; }
+  .signup-modal .display-inline-block {
+    display: inline-block; }
+  .signup-modal .display-flex {
+    display: flex; }
 
 .tweet-card, .retweet-card {
   position: relative;
@@ -636,7 +644,7 @@ button {
   padding-top: 1rem; }
 
 .heading-primary {
-  font-size: var(--font-regular);
+  font-size: var(--font-lg);
   font-weight: var(--fw-bold); }
 
 .hashtag {

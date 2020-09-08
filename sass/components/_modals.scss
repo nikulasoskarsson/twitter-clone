@@ -11,13 +11,13 @@
   align-items: center;
 }
 
-.tweet-modal {
+.modal {
   background: #fff;
-
   border-radius: 25px;
   z-index: 701;
   position: relative;
-
+}
+.tweet-modal {
   &__header {
     width: 100%;
     border-bottom: var(--border-primary);
@@ -62,13 +62,29 @@
   }
 }
 
-// for js functonality
-.display-hidden {
-  display: none;
-}
-.display-inline-block {
-  display: inline-block;
-}
-.display-flex {
-  display: flex;
+.signup-modal {
+  padding: 2rem 0;
+  width: 40%;
+
+  &__header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    &-icon {
+      margin-right: 0 !important; // override utility class
+    }
+  }
+
+  // for js functonality
+  .display-hidden {
+    display: none;
+  }
+  .display-inline-block {
+    display: inline-block;
+  }
+  .display-flex {
+    display: flex;
+  }
 }
