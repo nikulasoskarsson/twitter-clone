@@ -36,16 +36,32 @@
     }
   }
 
-  &__img {
-    float: left;
-  }
   &__content {
-    padding: 0.5rem 2rem;
+    padding: 1rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 8fr;
+    & > div {
+      padding-top: 1rem;
+    }
+  }
+  &__img {
+    object-fit: cover;
+    margin-right: 2rem;
   }
 
   &__input-field {
+    &-border {
+      border-bottom: var(--border-primary);
+      margin: 1rem 0;
+    }
+  }
+  &__input {
+    padding-bottom: 8rem;
+  }
+  &__menu {
     display: flex;
-    align-items: center;
+    justify-content: space-between;
+    align-self: center;
   }
 }
 
