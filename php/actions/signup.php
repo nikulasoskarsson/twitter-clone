@@ -5,7 +5,7 @@
     }
     // TODO validate..
 
-    $newUser = [$_POST['email'], password_hash($_POST['password'], PASSWORD_DEFAULT)];
+    $newUser = [uniqid(), $_POST['email'], password_hash($_POST['password'], PASSWORD_DEFAULT)];
 
     $sUsers = file_get_contents('../../db/users.txt');
     $aUsers = json_decode($sUsers);

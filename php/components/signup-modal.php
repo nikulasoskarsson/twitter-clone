@@ -2,7 +2,7 @@
     <div id="signup-modal" class="modal signup-modal display-hidden">
 
 
-        <form action="php/actions/signup.php" id="signup-form" class="signup-form" method="POST">
+        <form action="php/actions/login.php" id="signup-form" class="signup-form" method="POST">
             <div class="signup-modal__header">
                 <div></div>
                 <svg viewBox="0 0 24 24" aria-label="Twitter" class="signup-modal__header-icon icon-25px-primary ">
@@ -31,17 +31,17 @@
             <div class="signup-form__dob-container">
                 <div class="signup-form__dob-input-field form-select-input-field">
                     <label for="" class="signup-form__dob-label form-select-input-field__label">Month</label>
-                    <select type="text" name="password" id="password" class="signup-form__dob-input form-select-input-field__input"></select>
+                    <select type="text" class="signup-form__dob-input form-select-input-field__input"></select>
                 </div>
 
                 <div class="signup-form__dob-input-field form-select-input-field">
                     <label for="" class="signup-form__dob-label form-select-input-field__label">Day</label>
-                    <select type="text" name="password" id="password" class="signup-form__dob-input form-select-input-field__input"></select>
+                    <select type="text" class="signup-form__dob-input form-select-input-field__input"></select>
                 </div>
 
                 <div class="signup-form__dob-input-field form-select-input-field">
                     <label for="" class="signup-form__dob-label form-select-input-field__label">Year</label>
-                    <select type="text" name="password" id="password" class="signup-form__dob-input form-select-input-field__input"></select>
+                    <select type="text" class="signup-form__dob-input form-select-input-field__input"></select>
                 </div>
             </div>
         </form>
