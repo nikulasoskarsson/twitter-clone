@@ -1,5 +1,5 @@
-<div id="modal-container" class="modal-container">
-    <div id="signup-modal" class="modal signup-modal">
+<div id="modal-container" class="modal-container display-hidden">
+    <div id="signup-modal" class="modal signup-modal display-hidden">
 
 
         <form action="php/actions/signup.php" id="signup-form" class="signup-form" method="POST">
@@ -15,18 +15,35 @@
             </div>
             <h1 class="signup-form__heading heading-primary">Create your account</h1>
 
-            <div class="login__input-field">
-                <label for="" class="login__label">Email</label>
-                <input type="text" name="email" id="email" class="login__input" />
+            <div class="signup-form__input-field form-input-field">
+                <label for="" class="signup-form__label form-input-field__label">Email</label>
+                <input type="text" name="email" id="email" class="signup-form__input form-input-field__input" />
             </div>
 
-            <div class="login__input-field">
-                <label for="" class="login__label">Password</label>
-                <input type="text" name="password" id="password" class="login__input" />
-
+            <div class="signup-form__input-field form-input-field">
+                <label for="" class="signup-form__label form-input-field__label">Password</label>
+                <input type="text" name="password" id="password" class="signup-form__input form-input-field__input" />
             </div>
 
+            <h3 class="signup-form__input-dob-heading heading-secondary">Date of birth</h3>
+            <p class="signup-form__input-dob-text text-xs-light">This will not be shown publicly. Confirm your own age, even if this account is for a bussiness, pet or something else.</p>
 
+            <div class="signup-form__dob-container">
+                <div class="signup-form__dob-input-field form-select-input-field">
+                    <label for="" class="signup-form__dob-label form-select-input-field__label">Month</label>
+                    <select type="text" name="password" id="password" class="signup-form__dob-input form-select-input-field__input"></select>
+                </div>
+
+                <div class="signup-form__dob-input-field form-select-input-field">
+                    <label for="" class="signup-form__dob-label form-select-input-field__label">Day</label>
+                    <select type="text" name="password" id="password" class="signup-form__dob-input form-select-input-field__input"></select>
+                </div>
+
+                <div class="signup-form__dob-input-field form-select-input-field">
+                    <label for="" class="signup-form__dob-label form-select-input-field__label">Year</label>
+                    <select type="text" name="password" id="password" class="signup-form__dob-input form-select-input-field__input"></select>
+                </div>
+            </div>
         </form>
     </div>
 </div>

@@ -3,6 +3,19 @@
   font-weight: var(--fw-bold);
 }
 
+.heading-secondary {
+  font-size: var(--font-sm);
+  font-weight: var(--fw-bold);
+}
+.text-xs-light {
+  font-size: var(--font-xs);
+  color: var(--color-dark-gray);
+}
+.text-sm-light {
+  font-size: var(--font-sm);
+  color: var(--color-dark-gray);
+}
+
 .hashtag {
   font-size: inherit;
   color: var(--color-primary);

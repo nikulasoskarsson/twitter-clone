@@ -169,7 +169,7 @@ button {
   align-self: center; }
 
 .signup-modal {
-  padding: 2rem 0;
+  padding: 2rem;
   width: 40%; }
   .signup-modal__header {
     display: flex;
@@ -177,12 +177,25 @@ button {
     align-items: center; }
     .signup-modal__header-icon {
       margin-right: 0 !important; }
-  .signup-modal .display-hidden {
-    display: none; }
-  .signup-modal .display-inline-block {
-    display: inline-block; }
-  .signup-modal .display-flex {
-    display: flex; }
+  .signup-modal .signup-form__input-field {
+    margin: 1rem 0; }
+  .signup-modal .signup-form__dob-container {
+    display: grid;
+    grid-template-columns: 4fr 2fr 3fr;
+    grid-template-rows: 1fr;
+    align-items: center;
+    gap: 30px; }
+  .signup-modal .signup-form__dob-input-field {
+    padding: 0.5rem 0 !important; }
+
+.display-hidden {
+  display: none; }
+
+.display-inline-block {
+  display: inline-block; }
+
+.display-flex {
+  display: flex; }
 
 .tweet-card, .retweet-card {
   position: relative;
@@ -538,21 +551,7 @@ button {
   font-size: 0.8rem;
   color: var(--color-dark-gray); }
   .login__input-field {
-    padding: 0.5rem;
-    background: var(--color-very-light-gray);
-    border-bottom: 2px solid var(--color-dark-gray);
-    margin: 1rem;
-    position: relative; }
-    .login__input-field > .link {
-      position: absolute;
-      left: 0;
-      bottom: -1.5rem; }
-  .login__label {
-    display: block; }
-  .login__input {
-    border: none;
-    background: transparent;
-    padding-bottom: 0.5rem; }
+    margin: 1rem; }
 
 .homebar {
   display: flex;
@@ -640,12 +639,44 @@ button {
   fill: var(--color-primary);
   margin-right: 1rem; }
 
+.form-input-field,
+.form-select-input-field {
+  padding: 0.5rem;
+  background: var(--color-very-light-gray);
+  border-bottom: 2px solid var(--color-dark-gray);
+  position: relative; }
+  .form-input-field > .link,
+  .form-select-input-field > .link {
+    position: absolute;
+    left: 0;
+    bottom: -1.5rem; }
+  .form-input-field__label,
+  .form-select-input-field__label {
+    display: block; }
+  .form-input-field__input,
+  .form-select-input-field__input {
+    border: none;
+    background: transparent;
+    padding-bottom: 0.5rem; }
+
 .padding-bottom-1 {
   padding-top: 1rem; }
 
 .heading-primary {
   font-size: var(--font-lg);
   font-weight: var(--fw-bold); }
+
+.heading-secondary {
+  font-size: var(--font-sm);
+  font-weight: var(--fw-bold); }
+
+.text-xs-light {
+  font-size: var(--font-xs);
+  color: var(--color-dark-gray); }
+
+.text-sm-light {
+  font-size: var(--font-sm);
+  color: var(--color-dark-gray); }
 
 .hashtag {
   font-size: inherit;

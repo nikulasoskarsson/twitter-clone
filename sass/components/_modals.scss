@@ -63,7 +63,7 @@
 }
 
 .signup-modal {
-  padding: 2rem 0;
+  padding: 2rem;
   width: 40%;
 
   &__header {
@@ -76,15 +76,31 @@
       margin-right: 0 !important; // override utility class
     }
   }
+  .signup-form {
+    &__input-field {
+      margin: 1rem 0;
+    }
 
-  // for js functonality
-  .display-hidden {
-    display: none;
+    &__dob-container {
+      display: grid;
+      grid-template-columns: 4fr 2fr 3fr;
+      grid-template-rows: 1fr;
+      align-items: center;
+      gap: 30px;
+    }
+    &__dob-input-field {
+      padding: 0.5rem 0 !important;
+    }
   }
-  .display-inline-block {
-    display: inline-block;
-  }
-  .display-flex {
-    display: flex;
-  }
+}
+
+// for js functonality
+.display-hidden {
+  display: none;
+}
+.display-inline-block {
+  display: inline-block;
+}
+.display-flex {
+  display: flex;
 }

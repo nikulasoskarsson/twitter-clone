@@ -11,3 +11,28 @@
   fill: var(--color-primary);
   margin-right: 1rem;
 }
+
+// Some input fields
+
+.form-input-field,
+.form-select-input-field {
+  padding: 0.5rem;
+  background: var(--color-very-light-gray);
+  border-bottom: 2px solid var(--color-dark-gray);
+
+  position: relative;
+
+  & > .link {
+    position: absolute;
+    left: 0;
+    bottom: -1.5rem;
+  }
+  &__label {
+    display: block;
+  }
+  &__input {
+    border: none;
+    background: transparent;
+    padding-bottom: 0.5rem;
+  }
+}

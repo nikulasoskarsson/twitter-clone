@@ -4,19 +4,27 @@ const closeModalBtn = document.getElementById('close-modal');
 const modalContainer = document.getElementById('modal-container');
 const tweetModal = document.getElementById('tweet-modal');
 
-function openModal() {
+const openSignUpModal = document.getElementById('open-sign-up-modal');
+const signupModal = document.getElementById('signup-modal');
+
+function openModal(modal) {
   modalContainer.classList.add('display-flex');
-  tweetModal.classList.add('display-inline-block');
+  modal.classList.add('display-inline-block');
   modalContainer.classList.remove('display-hidden');
-  tweetModal.classList.remove('display-hidden');
+  modal.classList.remove('display-hidden');
 }
 
-function closeModal() {
+function closeModal(modal) {
   modalContainer.classList.remove('display-flex');
-  tweetModal.classList.remove('display-inline-block');
+  modal.classList.remove('display-inline-block');
   modalContainer.classList.add('display-hidden');
-  tweetModal.classList.add('display-hidden');
+  modal.classList.add('display-hidden');
+}
+if (openModalBtn) {
+  openModalBtn.addEventListener('click', openModal(tweetModal));
+}
+if (closeModalBtn) {
+  closeModalBtn.addEventListener('click', closeModal(tweetModal));
 }
 
-openModalBtn.addEventListener('click', openModal);
-closeModalBtn.addEventListener('click', closeModal);
+openSignUpModal.addEventListener('click', () => openModal(signupModal));

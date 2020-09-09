@@ -53,14 +53,14 @@
       </div>
       <div class="auth__right">
         <form action="#" id="login" class="login" method="POST">
-          <div class="login__input-field">
-            <label for="" class="login__label">Phone, email or username</label>
-            <input type="text" name="username" id="username" class="login__input" />
+          <div class="login__input-field form-input-field">
+            <label for="" class="login__label  form-input-field__label">Phone, email or username</label>
+            <input type="text" name="username" id="username" class="login__input  form-input-field__input" />
           </div>
 
-          <div class="login__input-field">
-            <label for="" class="login__label">Password</label>
-            <input type="text" name="username" id="username" class="login__input" />
+          <div class="login__input-field  form-input-field">
+            <label for="" class="login__label  form-input-field__label">Password</label>
+            <input type="text" name="username" id="username" class="login__input  form-input-field__input" />
             <a href="#" class="link">Forgot password?</a>
           </div>
 
@@ -75,7 +75,7 @@
             </h1>
 
             <p class="auth__cta-tagline">Join Twitter today.</p>
-            <button class="button-long-primary">Sign up</button>
+            <button class="button-long-primary" id="open-sign-up-modal">Sign up</button>
             <button class="button-long-inverted">Log in</button>
           </div>
         </div>
@@ -104,6 +104,7 @@
       <p class="auth__footer-copyright">&copy; 2020 Twitter, Inc</p>
     </div>
   </footer>
+  <script src="js/modals.js"></script>
 </body>
 
 </html>

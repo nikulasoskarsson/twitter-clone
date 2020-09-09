@@ -1,6 +1,6 @@
 <?php
-session_start();
-!isset($_SESSION['user']) ? header('Location: auth.html') : header('Location: index.php');
+// 
+
 ?>
 
 <!DOCTYPE html>
