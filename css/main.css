@@ -277,11 +277,15 @@ button {
 .user {
   display: grid;
   align-items: center;
+  cursor: pointer;
+  position: relative;
+  z-index: 51701;
   grid-template-columns: 1fr 5fr 1fr; }
   .user__img {
     height: 40px;
     width: 40px;
-    border-radius: 50%; }
+    border-radius: 50%;
+    margin: 0.5rem; }
   .user__name {
     font-size: 1rem;
     font-weight: 700; }
@@ -292,6 +296,23 @@ button {
     height: 18px;
     width: 18px;
     color: var(--color-gray); }
+  .user__modal {
+    height: 5rem;
+    width: 120%;
+    bottom: 4rem;
+    position: absolute;
+    background-color: #fff;
+    border: var(--border-primary);
+    z-index: 51701;
+    border-radius: 5px;
+    overflow: hidden; }
+    .user__modal-logout-btn {
+      width: 100%;
+      background: transparent;
+      padding: 1rem 0;
+      text-transform: uppercase;
+      text-align: center;
+      border: none; }
 
 .auth-page__grid-container {
   display: grid;

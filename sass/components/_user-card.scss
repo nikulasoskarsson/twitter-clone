@@ -1,12 +1,15 @@
 .user {
   display: grid;
   align-items: center;
-
+  cursor: pointer;
+  position: relative;
+  z-index: 51701;
   grid-template-columns: 1fr 5fr 1fr;
   &__img {
     height: 40px;
     width: 40px;
     border-radius: 50%;
+    margin: 0.5rem;
   }
 
   &__name {
@@ -22,5 +25,26 @@
     height: 18px;
     width: 18px;
     color: var(--color-gray);
+  }
+
+  &__modal {
+    height: 5rem;
+    width: 120%;
+    bottom: 4rem;
+
+    position: absolute;
+    background-color: #fff;
+    border: var(--border-primary);
+    z-index: 51701;
+    border-radius: 5px;
+    overflow: hidden;
+    &-logout-btn {
+      width: 100%;
+      background: transparent;
+      padding: 1rem 0;
+      text-transform: uppercase;
+      text-align: center;
+      border: none;
+    }
   }
 }
