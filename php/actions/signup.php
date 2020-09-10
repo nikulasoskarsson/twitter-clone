@@ -20,16 +20,18 @@
         return;
     }
 
-    if (strlen($_POST['password'] < 6)) {
+
+    if (strlen($_POST['password']) < 6) {
         echo 'Password cannot be shorter then 6 characters';
         return;
     }
 
-    if (strlen($_POST['password'] > 20)) {
+    if (strlen($_POST['password']) > 20) {
         echo 'Password cannot be longer then 20 characters';
         return;
     }
-
+    echo 'validation passed <br>';
+    var_dump($_POST);
 
     $newUser = [uniqid(), $_POST['email'], password_hash($_POST['password'], PASSWORD_DEFAULT)];
 

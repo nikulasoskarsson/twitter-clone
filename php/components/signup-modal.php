@@ -1,5 +1,5 @@
-<div id="modal-container" class="modal-container display-hidden">
-    <div id="signup-modal" class="modal signup-modal display-hidden">
+<div id="modal-container" class="modal-container ">
+    <div id="signup-modal" class="modal signup-modal ">
 
 
         <form action="php/actions/signup.php" id="signup-form" class="signup-form" method="POST">
@@ -31,18 +31,27 @@
             <div class="signup-form__dob-container">
                 <div class="signup-form__dob-input-field form-select-input-field">
                     <label for="" class="signup-form__dob-label form-select-input-field__label">Month</label>
-                    <select type="text" class="signup-form__dob-input form-select-input-field__input"></select>
+                    <select id="select-month" type="text" name="month" class="signup-form__dob-input form-select-input-field__input">
+                        <option value="" selected hidden></option>
+                    </select>
+                </div>
+
+
+                <div class="signup-form__dob-input-field form-select-input-field">
+                    <label for="" class="signup-form__dob-label form-select-input-field__label">Year</label>
+                    <select id="select-year" type="text" name="year" class="signup-form__dob-input form-select-input-field__input">
+                        <option value="" selected hidden></option>
+                    </select>
                 </div>
 
                 <div class="signup-form__dob-input-field form-select-input-field">
                     <label for="" class="signup-form__dob-label form-select-input-field__label">Day</label>
-                    <select type="text" class="signup-form__dob-input form-select-input-field__input"></select>
+                    <select id="select-day" type="text" name="day" class="signup-form__dob-input form-select-input-field__input">
+                        <option value="" selected hidden></option>
+                        <option value="" disabled>Please select a month and a year first</option>
+                    </select>
                 </div>
 
-                <div class="signup-form__dob-input-field form-select-input-field">
-                    <label for="" class="signup-form__dob-label form-select-input-field__label">Year</label>
-                    <select type="text" class="signup-form__dob-input form-select-input-field__input"></select>
-                </div>
             </div>
         </form>
     </div>

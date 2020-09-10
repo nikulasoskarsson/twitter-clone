@@ -105,6 +105,7 @@
     </div>
   </footer>
   <script src="js/modals.js"></script>
+  <script src="js/add-date-fields.js"></script>
 </body>
 
 </html>

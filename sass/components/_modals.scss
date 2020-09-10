@@ -92,6 +92,12 @@
       padding: 0.5rem 0 !important;
     }
   }
+  select {
+    position: relative;
+    option {
+      width: 100%;
+    }
+  }
 }
 
 // for js functonality

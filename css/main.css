@@ -187,6 +187,10 @@ button {
     gap: 30px; }
   .signup-modal .signup-form__dob-input-field {
     padding: 0.5rem 0 !important; }
+  .signup-modal select {
+    position: relative; }
+    .signup-modal select option {
+      width: 100%; }
 
 .display-hidden {
   display: none; }
