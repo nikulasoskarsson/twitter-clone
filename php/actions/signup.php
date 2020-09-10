@@ -30,16 +30,25 @@
         echo 'Password cannot be longer then 20 characters';
         return;
     }
-    echo 'validation passed <br>';
-    var_dump($_POST);
 
-    $newUser = [uniqid(), $_POST['email'], password_hash($_POST['password'], PASSWORD_DEFAULT)];
 
-    $sUsers = file_get_contents('../../db/users.txt');
+    $sUsers = file_get_contents('../../db/users.json');
     $aUsers = json_decode($sUsers);
+
+    foreach ($aUsers as $jUser) {
+        if ($jUser->email == $_POST['email']) {
+            echo 'email taken';
+            return;
+        }
+    }
+
+    $newUser = [
+        "id" => uniqid(), "email" => $_POST['email'], "password" => password_hash($_POST['password'], PASSWORD_DEFAULT), "dob" => [
+            "month" => $_POST['month'], "year" => $_POST['year'], "day" => $_POST['day']
+        ]
+    ];
 
     array_push($aUsers, $newUser);
     $sUsers = json_encode($aUsers);
-
-    file_put_contents('../../db/users.txt', $sUsers);
+    file_put_contents('../../db/users.json', $sUsers);
 })();
