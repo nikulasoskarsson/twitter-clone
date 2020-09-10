@@ -92,4 +92,9 @@
     array_push($aUsers, $newUser);
     $sUsers = json_encode($aUsers);
     file_put_contents('../../db/users.json', $sUsers);
+
+
+    session_start();
+    $_SESSION['userId'] = $newUser['id'];
+    header('Location: ../../index.php');
 })();

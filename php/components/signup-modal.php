@@ -1,5 +1,5 @@
-<div id="modal-container" class="modal-container ">
-    <div id="signup-modal" class="modal signup-modal ">
+<div id="modal-container" class="modal-container display-hidden">
+    <div id="signup-modal" class="modal signup-modal display-hidden">
 
 
         <form action="php/actions/signup.php" id="signup-form" class="signup-form" method="POST">

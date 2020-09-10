@@ -1,6 +1,10 @@
-<?php require('php/components/header.php'); ?>
-
-<?php require('php/components/tweet-modal.php'); ?>
+<?php
+require('php/isSignedIn.php');
+if (!$isSignedIn) {
+  header('Location: auth.php');
+}
+require('php/components/header.php');
+require('php/components/tweet-modal.php'); ?>
 <div id="page">
   <div id="menu">
     <nav class="navigation">

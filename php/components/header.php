@@ -1,8 +1,3 @@
-<?php
-// 
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,3 +9,7 @@
 </head>
 
 <body>
+
+    <form action="php/actions/logout.php">
+        <button>Logout</button>
+    </form>
