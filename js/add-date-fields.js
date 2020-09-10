@@ -52,7 +52,7 @@ function insertDaysUi() {
     const selectedYear = yearContainer.getAttribute('data-selected-year');
     const daysInMonth = getDaysInMonth(selectedMonth, selectedYear);
     for (let i = 0; i < daysInMonth; i++) {
-      dayContainer.innerHTML += `<option value=${i}>${i}</option>`;
+      dayContainer.innerHTML += `<option value=${i + 1}>${i + 1}</option>`;
     }
   }
 }

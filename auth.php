@@ -106,6 +106,7 @@
   </footer>
   <script src="js/modals.js"></script>
   <script src="js/add-date-fields.js"></script>
+  <script src="js/form-validation.js"></script>
 </body>
 
 </html>

@@ -1,8 +1,11 @@
 [
   {
-    "id": "5f5a1bcebf3e6",
+    "id": "5f5a38d3dee57",
+    "firstname": "Nikul\u00e1s",
+    "lastname": "\u00d3skarsson",
+    "username": "nikulasoskarsson",
     "email": "nikulasoskarsson@gmail.com",
-    "password": "$2y$10$GjZ4dxEVDC.pv.Sx/SNW/utAx/7I3OdGnEs0i1eTE..RGGwqaXfgi",
-    "dob": { "month": "8", "year": "1916", "day": "15" }
+    "password": "$2y$10$88MOey0xoiW2EpTxyveRF.QnQkhNaApsAXp/djCqDmwysdzx1O1Wi",
+    "dob": { "month": "1", "year": "1900", "day": "14" }
   }
 ]

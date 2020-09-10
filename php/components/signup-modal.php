@@ -15,9 +15,30 @@
             </div>
             <h1 class="signup-form__heading heading-primary">Create your account</h1>
 
+            <div class="signup-form__input-field form-input-field border-nutural">
+                <label for="" class="signup-form__label form-input-field__label">Firstname</label>
+                <input type="firstname" name="firstname" id="firstname" class="signup-form__input form-input-field__input" />
+                <div id="firstname-character-display"><span id="firstname-character-count">0</span> / 50</div>
+            </div>
+
+
+            <div class="signup-form__input-field form-input-field">
+                <label for="" class="signup-form__label form-input-field__label">Lastname</label>
+                <input type="text" name="lastname" id="lastname" class="signup-form__input form-input-field__input" />
+                <div id="lastname-character-display"><span id="lastname-character-count">0</span> / 50</div>
+            </div>
+
+
+            <div class="signup-form__input-field form-input-field">
+                <label for="" class="signup-form__label form-input-field__label">Choose a username</label>
+                <input type="text" name="username" id="username" class="signup-form__input form-input-field__input" />
+                <div id="lastname-character-display"><span id="lastname-character-count">0</span> / 50</div>
+            </div>
+            <div id="username-character-display"><span id="username-character-count">0</span> / 50</div>
+
             <div class="signup-form__input-field form-input-field">
                 <label for="" class="signup-form__label form-input-field__label">Email</label>
-                <input type="text" name="email" id="email" class="signup-form__input form-input-field__input" />
+                <input type="email" name="email" id="email" class="signup-form__input form-input-field__input" />
             </div>
 
             <div class="signup-form__input-field form-input-field">
