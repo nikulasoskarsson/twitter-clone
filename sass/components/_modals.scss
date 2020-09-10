@@ -1,0 +1,112 @@
+.modal-container {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(#444, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 25px;
+  z-index: 701;
+  position: relative;
+}
+.tweet-modal {
+  &__header {
+    width: 100%;
+    border-bottom: var(--border-primary);
+    display: flex;
+    align-items: center;
+    height: 3rem;
+    h3 {
+      margin-left: 2rem;
+      font-size: 1.2rem;
+      color: var(--color-primary);
+      font-weight: var(--fw-bold);
+      cursor: pointer;
+    }
+  }
+
+  &__content {
+    padding: 1rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 8fr;
+    & > div {
+      padding-top: 1rem;
+    }
+  }
+  &__img {
+    object-fit: cover;
+    margin-right: 2rem;
+  }
+
+  &__input-field {
+    &-border {
+      border-bottom: var(--border-primary);
+      margin: 1rem 0;
+    }
+  }
+  &__input {
+    padding-bottom: 8rem;
+  }
+  &__menu {
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+  }
+}
+
+.signup-modal {
+  padding: 2rem;
+  width: 40%;
+
+  &__header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    &-icon {
+      margin-right: 0 !important; // override utility class
+    }
+  }
+  .signup-form {
+    &__input-field {
+      margin: 1rem 0;
+    }
+
+    &__dob-container {
+      display: grid;
+      grid-template-columns: 4fr 2fr 3fr;
+      grid-template-rows: 1fr;
+      align-items: center;
+      gap: 30px;
+    }
+    &__dob-input-field {
+      padding: 0.5rem 0 !important;
+    }
+  }
+  select {
+    position: relative;
+    option {
+      width: 100%;
+    }
+  }
+}
+
+// for js functonality
+.display-hidden {
+  display: none;
+}
+.display-inline-block {
+  display: inline-block;
+}
+.display-flex {
+  display: flex;
+}

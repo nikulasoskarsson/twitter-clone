@@ -57,10 +57,13 @@
       height: 20px;
       width: 20px;
       fill: var(--color-primary);
+      @include icon-hover;
     }
   }
   &__footer {
     margin: 1rem;
+
+    @include gray-card-hover; // TODO make it fill in the entier card
   }
 }
 
@@ -71,6 +74,8 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  cursor: pointer;
+  @include gray-card-hover;
   &-location,
   &-tweets-nr {
     font-size: var(--font-xs);
@@ -97,6 +102,8 @@
     padding: 1rem;
     border-bottom: 1px solid var(--color-lighter-gray);
     justify-content: space-between;
+    cursor: pointer;
+    @include gray-card-hover;
 
     &-user {
       display: flex;

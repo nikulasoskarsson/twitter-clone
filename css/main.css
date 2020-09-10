@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap");
 :root {
   --color-primary: #1da1f2;
+  --color-primary-dark: #1a91da;
   --color-primary-light: #1da1f260;
+  --color-primary-very-light: #1da1f220;
   --color-black: #14171a;
   --color-dark-gray: #657786;
   --color-light-gray: #aab8c2;
@@ -54,7 +56,10 @@ button {
   font-size: 1.2rem;
   font-weight: 700;
   border: none;
-  border-radius: 50px; }
+  border-radius: 50px;
+  transition: background 0.5s; }
+  .button-primary:hover {
+    background: var(--color-primary-dark); }
 
 .button-primary-small {
   background-color: var(--color-primary-light);
@@ -64,7 +69,10 @@ button {
   font-size: 1rem;
   font-weight: 700;
   border: none;
-  border-radius: 50px; }
+  border-radius: 50px;
+  transition: background 0.5s; }
+  .button-primary-small:hover {
+    background: var(--color-primary-dark); }
 
 .button-inverted-small {
   font-weight: 700;
@@ -92,18 +100,106 @@ button {
 .button-long-primary {
   background: var(--color-primary);
   color: #fff;
-  border: none; }
+  border: none;
+  transition: background 0.5s; }
+  .button-long-primary:hover {
+    background: var(--color-primary-dark); }
 
 .button-long-inverted {
   background: #fff;
   color: var(--color-primary);
-  border: 1px solid var(--color-primary); }
+  border: 1px solid var(--color-primary);
+  transition: background 0.5s; }
+  .button-long-inverted:hover {
+    background: var(--color-primary-light); }
 
 .link {
   display: inline-block;
   color: var(--color-primary);
   font-size: var(--font-sm);
   font-weight: var(--fw-regular); }
+
+.modal-container {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(68, 68, 68, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.modal {
+  background: #fff;
+  border-radius: 25px;
+  z-index: 701;
+  position: relative; }
+
+.tweet-modal__header {
+  width: 100%;
+  border-bottom: var(--border-primary);
+  display: flex;
+  align-items: center;
+  height: 3rem; }
+  .tweet-modal__header h3 {
+    margin-left: 2rem;
+    font-size: 1.2rem;
+    color: var(--color-primary);
+    font-weight: var(--fw-bold);
+    cursor: pointer; }
+.tweet-modal__content {
+  padding: 1rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr 8fr; }
+  .tweet-modal__content > div {
+    padding-top: 1rem; }
+.tweet-modal__img {
+  object-fit: cover;
+  margin-right: 2rem; }
+.tweet-modal__input-field-border {
+  border-bottom: var(--border-primary);
+  margin: 1rem 0; }
+.tweet-modal__input {
+  padding-bottom: 8rem; }
+.tweet-modal__menu {
+  display: flex;
+  justify-content: space-between;
+  align-self: center; }
+
+.signup-modal {
+  padding: 2rem;
+  width: 40%; }
+  .signup-modal__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+    .signup-modal__header-icon {
+      margin-right: 0 !important; }
+  .signup-modal .signup-form__input-field {
+    margin: 1rem 0; }
+  .signup-modal .signup-form__dob-container {
+    display: grid;
+    grid-template-columns: 4fr 2fr 3fr;
+    grid-template-rows: 1fr;
+    align-items: center;
+    gap: 30px; }
+  .signup-modal .signup-form__dob-input-field {
+    padding: 0.5rem 0 !important; }
+  .signup-modal select {
+    position: relative; }
+    .signup-modal select option {
+      width: 100%; }
+
+.display-hidden {
+  display: none; }
+
+.display-inline-block {
+  display: inline-block; }
+
+.display-flex {
+  display: flex; }
 
 .tweet-card, .retweet-card {
   position: relative;
@@ -233,9 +329,22 @@ button {
     cursor: pointer;
     display: flex;
     align-items: center; }
-    .navigation__list-item:hover, .navigation__logo:hover {
-      background-color: var(--color-primary-light);
+    .navigation__list-item a, .navigation__logo a {
+      position: relative; }
+    .navigation__list-item:hover a::before, .navigation__logo:hover a::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50px;
+      background: var(--color-primary-very-light);
+      color: var(--color-primary);
+      border-radius: 55px;
+      width: calc(100px + 100%);
+      height: 200%; }
+    .navigation__list-item:hover a, .navigation__logo:hover a {
       color: var(--color-primary); }
+    .navigation__list-item:hover svg, .navigation__logo:hover svg {
+      fill: var(--color-primary); }
   .navigation__link {
     font-size: 1.1rem;
     font-weight: 700;
@@ -301,17 +410,33 @@ button {
     .who-to-follow__topbar-icon {
       height: 20px;
       width: 20px;
-      fill: var(--color-primary); }
+      fill: var(--color-primary);
+      transition: background 0.5s; }
+      .trends__topbar-icon:hover,
+      .who-to-follow__topbar-icon:hover {
+        background-color: var(--color-primary-light);
+        border-radius: 50%;
+        z-index: 1; }
   .trends__footer,
   .who-to-follow__footer {
-    margin: 1rem; }
+    margin: 1rem;
+    transition: background 0.5s; }
+    .trends__footer:hover,
+    .who-to-follow__footer:hover {
+      background-color: var(--color-lighter-gray);
+      z-index: 1; }
 
 .trends__card {
   border-bottom: 1px solid var(--color-lighter-gray);
   padding: 1rem;
   display: flex;
   align-items: flex-start;
-  justify-content: space-between; }
+  justify-content: space-between;
+  cursor: pointer;
+  transition: background 0.5s; }
+  .trends__card:hover {
+    background-color: var(--color-lighter-gray);
+    z-index: 1; }
   .trends__card-location, .trends__card-tweets-nr {
     font-size: var(--font-xs);
     font-weight: var(--fw-light);
@@ -331,7 +456,12 @@ button {
   align-items: center;
   padding: 1rem;
   border-bottom: 1px solid var(--color-lighter-gray);
-  justify-content: space-between; }
+  justify-content: space-between;
+  cursor: pointer;
+  transition: background 0.5s; }
+  .who-to-follow__card:hover {
+    background-color: var(--color-lighter-gray);
+    z-index: 1; }
   .who-to-follow__card-user {
     display: flex;
     align-items: center; }
@@ -425,21 +555,7 @@ button {
   font-size: 0.8rem;
   color: var(--color-dark-gray); }
   .login__input-field {
-    padding: 0.5rem;
-    background: var(--color-very-light-gray);
-    border-bottom: 2px solid var(--color-dark-gray);
-    margin: 1rem;
-    position: relative; }
-    .login__input-field > .link {
-      position: absolute;
-      left: 0;
-      bottom: -1.5rem; }
-  .login__label {
-    display: block; }
-  .login__input {
-    border: none;
-    background: transparent;
-    padding-bottom: 0.5rem; }
+    margin: 1rem; }
 
 .homebar {
   display: flex;
@@ -473,37 +589,15 @@ button {
     width: 100%; }
   .tweetbar__input-field {
     padding-top: 2rem; }
-  .tweetbar__input {
-    font-size: 1.2rem;
-    color: var(--color-light-gray);
-    border: none; }
-    .tweetbar__input:focus {
-      outline: none;
-      color: var(--color-black); }
-    .tweetbar__input:focus ~ .tweetbar__tagline .tweetbar__tagline-text {
-      display: inline-block; }
-    .tweetbar__input:focus ~ .tweetbar__tagline .tweetbar__tagline-img {
-      display: inline-block; }
-    .tweetbar__input:focus ~ .tweetbar__tagline .tweetbar__border {
-      display: block;
-      height: 300px; }
-    .tweetbar__input:focus .tweetbar__border {
-      display: none; }
-  .tweetbar__tagline {
-    display: flex;
-    align-items: center;
-    padding-top: 1rem; }
-    .tweetbar__tagline-img {
-      height: 20px;
-      width: 20px;
-      fill: var(--color-primary);
-      margin-right: 0.5rem;
-      display: none; }
-    .tweetbar__tagline-text {
-      color: var(--color-primary);
-      font-size: 0.8rem;
-      font-weight: bold;
-      display: none; }
+  .tweetbar__input:focus ~ .tweetbar__tagline .tweetbar__tagline-text {
+    display: inline-block; }
+  .tweetbar__input:focus ~ .tweetbar__tagline .tweetbar__tagline-img {
+    display: inline-block; }
+  .tweetbar__input:focus ~ .tweetbar__tagline .tweetbar__border {
+    display: block;
+    height: 300px; }
+  .tweetbar__input:focus .tweetbar__border {
+    display: none; }
   .tweetbar__border {
     border-bottom: var(--border-primary);
     display: block;
@@ -537,16 +631,101 @@ button {
 .subpage-visible {
   display: block; }
 
+.img-round-md {
+  height: 55px;
+  width: 55px;
+  border-radius: 50%;
+  margin-right: 0.5rem; }
+
+.icon-25px-primary {
+  height: 25px;
+  width: 25px;
+  fill: var(--color-primary);
+  margin-right: 1rem; }
+
+.form-input-field,
+.form-select-input-field {
+  padding: 0.5rem;
+  background: var(--color-very-light-gray);
+  position: relative; }
+  .form-input-field > .link,
+  .form-select-input-field > .link {
+    position: absolute;
+    left: 0;
+    bottom: -1.5rem; }
+  .form-input-field__label,
+  .form-select-input-field__label {
+    display: block; }
+  .form-input-field__input,
+  .form-select-input-field__input {
+    border: none;
+    background: transparent;
+    padding-bottom: 0.5rem;
+    width: 100%;
+    height: 100%; }
+    .form-input-field__input:focus,
+    .form-select-input-field__input:focus {
+      outline: none; }
+
+.success {
+  color: var(--color-primary); }
+
+.fail {
+  color: red; }
+
+.border-nutural {
+  border-bottom: 2px solid var(--color-dark-gray); }
+
+.border-success {
+  border-bottom: 2px solid var(--color-primary); }
+
+.border-fail {
+  border-bottom: 2px solid red; }
+
 .padding-bottom-1 {
   padding-top: 1rem; }
 
 .heading-primary {
-  font-size: var(--font-regular);
+  font-size: var(--font-lg);
   font-weight: var(--fw-bold); }
+
+.heading-secondary {
+  font-size: var(--font-sm);
+  font-weight: var(--fw-bold); }
+
+.text-xs-light {
+  font-size: var(--font-xs);
+  color: var(--color-dark-gray); }
+
+.text-sm-light {
+  font-size: var(--font-sm);
+  color: var(--color-dark-gray); }
 
 .hashtag {
   font-size: inherit;
   color: var(--color-primary);
   font-weight: 700; }
+
+.input-placeholder-large {
+  font-size: 1.2rem;
+  color: var(--color-light-gray);
+  border: none; }
+  .input-placeholder-large:focus {
+    outline: none;
+    color: var(--color-black); }
+
+.tagline-primary-md {
+  display: flex;
+  align-items: center;
+  padding-top: 1rem; }
+  .tagline-primary-md-img {
+    height: 20px;
+    width: 20px;
+    fill: var(--color-primary);
+    margin-right: 0.5rem; }
+  .tagline-primary-md-text {
+    color: var(--color-primary);
+    font-size: 0.8rem;
+    font-weight: bold; }
 
 /*# sourceMappingURL=main.css.map */

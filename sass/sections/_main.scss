@@ -41,15 +41,6 @@
   }
 
   &__input {
-    font-size: 1.2rem;
-    color: var(--color-light-gray);
-    border: none;
-
-    &:focus {
-      outline: none;
-      color: var(--color-black);
-    }
-
     &:focus ~ .tweetbar__tagline {
       .tweetbar__tagline-text {
         display: inline-block;
@@ -66,26 +57,7 @@
       display: none;
     }
   }
-  &__tagline {
-    display: flex;
-    align-items: center;
-    padding-top: 1rem;
-
-    // display: none;
-    &-img {
-      height: 20px;
-      width: 20px;
-      fill: var(--color-primary);
-      margin-right: 0.5rem;
-      display: none;
-    }
-    &-text {
-      color: var(--color-primary);
-      font-size: 0.8rem;
-      font-weight: bold;
-      display: none;
-    }
-  }
+  
   &__border {
     border-bottom: var(--border-primary);
 
