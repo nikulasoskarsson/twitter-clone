@@ -2,7 +2,7 @@
     <div id="signup-modal" class="modal signup-modal display-hidden">
 
 
-        <form action="php/actions/login.php" id="signup-form" class="signup-form" method="POST">
+        <form action="php/actions/signup.php" id="signup-form" class="signup-form" method="POST">
             <div class="signup-modal__header">
                 <div></div>
                 <svg viewBox="0 0 24 24" aria-label="Twitter" class="signup-modal__header-icon icon-25px-primary ">
