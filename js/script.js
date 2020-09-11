@@ -45,6 +45,26 @@ async function getUser() {
   return JSON.parse(res);
 }
 
+async function deleteTweet() {
+  const userId = document
+    .getElementById('user-id')
+    .getAttribute('data-user-id');
+  const tweetId = event.target.id;
+
+  const data = new FormData();
+  data.append('userId', userId);
+  data.append('tweetId', tweetId);
+
+  try {
+    const conn = await fetch('php/api/api-delete-tweet.php', {
+      method: 'POST',
+      body: data,
+    });
+    const res = await conn.text();
+    console.log(res);
+  } catch (error) {}
+}
+
 // Regular functions that don't communicate with the api
 
 function displayTweets(tweets, user) {
@@ -106,6 +126,7 @@ function createTweetCard(tweet, user) {
                     </svg>
                 </div>
             </div>
+            <button id="${tweet.id}"onclick="deleteTweet();">delete tweet</button>
         </div>`;
 }
 
