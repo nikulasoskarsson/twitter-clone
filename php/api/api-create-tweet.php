@@ -21,6 +21,23 @@ if (!$userExists) {
     exit();
 }
 
+if (strlen($_POST['tweet'] < 2)) {
+    http_response_code(400);
+    header('Content-Type: application/json');
+    echo '{
+        "message": "Tweet has to be at least 2 characters long"
+    }';
+    exit();
+}
+
+if (!strlen($_POST['tweet'] > 240)) {
+    http_response_code(400);
+    header('Content-Type: application/json');
+    echo '{
+        "message": "Tweet cannot be longer then 2 characters long"
+    }';
+    exit();
+}
 $newTweet = [
     'id' => uniqid(),
     'userId' => $_POST['userId'],

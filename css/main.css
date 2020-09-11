@@ -241,6 +241,13 @@ button {
   .tweet-card__tweet, .retweet-card__tweet {
     font-size: 0.9rem;
     padding-top: 0.5rem; }
+    .tweet-card__tweet-input {
+      border: none;
+      outline: none;
+      width: 100%;
+      height: 100%; }
+      .tweet-card__tweet-input:focus {
+        outline: none; }
   .tweet-card__img, .retweet-card__img {
     width: 100%;
     margin: 1rem 0;
@@ -261,6 +268,21 @@ button {
   .tweet-card__dropdown-icon {
     width: 1rem;
     fill: var(--color-light-gray); }
+  .tweet-card__button-container {
+    padding: 1rem 0;
+    display: flex; }
+  .tweet-card__button {
+    border: none;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    margin-right: 1rem; }
+  .tweet-card .delete, .retweet-card .delete {
+    background: red; }
+  .tweet-card .update, .retweet-card .update {
+    background: orange; }
 
 .retweet-card {
   border: var(--border-primary);

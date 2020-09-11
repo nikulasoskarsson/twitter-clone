@@ -65,6 +65,33 @@ async function deleteTweet() {
   } catch (error) {}
 }
 
+async function updateTweet() {
+  const userId = document
+    .getElementById('user-id')
+    .getAttribute('data-user-id');
+
+  const tweetId = event.target.id;
+  const newTweetBody = event.target.parentNode;
+  console.log(newTweetBody);
+  const data = new FormData();
+
+  //   data.append('userId', userId);
+  //   data.append('tweetId', tweetId);
+  //   data.append('newTweetBody', newTweetBody);
+
+  //   try {
+  //     const conn = await fetch('php/api/api-update-tweet.php', {
+  //       method: 'POST',
+  //       body: data,
+  //     });
+
+  //     const res = await res.text();
+  //     console.log(res);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+}
+
 // Regular functions that don't communicate with the api
 
 function displayTweets(tweets, user) {
@@ -87,9 +114,8 @@ function createTweetCard(tweet, user) {
                 <span class="tweet-card__tweet-date">1h</span>
             </div>
 
-            <p class="tweet-card__tweet">
-                ${tweet.body}
-            </p>
+            
+            <input class="tweet-card__tweet-input"type="text" value=" ${tweet.body}"/>
             <div class="tweet-card__icon-container">
                 <div class="tweet-card__icon-field">
                     <svg viewBox="0 0 24 24" class="tweet-card__icon-field-icon">
@@ -126,7 +152,10 @@ function createTweetCard(tweet, user) {
                     </svg>
                 </div>
             </div>
-            <button id="${tweet.id}"onclick="deleteTweet();">delete tweet</button>
+            <div class="tweet-card__button-container">
+              <button class="tweet-card__button delete" id="${tweet.id}"onclick="deleteTweet();">Delete</button>
+              <button class="tweet-card__button update" id="${tweet.id}"onclick="updateTweet();">Update</button>
+            </div>
         </div>`;
 }
 

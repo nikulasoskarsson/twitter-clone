@@ -21,11 +21,37 @@ if (!$userExists) {
     exit();
 }
 
+if (strlen($_POST['tweet'] < 2)) {
+    http_response_code(400);
+    header('Content-Type: application/json');
+    echo '{
+        "message": "Tweet has to be at least 2 characters long"
+    }';
+    exit();
+}
+
+if (!strlen($_POST['tweet'] > 240)) {
+    http_response_code(400);
+    header('Content-Type: application/json');
+    echo '{
+        "message": "Tweet cannot be longer then 2 characters long"
+    }';
+    exit();
+}
+
 $sTweets = file_get_contents('../../db/tweets.json');
 $aTweets = json_decode($sTweets);
 foreach ($aTweets as $jTweet) {
     if ($jTweet->id == $_POST['tweetId']) {
-        $jTweet->body = $_POST['newTweetBody'];
+        if ($jTweet->body == $_POST['newTweetBody']) {
+            http_response_code(400);
+            header('Content-Type: application/json');
+            echo '{
+        "message": "New tweet cannot be the same was it was before"
+    }';
+        } else {
+            $jTweet->body = $_POST['newTweetBody'];
+        }
     }
 }
 
