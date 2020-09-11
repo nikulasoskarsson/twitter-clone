@@ -71,25 +71,27 @@ async function updateTweet() {
     .getAttribute('data-user-id');
 
   const tweetId = event.target.id;
-  const newTweetBody = event.target.parentNode;
+  const newTweetBody =
+    event.target.parentNode.previousSibling.previousSibling.previousSibling
+      .previousSibling.value;
   console.log(newTweetBody);
   const data = new FormData();
 
-  //   data.append('userId', userId);
-  //   data.append('tweetId', tweetId);
-  //   data.append('newTweetBody', newTweetBody);
+  data.append('userId', userId);
+  data.append('tweetId', tweetId);
+  data.append('newTweetBody', newTweetBody);
 
-  //   try {
-  //     const conn = await fetch('php/api/api-update-tweet.php', {
-  //       method: 'POST',
-  //       body: data,
-  //     });
+  try {
+    const conn = await fetch('php/api/api-update-tweet.php', {
+      method: 'POST',
+      body: data,
+    });
 
-  //     const res = await res.text();
-  //     console.log(res);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
+    const res = await conn.text();
+    console.log(res);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 // Regular functions that don't communicate with the api

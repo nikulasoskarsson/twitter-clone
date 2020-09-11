@@ -21,7 +21,7 @@ if (!$userExists) {
     exit();
 }
 
-if (strlen($_POST['tweet'] < 2)) {
+if (strlen($_POST['tweet']) < 2) {
     http_response_code(400);
     header('Content-Type: application/json');
     echo '{
@@ -30,7 +30,7 @@ if (strlen($_POST['tweet'] < 2)) {
     exit();
 }
 
-if (!strlen($_POST['tweet'] > 240)) {
+if (!strlen($_POST['tweet']) > 240) {
     http_response_code(400);
     header('Content-Type: application/json');
     echo '{

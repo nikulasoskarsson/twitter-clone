@@ -21,7 +21,7 @@ if (!$userExists) {
     exit();
 }
 
-if (strlen($_POST['tweet'] < 2)) {
+if (strlen($_POST['newTweetBody']) < 2) {
     http_response_code(400);
     header('Content-Type: application/json');
     echo '{
@@ -30,11 +30,11 @@ if (strlen($_POST['tweet'] < 2)) {
     exit();
 }
 
-if (!strlen($_POST['tweet'] > 240)) {
+if (strlen($_POST['newTweetBody']) > 240) {
     http_response_code(400);
     header('Content-Type: application/json');
     echo '{
-        "message": "Tweet cannot be longer then 2 characters long"
+        "message": "Tweet cannot be longer then 240 characters long"
     }';
     exit();
 }
@@ -49,6 +49,7 @@ foreach ($aTweets as $jTweet) {
             echo '{
         "message": "New tweet cannot be the same was it was before"
     }';
+            exit();
         } else {
             $jTweet->body = $_POST['newTweetBody'];
         }

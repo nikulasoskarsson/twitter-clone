@@ -1,10 +1,21 @@
 [
-  { "id": "5f5b3f44052d6", "userId": "5f5a38d3dee57", "body": "", "active": 1 },
+  {
+    "id": "5f5b3f44052d6",
+    "userId": "5f5a38d3dee57",
+    "body": "123",
+    "active": 1
+  },
   { "id": "5f5b3f5db11dd", "userId": "5f5a38d3dee57", "body": "", "active": 1 },
   {
     "id": "5f5b58e92eeca",
     "userId": "5f5a38d3dee57",
     "body": "This is a new tweet",
+    "active": 1
+  },
+  {
+    "id": "5f5b89506cdb5",
+    "userId": "5f5a38d3dee57",
+    "body": "hello world",
     "active": 1
   }
 ]
