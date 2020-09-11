@@ -1,1 +1,11 @@
-[{"id":"5f5a38d3dee57","firstname":"Nikul\u00e1s","lastname":"\u00d3skarsson","username":"nikulasoskarsson","email":"nikulasoskarsson@gmail.com","password":"$2y$10$88MOey0xoiW2EpTxyveRF.QnQkhNaApsAXp\/djCqDmwysdzx1O1Wi","dob":{"month":"1","year":"1900","day":"14"}},{"id":"5f5a679f7fc93","firstname":"Nikul\u00e1s","lastname":"\u00d3skarsson","username":"testuser","email":"nikulasoskarsson1@gmail.com","password":"$2y$10$2s3Bh8pkGwwOYrYoSlum7eVuQYnOu1TCc.I2mwBL1SLw\/NGOhUIUC","dob":{"month":"9","year":"1916","day":"14"}}]
+[
+  {
+    "id": "5f5a38d3dee57",
+    "firstname": "Nikul\u00e1s",
+    "lastname": "\u00d3skarsson",
+    "username": "nikulasoskarsson",
+    "email": "nikulasoskarsson@gmail.com",
+    "password": "$2y$10$88MOey0xoiW2EpTxyveRF.QnQkhNaApsAXp/djCqDmwysdzx1O1Wi",
+    "dob": { "month": "1", "year": "1900", "day": "14" }
+  }
+]
