@@ -6,12 +6,6 @@
     "active": 1
   },
   {
-    "id": "5f5b3d6f79f07",
-    "userId": "5f5a38d3dee57",
-    "body": "yes",
-    "active": 1
-  },
-  {
     "id": "5f5b3f44052d6",
     "userId": "5f5a38d3dee57",
     "body": "yes",
@@ -21,6 +15,12 @@
     "id": "5f5b3f5db11dd",
     "userId": "5f5a38d3dee57",
     "body": "123",
+    "active": 1
+  },
+  {
+    "id": "5f5b58e92eeca",
+    "userId": "5f5a38d3dee57",
+    "body": "This is a new tweet",
     "active": 1
   }
 ]
