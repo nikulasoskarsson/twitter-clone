@@ -9,10 +9,20 @@
 </head>
 
 <body>
-    <?php if ($_SESSION['userId']) {
-        $uId = $_SESSION['userId'];
-        echo "<div id ='user-id' data-user-id='$uId'></div>";
-    } ?>
+
+    <?php
+
+    (function () {
+        if (!isset($_SESSION['userId'])) {
+            return;
+        }
+
+        if ($_SESSION['userId']) {
+            $uId = $_SESSION['userId'];
+            echo "<div id ='user-id' data-user-id='$uId'></div>";
+        }
+    })();
+    ?>
     <form action="php/actions/logout.php">
         <button>Logout</button>
     </form>
