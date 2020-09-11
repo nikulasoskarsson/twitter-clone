@@ -1,123 +1,18 @@
-const createTweetBtn = document.getElementById('create-tweet');
-const profileTweetContianer = document.getElementById(
-  'profile-tweet-container'
-);
-
-// AJAX functions that communicate with the API
-async function createTweet() {
-  const tweet = document.getElementById('new-tweet').value;
-  const id = document.getElementById('user-id').getAttribute('data-user-id');
-
-  const data = new FormData();
-  data.append('userId', id);
-  data.append('tweet', tweet);
-
-  try {
-    const conn = await fetch('php/api/api-create-tweet.php', {
-      method: 'POST',
-      body: data,
-    });
-
-    const res = await conn.text();
-    // TODO show user he has created a tweet
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-async function getData() {
-  const tweets = await getAllTweets();
-  const user = await getUser();
-  console.log('getdata', user);
-  displayTweets(tweets, user);
-}
-async function getAllTweets() {
-  const id = document.getElementById('user-id').getAttribute('data-user-id'); // Get the user id to only fetch his tweets
-  const conn = await fetch(`php/api/api-get-tweets.php?userId=${id}`);
-  const res = await conn.text();
-  return JSON.parse(res);
-}
-
-async function getUser() {
-  const id = document.getElementById('user-id').getAttribute('data-user-id');
-  const conn = await fetch(`php/api/api-get-user.php?userId=${id}`);
-  const res = await conn.text();
-  return JSON.parse(res);
-}
-
-async function deleteTweet() {
-  const userId = document
-    .getElementById('user-id')
-    .getAttribute('data-user-id');
-  const tweetId = event.target.id;
-
-  const data = new FormData();
-  data.append('userId', userId);
-  data.append('tweetId', tweetId);
-
-  try {
-    const conn = await fetch('php/api/api-delete-tweet.php', {
-      method: 'POST',
-      body: data,
-    });
-    const res = await conn.text();
-    console.log(res);
-  } catch (error) {}
-}
-
-async function updateTweet() {
-  const userId = document
-    .getElementById('user-id')
-    .getAttribute('data-user-id');
-
-  const tweetId = event.target.id;
-  const newTweetBody =
-    event.target.parentNode.previousSibling.previousSibling.previousSibling
-      .previousSibling.value;
-  console.log(newTweetBody);
-  const data = new FormData();
-
-  data.append('userId', userId);
-  data.append('tweetId', tweetId);
-  data.append('newTweetBody', newTweetBody);
-
-  try {
-    const conn = await fetch('php/api/api-update-tweet.php', {
-      method: 'POST',
-      body: data,
-    });
-
-    const res = await conn.text();
-    console.log(res);
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-// Regular functions that don't communicate with the api
-
-function displayTweets(tweets, user) {
-  tweets.forEach(
-    (tweet) => (profileTweetContianer.innerHTML += createTweetCard(tweet, user))
-  );
-}
-
-function createTweetCard(tweet, user) {
-  console.log(user);
-  return `<div class="tweet-card">
+<div class="tweet-card">
     <div class="tweet-card__grid-container">
         <img class="tweet-card__user-img" src="img/follow1.jpg" />
         <div>
             <div class="tweet-card__info">
                 <div class="tweet-card__user">
-                    <h3 class="tweet-card__user-name">${user.firstname} ${user.lastname}</h3>
-                    <span class="tweet-card__user-handle">${user.username}</span>
+                    <h3 class="tweet-card__user-name">Rick G. Rosner</h3>
+                    <span class="tweet-card__user-handle">@dumbassgenius</span>
                 </div>
                 <span class="tweet-card__tweet-date">1h</span>
             </div>
 
-            
-            <input class="tweet-card__tweet-input"type="text" value=" ${tweet.body}"/>
+            <p class="tweet-card__tweet">
+                (THREAD) Growing Up w/ the World's 2nd-Highest IQ: A Memoir
+            </p>
             <div class="tweet-card__icon-container">
                 <div class="tweet-card__icon-field">
                     <svg viewBox="0 0 24 24" class="tweet-card__icon-field-icon">
@@ -154,13 +49,4 @@ function createTweetCard(tweet, user) {
                     </svg>
                 </div>
             </div>
-            <div class="tweet-card__button-container">
-              <button class="tweet-card__button delete" id="${tweet.id}"onclick="deleteTweet();">Delete</button>
-              <button class="tweet-card__button update" id="${tweet.id}"onclick="updateTweet();">Update</button>
-            </div>
-        </div>`;
-}
-
-createTweetBtn.addEventListener('click', () => createTweet());
-
-document.addEventListener('load', getData());
+        </div>

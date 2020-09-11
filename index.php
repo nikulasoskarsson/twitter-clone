@@ -95,6 +95,12 @@ require('php/components/tweet-modal.php'); ?>
       <button id="open-tweet-modal" class="button-primary">Tweet</button>
     </div>
     <div class="user">
+      <div class="user__modal">
+
+        <form action="php/actions/logout.php">
+          <button class="user__modal-logout-btn">Logout as @nikulasoskarsson</button>
+        </form>
+      </div>
       <img src="img/placeholder.jpg" alt="Placeholder image" class="user__img" />
       <div class="user__text-column">
         <h3 class="user__name">Nikulás Óskarsson</h3>
@@ -277,6 +283,7 @@ require('php/components/tweet-modal.php'); ?>
     </div>
   </div>
 </div>
+<script src="js/script.js"></script>
 <script src="js/sub-page-selector.js"></script>
 <script src="js/modals.js"></script>
 </body>
