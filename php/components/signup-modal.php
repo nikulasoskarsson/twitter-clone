@@ -44,6 +44,7 @@
             <div class="signup-form__input-field form-input-field border-nutural">
                 <label for="" class="signup-form__label form-input-field__label">Password</label>
                 <input type="password" name="password" id="signup-modal-password" class="signup-form__input form-input-field__input" />
+                <div id="password-character-display"><span id="password-character-count">0</span> / 20</div>
             </div>
 
             <h3 class="signup-form__input-dob-heading heading-secondary">Date of birth</h3>

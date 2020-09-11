@@ -35,27 +35,33 @@ function addFormListeners(formFields) {
       formfield.name == 'username'
     ) {
       formfield.addEventListener('keyup', (e) =>
-        updateCharCount(e.target.name, e.target.value.length)
+        updateCharCount(e.target.name, e.target.value.length, 50)
       );
-    }
-    if (formfield.name == 'email') {
+    } else if (formfield.name == 'password') {
+      formfield.addEventListener('keyup', (e) =>
+        updateCharCount(e.target.name, e.target.value.length, 20)
+      );
+    } else if (formfield.name == 'email') {
       formfield.addEventListener('blur', (e) => checkEmail(e));
+    } else {
+      formfield.addEventListener('focus', (e) => showDateSuccess(e));
+      formfield.addEventListener('blur', (e) => checkDate(e));
     }
   });
 }
 
-function updateCharCount(fieldName, count) {
+function updateCharCount(fieldName, count, limit) {
   const fieldFromDom = signupForm[`${fieldName}`];
   const containerDiv = fieldFromDom.parentNode;
   const charCountDiv = fieldFromDom.parentNode.lastChild.previousElementSibling; // Div containting the error msg
   const charCountSpan = charCountDiv.lastChild.previousElementSibling; // Span containting the dynamic counter
 
   charCountSpan.innerText = count;
-  charCountDiv.classList.add(count < 50 ? 'success' : 'fail');
+  charCountDiv.classList.add(count < limit ? 'success' : 'fail');
 
   if (count < 5) {
     showErrorCharCount(charCountDiv, containerDiv);
-  } else if (count > 5 && count < 50) {
+  } else if (count > 5 && count < limit) {
     showSuccessCharCount(charCountDiv, containerDiv);
   } else {
     showErrorCharCount(charCountDiv, containerDiv);
@@ -98,6 +104,27 @@ function checkEmail(e) {
 function validateEmailRegex(email) {
   const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());
+}
+
+function checkDate(e) {
+  const containerDiv = e.target.parentNode;
+  if (!e.target.value) {
+    containerDiv.classList.add('border-fail');
+    containerDiv.classList.remove('border-nutural');
+    containerDiv.classList.remove('border-success');
+  } else {
+    containerDiv.classList.add('border-success');
+    containerDiv.classList.remove('border-nutural');
+    containerDiv.classList.remove('border-fail');
+  }
+}
+
+function showDateSuccess(e) {
+  const containerDiv = e.target.parentNode;
+  // Initially show a succes stage when a user is selecting an option
+  containerDiv.classList.add('border-success');
+  containerDiv.classList.remove('border-nutural');
+  containerDiv.classList.remove('border-fail');
 }
 
 function checkLength(input, min, max) {}
