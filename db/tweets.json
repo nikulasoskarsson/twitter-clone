@@ -1,1 +1,14 @@
-[{"id":"5f5b35022d8f7","userId":"1","body":"hello world","active":1},{"id":"5f5b36b34b0d0","userId":"5f5a38d3dee57","body":"hello world","active":1}]
+[
+  {
+    "id": "5f5b36b34b0d0",
+    "userId": "5f5a38d3dee57",
+    "body": "hello world",
+    "active": 1
+  },
+  {
+    "id": "5f5b3d6f79f07",
+    "userId": "5f5a38d3dee57",
+    "body": "yes",
+    "active": 1
+  }
+]

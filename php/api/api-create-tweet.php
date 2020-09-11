@@ -4,6 +4,7 @@ $userExists = false;
 $sUsers = file_get_contents('../../db/users.json');
 $aUsers = json_decode($sUsers);
 
+// Check if the user exists with the id retrived from post
 foreach ($aUsers as $jUser) {
     if ($jUser->id == $_POST['userId']) {
         $userExists = true;
@@ -12,6 +13,7 @@ foreach ($aUsers as $jUser) {
 }
 
 if (!$userExists) {
+    http_response_code(400);
     echo 'user not found';
     exit();
 }

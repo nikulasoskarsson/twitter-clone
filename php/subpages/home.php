@@ -12,7 +12,7 @@
 
     <div class="tweetbar__content">
         <div class="tweetbar__input-field">
-            <input type="text" placeholder="What's happening" class="tweetbar__input input-placeholder-large " />
+            <input type="text" id="new-tweet" placeholder="What's happening" class="tweetbar__input input-placeholder-large " />
 
             <span class="tagline-primary-md">
                 <svg viewBox="0 0 24 24" class="tagline-primary-md-img">
@@ -63,7 +63,7 @@
                     </g>
                 </svg>
             </div>
-            <button class="button-primary-small">Tweet</button>
+            <button id="create-tweet" class="button-primary-small">Tweet</button>
         </div>
     </div>
 </div>

@@ -283,6 +283,7 @@ require('php/components/tweet-modal.php'); ?>
     </div>
   </div>
 </div>
+<script src="js/script.js"></script>
 <script src="js/sub-page-selector.js"></script>
 <script src="js/modals.js"></script>
 </body>
