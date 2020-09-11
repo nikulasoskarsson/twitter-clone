@@ -12,7 +12,9 @@ async function createTweet() {
     method: 'POST',
     body: data,
   });
-  console.log(conn);
+
+  const res = await conn.text();
+  console.log(res);
 }
 
 createTweetBtn.addEventListener('click', () => createTweet());

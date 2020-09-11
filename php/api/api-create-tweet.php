@@ -14,7 +14,10 @@ foreach ($aUsers as $jUser) {
 
 if (!$userExists) {
     http_response_code(400);
-    echo 'user not found';
+    header('Content-Type: application/json');
+    echo '{
+        "message": "user not found"
+    }';
     exit();
 }
 
@@ -31,4 +34,4 @@ $aTweets = json_decode($sTweets);
 array_push($aTweets, $newTweet);
 $sTweets = json_encode($aTweets);
 file_put_contents('../../db/tweets.json', $sTweets);
-echo 'worked';
+echo '{"message": "You have created a new tweet with the id of ' . $_POST['userId'] . '"}';
