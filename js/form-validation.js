@@ -1,5 +1,10 @@
 const signupForm = document.getElementById('signup-form');
 
+function init() {
+  const allFormFields = getAllFormFields();
+  addFormListeners(allFormFields);
+}
+
 function getAllFormFields() {
   // Username fields
   const firstname = signupForm['firstname'];
@@ -13,18 +18,7 @@ function getAllFormFields() {
   const year = signupForm['year'];
   const day = signupForm['day'];
 
-  const allFormFields = [
-    firstname,
-    lastname,
-    username,
-    email,
-    password,
-    month,
-    year,
-    day,
-  ];
-
-  addFormListeners(allFormFields);
+  return [firstname, lastname, username, email, password, month, year, day];
 }
 
 function addFormListeners(formFields) {
@@ -133,3 +127,11 @@ function checkLength(input, min, max) {}
 function showError(input, errorMsg) {}
 
 getAllFormFields();
+
+function handleSubmit(e) {
+  e.preventDefault();
+}
+
+signupForm.addEventListener('submit', (e) => handleSubmit(e));
+
+init();
