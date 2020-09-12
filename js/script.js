@@ -19,6 +19,7 @@ async function createTweet() {
     });
 
     const res = await conn.text();
+    getData();
     // TODO show user he has created a tweet
   } catch (error) {
     console.log(error);
@@ -62,6 +63,7 @@ async function deleteTweet() {
     });
     const res = await conn.text();
     console.log(res);
+    getData();
   } catch (error) {}
 }
 
@@ -89,6 +91,7 @@ async function updateTweet() {
 
     const res = await conn.text();
     console.log(res);
+    getData();
   } catch (error) {
     console.log(error);
   }
@@ -97,6 +100,7 @@ async function updateTweet() {
 // Regular functions that don't communicate with the api
 
 function displayTweets(tweets, user) {
+  profileTweetContianer.innerHTML = ''; //reset
   tweets.forEach(
     (tweet) => (profileTweetContianer.innerHTML += createTweetCard(tweet, user))
   );
