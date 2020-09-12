@@ -20,6 +20,7 @@
                 <input type="firstname" name="firstname" id="firstname" class="signup-form__input form-input-field__input" />
                 <div id="firstname-character-display"><span id="firstname-character-count">0</span> / 50</div>
             </div>
+            <p class="error-msg" id="firstname-error-msg">Character count invalid</p>
 
 
             <div class="signup-form__input-field form-input-field border-nutural">
@@ -27,6 +28,7 @@
                 <input type="text" name="lastname" id="lastname" class="signup-form__input form-input-field__input" />
                 <div id="lastname-character-display"><span id="lastname-character-count">0</span> / 50</div>
             </div>
+            <p class="error-msg" id="lastname-error-msg">Character count invalid</p>
 
 
             <div class="signup-form__input-field form-input-field border-nutural">
@@ -34,18 +36,21 @@
                 <input type="text" name="username" id="username" class="signup-form__input form-input-field__input" />
                 <div id="lastname-character-display"><span id="lastname-character-count">0</span> / 50</div>
             </div>
+            <p class="error-msg" id="username-error-msg">Character count invalid</p>
 
 
             <div class="signup-form__input-field form-input-field border-nutural">
                 <label for="" class="signup-form__label form-input-field__label">Email</label>
                 <input type="email" name="email" id="email" class="signup-form__input form-input-field__input" />
             </div>
+            <p class="error-msg" id="email-error-msg">Not valid email</p>
 
             <div class="signup-form__input-field form-input-field border-nutural">
                 <label for="" class="signup-form__label form-input-field__label">Password</label>
                 <input type="password" name="password" id="signup-modal-password" class="signup-form__input form-input-field__input" />
                 <div id="password-character-display"><span id="password-character-count">0</span> / 20</div>
             </div>
+            <p class="error-msg" id="password-error-msg">Password invalid</p>
 
             <h3 class="signup-form__input-dob-heading heading-secondary">Date of birth</h3>
             <p class="signup-form__input-dob-text text-xs-light">This will not be shown publicly. Confirm your own age, even if this account is for a bussiness, pet or something else.</p>
@@ -56,7 +61,9 @@
                     <select id="select-month" type="text" name="month" class="signup-form__dob-input form-select-input-field__input">
                         <option value="" selected hidden></option>
                     </select>
+
                 </div>
+
 
 
                 <div class="signup-form__dob-input-field form-select-input-field border-nutural">
@@ -66,6 +73,7 @@
                     </select>
                 </div>
 
+
                 <div class="signup-form__dob-input-field form-select-input-field border-nutural">
                     <label for="" class="signup-form__dob-label form-select-input-field__label">Day</label>
                     <select id="select-day" type="text" name="day" class="signup-form__dob-input form-select-input-field__input">
@@ -73,6 +81,7 @@
                         <option value="" disabled>Please select a month and a year first</option>
                     </select>
                 </div>
+
 
             </div>
         </form>

@@ -85,19 +85,26 @@ function showSuccessCharCount(charCountDiv, containerDiv) {
   containerDiv.classList.remove('border-fail');
 }
 
+function showErrorBorder(containerDiv) {
+  containerDiv.classList.add('border-fail');
+  containerDiv.classList.remove('border-success');
+  containerDiv.classList.remove('border-nutural');
+}
+function showSuccesBorder(containerDiv) {
+  containerDiv.classList.add('border-success');
+  containerDiv.classList.remove('border-nutural');
+  containerDiv.classList.remove('border-fail');
+}
+
 function checkEmail(e) {
   const email = e.target.value;
 
   const containerDiv = e.target.parentNode;
 
   if (!validateEmailRegex(email)) {
-    containerDiv.classList.add('border-fail');
-    containerDiv.classList.remove('border-success');
-    containerDiv.classList.remove('border-nutural');
+    showErrorBorder(containerDiv);
   } else {
-    containerDiv.classList.add('border-success');
-    containerDiv.classList.remove('border-nutural');
-    containerDiv.classList.remove('border-fail');
+    showSuccesBorder(containerDiv);
   }
 }
 
@@ -109,22 +116,16 @@ function validateEmailRegex(email) {
 function checkDate(e) {
   const containerDiv = e.target.parentNode;
   if (!e.target.value) {
-    containerDiv.classList.add('border-fail');
-    containerDiv.classList.remove('border-nutural');
-    containerDiv.classList.remove('border-success');
+    showErrorBorder(containerDiv);
   } else {
-    containerDiv.classList.add('border-success');
-    containerDiv.classList.remove('border-nutural');
-    containerDiv.classList.remove('border-fail');
+    showSuccessBorder(containerDiv);
   }
 }
 
 function showDateSuccess(e) {
   const containerDiv = e.target.parentNode;
   // Initially show a succes stage when a user is selecting an option
-  containerDiv.classList.add('border-success');
-  containerDiv.classList.remove('border-nutural');
-  containerDiv.classList.remove('border-fail');
+  showSuccessBorder(containerDiv);
 }
 
 function checkLength(input, min, max) {}
