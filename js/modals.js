@@ -11,10 +11,13 @@ const openUserModal = document.getElementById('open-user-modal');
 const userModal = document.getElementById('user-modal');
 
 function openModal(modal) {
+  console.log(modalContainer);
+  console.log('open modal ran');
   modalContainer.classList.add('display-flex');
   modal.classList.add('display-inline-block');
   modalContainer.classList.remove('display-hidden');
   modal.classList.remove('display-hidden');
+  console.log(modalContainer);
 }
 
 function closeModal(modal) {
@@ -29,10 +32,10 @@ function openModalNoContainer(modal) {
 }
 
 if (openModalBtn) {
-  openModalBtn.addEventListener('click', openModal(tweetModal));
+  openModalBtn.addEventListener('click', () => openModal(tweetModal));
 }
 if (closeModalBtn) {
-  closeModalBtn.addEventListener('click', closeModal(tweetModal));
+  closeModalBtn.addEventListener('click', () => closeModal(tweetModal));
 }
 if (openSignUpModal) {
   openSignUpModal.addEventListener('click', () => openModal(signupModal));
