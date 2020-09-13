@@ -1,0 +1,113 @@
+.profile-topbar {
+  height: 50px;
+  border-bottom: var(--border-primary);
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  background: #fff;
+  z-index: 800;
+  &__heading {
+    font-size: var(--font-md);
+    font-weight: var(--fw-bold);
+  }
+  &__tweets-nr {
+    color: var(--color-dark-gray);
+  }
+}
+
+.profile-userbar {
+  position: relative;
+  display: flex;
+  &__background-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 300px;
+    width: 100%;
+    background: url('../img/cat.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    display: block;
+  }
+
+  &__user-img {
+    height: 9rem;
+    width: 9rem;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+    position: absolute;
+    top: 225px;
+    left: 10px;
+  }
+
+  &__flex-container {
+    padding-top: 325px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 1.5rem;
+  }
+  &__txt-container {
+    padding-top: 50px;
+  }
+  &__join-date {
+    display: flex;
+    align-items: center;
+
+    &__icon {
+      margin-right: 0.25rem;
+      height: 20px;
+      width: 20px;
+      fill: var(--color-dark-gray);
+    }
+  }
+
+  &__follower {
+    &-info {
+      display: flex;
+      align-items: center;
+      font-size: var(--font-xs);
+    }
+    &-text {
+      color: var(--color-dark-gray);
+      margin-right: 0.25rem;
+    }
+    &-count {
+      font-weight: var(--fw-bold);
+      margin-right: 0.25rem;
+      color: #444;
+    }
+  }
+}
+
+.profile-nav {
+  height: 70px;
+  width: 100%;
+  border-bottom: var(--border-primary);
+  &__list {
+    display: flex;
+    height: 100%;
+    justify-content: space-around;
+    padding-top: 2rem;
+    &-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      &-active {
+        border-bottom: 2px solid var(--color-primary);
+      }
+    }
+  }
+  &__link {
+    font-weight: 700;
+    &-active {
+      color: var(--color-primary) !important;
+    }
+  }
+}

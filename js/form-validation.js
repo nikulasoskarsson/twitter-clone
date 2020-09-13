@@ -129,7 +129,7 @@ function showError(input, errorMsg) {}
 getAllFormFields();
 
 function handleSubmit(e) {
-  e.preventDefault();
+  // e.preventDefault();
 }
 
 signupForm.addEventListener('submit', (e) => handleSubmit(e));
