@@ -5,6 +5,7 @@
   position: relative;
   z-index: 51701;
   grid-template-columns: 1fr 5fr 1fr;
+  cursor: pointer;
   &__img {
     height: 40px;
     width: 40px;
@@ -28,19 +29,18 @@
   }
 
   &__modal {
-    height: 5rem;
-    width: 120%;
+    width: 100%;
     bottom: 4rem;
 
     position: absolute;
     background-color: #fff;
-    border: var(--border-primary);
+    border: 2px solid var(--color-light-gray);
     z-index: 51701;
     border-radius: 5px;
-    overflow: hidden;
+
     &-logout-btn {
       width: 100%;
-      background: transparent;
+      background: #fff;
       padding: 1rem 0;
       text-transform: uppercase;
       text-align: center;

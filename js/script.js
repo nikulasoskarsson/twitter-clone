@@ -159,13 +159,15 @@ function createTweetCard(tweet, user) {
                         </svg>
                     </div>
                 </div>
-            <div class="tweet-card__button-container">
-              <button class="tweet-card__button delete" id="${tweet.id}"onclick="deleteTweet();">Delete</button>
-              <button class="tweet-card__button update" id="${tweet.id}"onclick="updateTweet();">Update</button>
-            </div>
+            
         </div>`;
 }
 
 createTweetBtn.addEventListener('click', () => createTweet());
 
 document.addEventListener('load', getData());
+
+/* <div class="tweet-card__button-container">
+              <button class="tweet-card__button delete" id="${tweet.id}"onclick="deleteTweet();">Delete</button>
+              <button class="tweet-card__button update" id="${tweet.id}"onclick="updateTweet();">Update</button>
+            </div> */

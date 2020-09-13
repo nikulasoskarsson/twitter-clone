@@ -329,7 +329,8 @@ button {
   cursor: pointer;
   position: relative;
   z-index: 51701;
-  grid-template-columns: 1fr 5fr 1fr; }
+  grid-template-columns: 1fr 5fr 1fr;
+  cursor: pointer; }
   .user__img {
     height: 40px;
     width: 40px;
@@ -346,18 +347,16 @@ button {
     width: 18px;
     color: var(--color-gray); }
   .user__modal {
-    height: 5rem;
-    width: 120%;
+    width: 100%;
     bottom: 4rem;
     position: absolute;
     background-color: #fff;
-    border: var(--border-primary);
+    border: 2px solid var(--color-light-gray);
     z-index: 51701;
-    border-radius: 5px;
-    overflow: hidden; }
+    border-radius: 5px; }
     .user__modal-logout-btn {
       width: 100%;
-      background: transparent;
+      background: #fff;
       padding: 1rem 0;
       text-transform: uppercase;
       text-align: center;
