@@ -100,12 +100,15 @@ async function getSingleTweet(id) {
     .getElementById('user-id')
     .getAttribute('data-user-id');
 
+  const user = getUser();
+
   const conn = await fetch(
     `php/api/api-get-single-tweet.php?userId=${userId}&tweetId=${id}`
   );
 
   const res = await conn.text();
-  console.log(res);
+  // TODO move code below to seperate function
+  displaySingleTweet(res, user);
 }
 
 // Regular functions that don't communicate with the api
@@ -116,7 +119,9 @@ function displayTweets(tweets, user) {
     (tweet) => (profileTweetContianer.innerHTML += createTweetCard(tweet, user))
   );
 }
-
+function displaySingleTweet(tweet, user) {
+  profileTweetContianer.innerHTML = createTweetCard(tweet, user);
+}
 function createTweetCard(tweet, user) {
   return `<div class="tweet-card" onclick="getSingleTweet('${tweet.id}');">
     <div class="tweet-card__grid-container">
