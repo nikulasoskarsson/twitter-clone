@@ -12,7 +12,7 @@
     </div>
     <div id="profile-userbar" class="profile-userbar">
         <div class="profile-userbar__background-img"></div>
-        <img src="img/follow2.jpg" alt="" class="profile-userbar__user-img" />
+        <img src="img/placeholder.jpg" alt="" class="profile-userbar__user-img" />
         <div class="profile-userbar__flex-container">
             <div class="profile-userbar__txt-container">
                 <h3 class="profile-userbar__username heading-secondary ">Nikulás Óskarsson</h3>

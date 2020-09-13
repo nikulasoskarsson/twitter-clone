@@ -229,6 +229,7 @@ button {
   display: flex; }
 
 .tweet-card, .retweet-card {
+  cursor: pointer;
   position: relative;
   padding: 0.8rem;
   border-bottom: var(--border-primary); }

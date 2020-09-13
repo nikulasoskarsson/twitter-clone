@@ -29,7 +29,7 @@ async function createTweet() {
 async function getData() {
   const tweets = await getAllTweets();
   const user = await getUser();
-  console.log('getdata', user);
+
   displayTweets(tweets, user);
 }
 async function getAllTweets() {
@@ -62,7 +62,7 @@ async function deleteTweet() {
       body: data,
     });
     const res = await conn.text();
-    console.log(res);
+
     getData();
   } catch (error) {}
 }
@@ -76,7 +76,7 @@ async function updateTweet() {
   const newTweetBody =
     event.target.parentNode.previousSibling.previousSibling.previousSibling
       .previousSibling.value;
-  console.log(newTweetBody);
+
   const data = new FormData();
 
   data.append('userId', userId);
@@ -90,11 +90,22 @@ async function updateTweet() {
     });
 
     const res = await conn.text();
-    console.log(res);
-    getData();
   } catch (error) {
     console.log(error);
   }
+}
+
+async function getSingleTweet(id) {
+  const userId = document
+    .getElementById('user-id')
+    .getAttribute('data-user-id');
+
+  const conn = await fetch(
+    `php/api/api-get-single-tweet.php?userId=${userId}&tweetId=${id}`
+  );
+
+  const res = await conn.text();
+  console.log(res);
 }
 
 // Regular functions that don't communicate with the api
@@ -107,10 +118,9 @@ function displayTweets(tweets, user) {
 }
 
 function createTweetCard(tweet, user) {
-  console.log(user);
-  return `<div class="tweet-card">
+  return `<div class="tweet-card" onclick="getSingleTweet('${tweet.id}');">
     <div class="tweet-card__grid-container">
-        <img class="tweet-card__user-img" src="img/follow1.jpg" />
+        <img class="tweet-card__user-img" src="img/placeholder.jpg" />
         <div>
             <div class="tweet-card__info">
                 <div class="tweet-card__user">
@@ -121,7 +131,7 @@ function createTweetCard(tweet, user) {
             </div>
 
             
-            <input class="tweet-card__tweet-input"type="text" value=" ${tweet.body}"/>
+          <p class="tweet-card__tweet">${tweet.body}</p>
             <div class="tweet-card__icon-container">
                     <div class="tweet-card__icon-field">
                         <svg viewBox="0 0 24 24" class="tweet-card__icon-field-icon">
