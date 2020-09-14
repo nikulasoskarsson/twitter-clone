@@ -31,6 +31,7 @@ async function createTweet(e) {
 }
 
 async function getData() {
+  console.log('get data is running');
   const tweets = await getAllTweets();
   const user = await getUser();
 
@@ -192,3 +193,5 @@ createTweetBtn.addEventListener('click', (e) => createTweet(e));
 createTweetFromModalBtn.addEventListener('click', (e) => createTweet(e));
 
 document.addEventListener('load', getData());
+
+setInterval(getData, 5000);
