@@ -1,13 +1,17 @@
 const createTweetBtn = document.getElementById('create-tweet');
+const createTweetFromModalBtn = document.getElementById(
+  'create-tweet-from-modal'
+);
 const profileTweetContianer = document.getElementById(
   'profile-tweet-container'
 );
 
 // AJAX functions that communicate with the API
-async function createTweet() {
-  const tweet = document.getElementById('new-tweet').value;
+async function createTweet(e) {
   const id = document.getElementById('user-id').getAttribute('data-user-id');
 
+  const tweet = e.target.parentNode.parentNode.querySelectorAll('input')[0]
+    .value;
   const data = new FormData();
   data.append('userId', id);
   data.append('tweet', tweet);
@@ -124,7 +128,7 @@ function displaySingleTweet(tweet, user) {
   profileTweetContianer.innerHTML = createTweetCard(tweet, user);
 }
 function createTweetCard(tweet, user) {
-  return `<div class="tweet-card" onclick="getSingleTweet('${tweet.id}');">
+  return `<div class="tweet-card">
     <div class="tweet-card__grid-container">
         <img class="tweet-card__user-img" src="img/placeholder.jpg" />
         <div>
@@ -133,11 +137,11 @@ function createTweetCard(tweet, user) {
                     <h3 class="tweet-card__user-name">${user.firstname} ${user.lastname}</h3>
                     <span class="tweet-card__user-handle">${user.username}</span>
                 </div>
-                <span class="tweet-card__tweet-date">1h</span>
+                <span class="tweet-card__tweet-date" onclick="getSingleTweet('${tweet.id}');">1h</span>
             </div>
 
             
-          <p class="tweet-card__tweet">${tweet.body}</p>
+            <input class="tweet-card__tweet-input"type="text" value=" ${tweet.body}"/>
             <div class="tweet-card__icon-container">
                     <div class="tweet-card__icon-field">
                         <svg viewBox="0 0 24 24" class="tweet-card__icon-field-icon">
@@ -184,6 +188,7 @@ function createTweetCard(tweet, user) {
         </div>`;
 }
 
-createTweetBtn.addEventListener('click', () => createTweet());
+createTweetBtn.addEventListener('click', (e) => createTweet(e));
+createTweetFromModalBtn.addEventListener('click', (e) => createTweet(e));
 
 document.addEventListener('load', getData());

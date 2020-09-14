@@ -229,7 +229,6 @@ button {
   display: flex; }
 
 .tweet-card, .retweet-card {
-  cursor: pointer;
   position: relative;
   padding: 0.8rem;
   border-bottom: var(--border-primary); }
@@ -265,7 +264,8 @@ button {
       font-size: 0.9rem; }
   .tweet-card__user-handle, .tweet-card__tweet-date, .retweet-card__user-handle, .retweet-card__tweet-date {
     font-size: 0.9rem;
-    color: var(--color-light-gray); }
+    color: var(--color-light-gray);
+    cursor: pointer; }
   .tweet-card__tweet, .retweet-card__tweet {
     font-size: 0.9rem;
     padding-top: 0.5rem; }

@@ -1,5 +1,4 @@
 .tweet-card {
-  cursor: pointer;
   position: relative;
   padding: 0.8rem;
   //   display: grid;
@@ -58,6 +57,7 @@
   &__tweet-date {
     font-size: 0.9rem;
     color: var(--color-light-gray);
+    cursor: pointer;
   }
   &__tweet {
     font-size: 0.9rem;

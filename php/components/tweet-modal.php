@@ -61,7 +61,7 @@
                             </g>
                         </svg>
                     </div>
-                    <button class="button-primary-small">Tweet</button>
+                    <button class="button-primary-small" id="create-tweet-from-modal">Tweet</button>
                 </div>
             </div>
         </div>
