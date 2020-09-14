@@ -67,7 +67,7 @@ function showErrorCharCount(charCountDiv, containerDiv) {
   charCountDiv.classList.remove('success');
   containerDiv.classList.add('border-fail');
 
-  containerDiv.classList.remove('border-nutural');
+  containerDiv.classList.remove('border-neaturual');
   containerDiv.classList.remove('border-success');
 }
 function showSuccessCharCount(charCountDiv, containerDiv) {
@@ -75,18 +75,18 @@ function showSuccessCharCount(charCountDiv, containerDiv) {
   charCountDiv.classList.remove('fail');
   containerDiv.classList.add('border-success');
 
-  containerDiv.classList.remove('border-nutural');
+  containerDiv.classList.remove('border-neaturual');
   containerDiv.classList.remove('border-fail');
 }
 
 function showErrorBorder(containerDiv) {
   containerDiv.classList.add('border-fail');
   containerDiv.classList.remove('border-success');
-  containerDiv.classList.remove('border-nutural');
+  containerDiv.classList.remove('border-neaturual');
 }
 function showSuccesBorder(containerDiv) {
   containerDiv.classList.add('border-success');
-  containerDiv.classList.remove('border-nutural');
+  containerDiv.classList.remove('border-neaturual');
   containerDiv.classList.remove('border-fail');
 }
 
