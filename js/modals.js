@@ -1,4 +1,4 @@
-// The tweet modal
+// TODO refactor this entire code
 const openModalBtn = document.getElementById('open-tweet-modal');
 const closeModalBtn = document.getElementById('close-modal');
 const modalContainer = document.getElementById('modal-container');
@@ -9,6 +9,8 @@ const signupModal = document.getElementById('signup-modal');
 
 const openUserModal = document.getElementById('open-user-modal');
 const userModal = document.getElementById('user-modal');
+
+const tweetModalCloseBtn = document.getElementById('create-tweet-from-modal');
 
 function openModal(modal) {
   console.log(modalContainer);
@@ -40,7 +42,9 @@ if (closeModalBtn) {
 if (openSignUpModal) {
   openSignUpModal.addEventListener('click', () => openModal(signupModal));
 }
-
+if (tweetModalCloseBtn) {
+  tweetModalCloseBtn.addEventListener('click', () => closeModal(tweetModal));
+}
 if (openUserModal) {
   openUserModal.addEventListener('click', () =>
     openModalNoContainer(userModal)
