@@ -13,14 +13,12 @@ const userModal = document.getElementById('user-modal');
 const tweetModalCloseBtn = document.getElementById('create-tweet-from-modal');
 
 function openModal(modal) {
-  console.log(modalContainer);
-  console.log('open modal ran');
+
   modalContainer.classList.add('display-flex');
   modal.classList.add('display-inline-block');
   modalContainer.classList.remove('display-hidden');
   modal.classList.remove('display-hidden');
-  console.log(modalContainer);
-}
+  
 
 function closeModal(modal) {
   modalContainer.classList.remove('display-flex');

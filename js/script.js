@@ -31,7 +31,6 @@ async function createTweet(e) {
 }
 
 async function getData() {
-  console.log('get data is running');
   const tweets = await getAllTweets();
   const user = await getUser();
 
@@ -82,6 +81,8 @@ async function updateTweet() {
     event.target.parentNode.previousSibling.previousSibling.previousSibling
       .previousSibling.value;
 
+  console.log(newTweetBody);
+
   const data = new FormData();
 
   data.append('userId', userId);
@@ -93,10 +94,13 @@ async function updateTweet() {
       method: 'POST',
       body: data,
     });
-
     const res = await conn.text();
+
+    if (!conn.status !== 200) {
+      console.log(res);
+    }
   } catch (error) {
-    console.log(error);
+    console.log('error:', error);
   }
 }
 
@@ -194,4 +198,4 @@ createTweetFromModalBtn.addEventListener('click', (e) => createTweet(e));
 
 document.addEventListener('load', getData());
 
-setInterval(getData, 5000);
+// setInterval(getData, 5000);
