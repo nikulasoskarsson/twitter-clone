@@ -9,6 +9,7 @@
   --color-light-gray: #aab8c2;
   --color-lighter-gray: #e1e8ed;
   --color-very-light-gray: #f5f8fa;
+  --color-red: #e02463;
   --font-xl: 1.8rem;
   --font-lg: 1.4rem;
   --font-md: 1.2rem;
@@ -35,6 +36,9 @@ body {
   height: 100vh;
   overflow: hidden;
   overflow-y: scroll; }
+  @media only screen and (max-width: 1200px) {
+    body {
+      font-size: 50%; } }
 
 a {
   text-decoration: none; }
@@ -145,6 +149,39 @@ button {
   color: var(--color-primary);
   font-size: var(--font-sm);
   font-weight: var(--fw-regular); }
+
+.dropdown-container {
+  position: relative; }
+
+.dropdown-primary {
+  background-color: #fff;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 5000;
+  box-shadow: 0 0.5rem 0.5rem rgba(68, 68, 68, 0.2);
+  border-radius: 0.5rem; }
+  .dropdown-primary__list-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.3s; }
+    .dropdown-primary__list-item:hover {
+      background-color: var(--color-very-light-gray); }
+  .dropdown-primary__icon {
+    height: 1.5rem;
+    width: 1.5rem;
+    margin-right: 0.5rem;
+    fill: var(--color-dark-gray); }
+    .dropdown-primary__icon-delete {
+      fill: var(--color-red); }
+  .dropdown-primary__link {
+    font-size: var(--font-xs);
+    color: var(--color-dark-gray);
+    white-space: nowrap; }
+    .dropdown-primary__link-delete {
+      color: var(--color-red); }
 
 .modal-container {
   height: 100%;
@@ -295,7 +332,8 @@ button {
       margin-right: 0.5rem; }
   .tweet-card__dropdown-icon {
     width: 1rem;
-    fill: var(--color-light-gray); }
+    fill: var(--color-light-gray);
+    cursor: pointer; }
   .tweet-card__button-container {
     padding: 1rem 0;
     display: flex; }
@@ -366,6 +404,11 @@ button {
 .auth-page__grid-container {
   display: grid;
   grid-template-columns: 1fr 1fr; }
+  @media only screen and (max-width: 62.5em) {
+    .auth-page__grid-container {
+      grid-template-rows: 1fr 1fr;
+      grid-template-columns: 1fr;
+      grid-auto-flow: dense; } }
 
 #page {
   display: grid;
@@ -578,6 +621,9 @@ button {
       font-weight: 700; }
 .auth__right {
   position: relative; }
+  @media only screen and (max-width: 62.5em) {
+    .auth__right {
+      grid-row: 1; } }
 .auth__cta {
   display: flex;
   flex-direction: column;
@@ -604,7 +650,7 @@ button {
 .auth__footer {
   height: 3rem;
   width: 100%;
-  position: absolute;
+  position: sticky;
   bottom: 0;
   left: 0; }
   .auth__footer-container {
@@ -613,10 +659,15 @@ button {
     align-items: center;
     justify-content: space-between;
     padding: 0 12rem;
-    background-color: #fff; }
+    background-color: #fff;
+    flex-wrap: wrap; }
+    @media only screen and (max-width: 1200px) {
+      .auth__footer-container {
+        padding: 0 6rem; } }
   .auth__footer-link, .auth__footer-copyright {
     font-size: var(--font-xs);
-    color: var(--color-dark-gray); }
+    color: var(--color-dark-gray);
+    margin-left: 0.5rem; }
 
 .login {
   display: flex;

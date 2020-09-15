@@ -1,4 +1,10 @@
 .auth-page__grid-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
+
+  @media only screen and (max-width: $bp-large) {
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr;
+    grid-auto-flow: dense;
+  }
 }

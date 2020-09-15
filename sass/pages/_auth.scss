@@ -38,6 +38,9 @@
   }
   &__right {
     position: relative;
+    @media only screen and (max-width: $bp-large) {
+      grid-row: 1;
+    }
   }
 
   &__cta {
@@ -73,7 +76,7 @@
   &__footer {
     height: 3rem;
     width: 100%;
-    position: absolute;
+    position: sticky;
     bottom: 0;
     left: 0;
 
@@ -84,12 +87,17 @@
       justify-content: space-between;
       padding: 0 12rem;
       background-color: #fff;
+      flex-wrap: wrap;
+      @media only screen and (max-width: 1200px) {
+        padding: 0 6rem;
+      }
     }
 
     &-link,
     &-copyright {
       font-size: var(--font-xs);
       color: var(--color-dark-gray);
+      margin-left: 0.5rem;
     }
   }
 }

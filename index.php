@@ -115,7 +115,7 @@ require('php/components/tweet-modal.php'); ?>
   </div>
   <main id="main">
 
-    <div class="subpage subpage-hidden" id="subpage-home">
+    <div class="subpage subpage-visible" id="subpage-home">
       <?php require_once('php/subpages/home.php'); ?>
     </div>
 
@@ -139,7 +139,7 @@ require('php/components/tweet-modal.php'); ?>
       <?php require_once('php/subpages/lists.php'); ?>
     </div>
 
-    <div class="subpage subpage-visible" id="subpage-profile">
+    <div class="subpage subpage-hidden" id="subpage-profile">
       <?php require_once('php/subpages/profile.php'); ?>
     </div>
 
@@ -286,6 +286,7 @@ require('php/components/tweet-modal.php'); ?>
 <script src="js/script.js"></script>
 <script src="js/sub-page-selector.js"></script>
 <script src="js/modals.js"></script>
+<script src="js/dropdowns.js"></script>
 </body>
 
 </html>
