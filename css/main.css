@@ -591,83 +591,94 @@ button {
   font-size: 1rem;
   font-weight: 300; }
 
-.auth__left {
-  height: 100vh;
-  width: 100%;
-  display: block;
-  background-image: url("../img/twitter-logo.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-color: var(--color-primary-light); }
-  .auth__left-container {
+.auth {
+  max-width: 100%;
+  overflow: hidden; }
+  .auth__left {
+    height: 100vh;
+    width: 100%;
+    display: block;
+    background-image: url("../img/twitter-logo.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: var(--color-primary-light); }
+    .auth__left-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%; }
+      .auth__left-container > div {
+        text-align: left; }
+    .auth__left-tagline-field {
+      display: flex;
+      padding: 1rem 0; }
+      .auth__left-tagline-field-icon {
+        width: 1.6rem;
+        fill: #fff;
+        margin-right: 0.5rem; }
+      .auth__left-tagline-field-heading {
+        color: #fff;
+        font-size: 1.4rem;
+        font-weight: 700; }
+  .auth__right {
+    position: relative; }
+    @media only screen and (max-width: 62.5em) {
+      .auth__right {
+        grid-row: 1; } }
+    @media only screen and (max-width: 31.25em) {
+      .auth__right {
+        padding: 0 1rem; } }
+  .auth__cta {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 100%; }
-    .auth__left-container > div {
-      text-align: left; }
-  .auth__left-tagline-field {
-    display: flex;
-    padding: 1rem 0; }
-    .auth__left-tagline-field-icon {
-      width: 1.6rem;
-      fill: #fff;
-      margin-right: 0.5rem; }
-    .auth__left-tagline-field-heading {
-      color: #fff;
-      font-size: 1.4rem;
-      font-weight: 700; }
-.auth__right {
-  position: relative; }
-  @media only screen and (max-width: 62.5em) {
-    .auth__right {
-      grid-row: 1; } }
-.auth__cta {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 6rem;
-  width: 50%;
-  margin: 0 auto; }
-  .auth__cta > div {
-    text-align: left; }
-  .auth__cta-logo {
-    width: 3.5rem;
-    align-self: flex-start;
-    margin: 0;
-    padding: 0;
-    transform: translateX(-0.5rem); }
-  .auth__cta-heading {
-    font-weight: 700;
-    font-size: 1.8rem;
-    padding-top: 1rem; }
-  .auth__cta-tagline {
     padding-top: 6rem;
-    font-size: 1rem;
-    font-weight: var(--fw-bold); }
-.auth__footer {
-  height: 3rem;
-  width: 100%;
-  position: sticky;
-  bottom: 0;
-  left: 0; }
-  .auth__footer-container {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 12rem;
-    background-color: #fff;
-    flex-wrap: wrap; }
-    @media only screen and (max-width: 1200px) {
-      .auth__footer-container {
-        padding: 0 6rem; } }
-  .auth__footer-link, .auth__footer-copyright {
-    font-size: var(--font-xs);
-    color: var(--color-dark-gray);
-    margin-left: 0.5rem; }
+    width: 50%;
+    margin: 0 auto; }
+    .auth__cta > div {
+      text-align: left; }
+    .auth__cta-logo {
+      width: 3.5rem;
+      align-self: flex-start;
+      margin: 0;
+      padding: 0;
+      transform: translateX(-0.5rem); }
+    .auth__cta-heading {
+      font-weight: 700;
+      font-size: 1.8rem;
+      padding-top: 1rem; }
+      @media only screen and (max-width: 31.25em) {
+        .auth__cta-heading {
+          font-size: 1.4rem; } }
+    .auth__cta-tagline {
+      padding-top: 6rem;
+      font-size: 1rem;
+      font-weight: var(--fw-bold); }
+  .auth__footer {
+    height: 3rem;
+    width: 100%;
+    position: sticky;
+    bottom: 0;
+    left: 0; }
+    .auth__footer-container {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 12rem;
+      background-color: #fff;
+      flex-wrap: wrap; }
+      @media only screen and (max-width: 75em) {
+        .auth__footer-container {
+          padding: 0 6rem; } }
+      @media only screen and (max-width: 31.25em) {
+        .auth__footer-container {
+          padding: 0 1rem; } }
+    .auth__footer-link, .auth__footer-copyright {
+      font-size: var(--font-xs);
+      color: var(--color-dark-gray); }
 
 .login {
   display: flex;
@@ -675,8 +686,26 @@ button {
   align-items: center;
   font-size: 0.8rem;
   color: var(--color-dark-gray); }
+  @media only screen and (max-width: 31.25em) {
+    .login {
+      flex-direction: column; } }
   .login__input-field {
     margin: 1rem; }
+    @media only screen and (max-width: 31.25em) {
+      .login__input-field {
+        width: 100%; } }
+  @media only screen and (max-width: 31.25em) {
+    .login button {
+      width: 100%;
+      margin-top: 2rem;
+      height: 3rem; } }
+
+.error-msg {
+  position: absolute;
+  bottom: -3rem;
+  color: var(--color-red);
+  font-size: var(--font-xxs);
+  left: 0; }
 
 .homebar {
   display: flex;

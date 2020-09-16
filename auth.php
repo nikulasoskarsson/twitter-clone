@@ -49,17 +49,22 @@ require('php/components/signup-modal.php');
       </div>
     </div>
     <div class="auth__right">
-      <form action="php/actions/login.php" id="login" class="login" method="POST">
+      <form action="php/actions/login.php" id="login-form" class="login" method="POST">
         <div class="login__input-field form-input-field border-neaturual">
           <label for="" class="login__label  form-input-field__label">Email or username</label>
           <input type="text" name="username" id="username" class="login__input  form-input-field__input" />
+          <p class="error-msg display-hidden"></p>
         </div>
+
 
         <div class="login__input-field  form-input-field border-neaturual">
           <label for="" class="login__label  form-input-field__label">Password</label>
           <input type="password" name="password" id="password" class="login__input  form-input-field__input" />
+          <p class="error-msg display-hidden"></p>
           <a href="#" class="link">Forgot password?</a>
+
         </div>
+
 
         <button class="button-inverted-small">Log in</button>
       </form>
