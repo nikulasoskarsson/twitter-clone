@@ -51,6 +51,9 @@ button {
 
 #page {
   padding: 0 10%; }
+  @media only screen and (max-width: 62.5em) {
+    #page {
+      padding: 0; } }
 
 .button-primary {
   background-color: var(--color-primary);
@@ -370,6 +373,9 @@ button {
   z-index: 51701;
   grid-template-columns: 1fr 5fr 1fr;
   cursor: pointer; }
+  @media only screen and (max-width: 75em) {
+    .user {
+      display: none; } }
   .user__img {
     height: 40px;
     width: 40px;
@@ -412,8 +418,11 @@ button {
 
 #page {
   display: grid;
-  grid-template-columns: minmax(0, 0.8fr) 1.8fr 1.2fr;
+  grid-template-columns: minmax(auto, 0.8fr) 1.8fr 1.2fr;
   grid-gap: 0.1rem; }
+  @media only screen and (max-width: 62.5em) {
+    #page {
+      grid-template-columns: minmax(auto, 0.2fr) 1.8fr; } }
 
 #main {
   border-left: var(--border-primary);
@@ -428,6 +437,7 @@ button {
   height: 100vh;
   display: grid;
   grid-template-rows: 8fr 3fr 1fr;
+  width: 100%;
   position: sticky;
   top: 0; }
 
@@ -463,13 +473,24 @@ button {
     font-weight: 700;
     text-decoration: none;
     color: black; }
+    @media only screen and (max-width: 75em) {
+      .navigation__link {
+        display: none; } }
     .navigation__link-active {
       color: var(--color-primary); }
   .navigation__icon {
-    width: 11%;
+    height: 1.5rem;
+    width: 1.5rem;
     margin-right: 1rem; }
+    @media only screen and (max-width: 75em) {
+      .navigation__icon {
+        margin: 0; } }
     .navigation__icon-active, .navigation__icon-fill {
       fill: var(--color-primary); }
+
+@media only screen and (max-width: 75em) {
+  #open-tweet-modal {
+    display: none; } }
 
 .side-menu {
   max-height: 110vh;
@@ -477,6 +498,9 @@ button {
   margin: 0 1rem;
   display: grid;
   grid-template-rows: 1fr 8fr 5fr; }
+  @media only screen and (max-width: 62.5em) {
+    .side-menu {
+      display: none; } }
 
 .searchbar {
   background: var(--color-lighter-gray);
@@ -757,12 +781,17 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 0.8rem; }
+  padding-top: 0.8rem;
+  flex-wrap: wrap; }
   .tweetbar-menu__icon {
     height: 25px;
     width: 25px;
     fill: var(--color-primary);
     margin-right: 1rem; }
+    @media only screen and (max-width: 62.5em) {
+      .tweetbar-menu__icon {
+        height: 15px;
+        width: 15px; } }
 
 /* Welcome page that shows if you do not fallow anyone */
 .welcome {

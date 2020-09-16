@@ -173,8 +173,6 @@ function handleSubmit(e) {
     showErrors(errors);
   }
   // Submit the form if it is error free
-  else {
-  }
 }
 
 function showErrors(errors) {
