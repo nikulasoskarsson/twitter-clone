@@ -6,9 +6,15 @@
   width: 100%;
   position: sticky;
   top: 0;
+
+  @media only screen and (max-width: $bp-large) {
+    justify-content: center;
+  }
 }
 .navigation {
   height: 100%;
+  display: flex;
+  justify-content: center;
 
   &__list {
     height: 100%;

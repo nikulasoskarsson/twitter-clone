@@ -92,3 +92,19 @@
   font-size: var(--font-sm);
   font-weight: var(--fw-regular);
 }
+
+.nav-btn-smaller-screens {
+  display: none;
+  @media only screen and (max-width: $bp-largest) {
+    display: flex;
+    justify-content: center;
+  }
+  &__icon {
+    background-color: var(--color-primary);
+    fill: #fff;
+    border-radius: 50%;
+    padding: 0.5rem;
+    height: 3rem;
+    width: 3rem;
+  }
+}

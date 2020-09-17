@@ -6,6 +6,8 @@ const profileTweetContianer = document.getElementById(
   'profile-tweet-container'
 );
 
+const closeUpdateTweetModalBtn = document.getElementById('close-update-modal');
+
 // AJAX functions that communicate with the API
 async function createTweet(e) {
   const id = document.getElementById('user-id').getAttribute('data-user-id');
@@ -71,23 +73,16 @@ async function deleteTweet() {
   } catch (error) {}
 }
 
-async function updateTweet() {
+async function updateTweet(tweetId, newTweet) {
   const userId = document
     .getElementById('user-id')
     .getAttribute('data-user-id');
-
-  const tweetId = event.target.id;
-  const newTweetBody =
-    event.target.parentNode.previousSibling.previousSibling.previousSibling
-      .previousSibling.value;
-
-  console.log(newTweetBody);
 
   const data = new FormData();
 
   data.append('userId', userId);
   data.append('tweetId', tweetId);
-  data.append('newTweetBody', newTweetBody);
+  data.append('newTweetBody', newTweet);
 
   try {
     const conn = await fetch('php/api/api-update-tweet.php', {
@@ -99,6 +94,8 @@ async function updateTweet() {
     if (!conn.status !== 200) {
       console.log(res);
     }
+    closeUpdateTweetModal();
+    getData();
   } catch (error) {
     console.log('error:', error);
   }
@@ -203,7 +200,7 @@ function createTweetCard(tweet, user) {
                             </svg>
                             <a href="#" class="dropdown-primary__link dropdown-primary__link-delete">Delete</a>
                         </li>
-                        <li class="dropdown-primary__list-item">
+                        <li class="dropdown-primary__list-item" onclick="openUpdateTweetModal('${tweet.body}','${tweet.id}');">
                             <svg class="dropdown-primary__icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="528.899px" height="528.899px" viewBox="0 0 528.899 528.899" style="enable-background:new 0 0 528.899 528.899;" xml:space="preserve">
                                 <g>
                                     <path d="M328.883,89.125l107.59,107.589l-272.34,272.34L56.604,361.465L328.883,89.125z M518.113,63.177l-47.981-47.981   c-18.543-18.543-48.653-18.543-67.259,0l-45.961,45.961l107.59,107.59l53.611-53.611   C532.495,100.753,532.495,77.559,518.113,63.177z M0.3,512.69c-1.958,8.812,5.998,16.708,14.811,14.565l119.891-29.069   L27.473,390.597L0.3,512.69z" />
@@ -259,10 +256,39 @@ function createTweetCard(tweet, user) {
 </div>`;
 }
 
+function openUpdateTweetModal(tweetBody, tweetId) {
+  const updateTweetmodalContainer = document.getElementById(
+    'update-modal-container'
+  );
+  const updateTweetModal = document.getElementById('update-tweet-modal');
+  updateTweetmodalContainer.classList.remove('display-hidden');
+  updateTweetModal.classList.remove('display-hidden');
+
+  const updateTweetBtn = updateTweetModal.getElementsByTagName('button');
+  const newTweetInput = updateTweetModal.getElementsByTagName('input')[0];
+
+  newTweetInput.placeholder = tweetBody;
+
+  updateTweetBtn[0].addEventListener('click', () =>
+    updateTweet(tweetId, newTweetInput.value)
+  );
+}
+
+function closeUpdateTweetModal() {
+  const updateTweetmodalContainer = document.getElementById(
+    'update-modal-container'
+  );
+  const updateTweetModal = document.getElementById('update-tweet-modal');
+
+  updateTweetModal.classList.add('display-hidden');
+  updateTweetmodalContainer.classList.add('display-hidden');
+}
+
 createTweetBtn.addEventListener('click', (e) => createTweet(e));
 createTweetFromModalBtn.addEventListener('click', (e) => createTweet(e));
 
 document.addEventListener('load', getData());
+closeUpdateTweetModalBtn.addEventListener('click', closeUpdateTweetModal);
 
 // setInterval(getData, 5000);
 
@@ -270,3 +296,4 @@ document.addEventListener('load', getData());
               <button class="tweet-card__button delete" id="${tweet.id}"onclick="deleteTweet();">Delete</button>
               <button class="tweet-card__button update" id="${tweet.id}"onclick="updateTweet();">Update</button>
             </div> */
+console.log(closeUpdateTweetModalBtn);

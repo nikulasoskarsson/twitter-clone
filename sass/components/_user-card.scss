@@ -50,4 +50,11 @@
       border: none;
     }
   }
+
+  &__smaller-screen {
+    display: none;
+    @media only screen and (max-width: $bp-largest) {
+      display: block;
+    }
+  }
 }
