@@ -12,11 +12,15 @@
     </div>
     <div id="profile-userbar" class="profile-userbar">
         <div class="profile-userbar__background-img"></div>
-        <img src="img/placeholder.jpg" alt="" class="profile-userbar__user-img" />
+
+        <label for="user-image-upload" class="profile-userbar__user-img-label">
+            <img src="img/placeholder.jpg" alt="" class="profile-userbar__user-img" />
+        </label>
+
         <div class="profile-userbar__flex-container">
             <div class="profile-userbar__txt-container">
-                <h3 class="profile-userbar__username heading-secondary ">Nikulás Óskarsson</h3>
-                <p class="profile-userbar__handle text-xs-light marginBottom05 ">@nikulasoskarsson</p>
+                <h3 class="profile-userbar__username heading-secondary "></h3>
+                <p class="profile-userbar__handle text-xs-light marginBottom05 "></p>
                 <div class="profile-userbar__join-date marginBottom05 ">
                     <svg viewBox="0 0 24 24" class="profile-userbar__join-date__icon">
                         <g>
@@ -31,7 +35,7 @@
                             <circle cx="12" cy="17.486" r="1.285"></circle>
                         </g>
                     </svg>
-                    <p class="profile-userbar__join-date__text text-xs-light">Joined February 2015</p>
+                    <p class="profile-userbar__join-date__text text-xs-light"></p>
                 </div>
                 <div class="profile-userbar__follower-info">
                     <p class="profile-userbar__follower-text">
@@ -43,8 +47,10 @@
                     </p>
                 </div>
             </div>
-
-            <button class="button-inverted-md">Edit profile</button>
+            <form method="post" action="php/actions/update-user.php">
+                <button class="button-inverted-md">Edit profile</button>
+                <input type="file" name="user-image" id="user-image-upload" class="display-hidden">
+            </form>
         </div>
     </div>
     <div class="profile-nav">

@@ -1,29 +1,12 @@
 [
   {
-    "id": "5f5a38d3dee57",
+    "id": "5f6390b6efea5",
     "firstname": "Nikul\u00e1s",
     "lastname": "\u00d3skarsson",
     "username": "nikulasoskarsson",
     "email": "nikulasoskarsson@gmail.com",
-    "password": "$2y$10$88MOey0xoiW2EpTxyveRF.QnQkhNaApsAXp/djCqDmwysdzx1O1Wi",
-    "dob": { "month": "1", "year": "1900", "day": "14" }
-  },
-  {
-    "id": "5f5cdfeb29a20",
-    "firstname": "Nikul\u00e1s",
-    "lastname": "\u00d3skarsson",
-    "username": "testuser",
-    "email": "test@test.com",
-    "password": "$2y$10$UJc9d41dwO9IhNvbpK0keuTrjPKrQqCgbwuZ1fSGE4NBFdb7VwcDq",
-    "dob": { "month": "9", "year": "1913", "day": "13" }
-  },
-  {
-    "id": "5f6343940ac47",
-    "firstname": "Dan\u00edel",
-    "lastname": "\u00d3skarsson",
-    "username": "danieloskarsson",
-    "email": "danieloskarsson@gmail.com",
-    "password": "$2y$10$rrR5GqEcRXqaJtbTzmAE7ObQjcnhtwxuzLsKNXWA.MfCWvYgefhuy",
-    "dob": { "month": "12", "year": "1915", "day": "12" }
+    "password": "$2y$10$4a7e61h6OTw6Cn6YQtPhYeWr4K87otlzr.JkSnNJwVFrOQzG1M1vm",
+    "dob": { "month": "11", "year": "1995", "day": "19" },
+    "signUpDate": 1600360631
   }
 ]
