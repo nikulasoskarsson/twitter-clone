@@ -108,17 +108,17 @@ require('php/components/update-tweet-modal.php'); ?>
     <div class="user__smaller-screen">
       <img src="img/placeholder.jpg" alt="Placeholder image" class="user__img" />
     </div>
-    <div class="user">
+    <div class="user" id="user-card">
       <div class="user__modal display-hidden" id="user-modal">
 
         <form action="php/actions/logout.php">
-          <button class="user__modal-logout-btn">Logout as @nikulasoskarsson</button>
+          <button class="user__modal-logout-btn"></button>
         </form>
       </div>
       <img src="img/placeholder.jpg" alt="Placeholder image" class="user__img" />
       <div class="user__text-column" id="open-user-modal">
-        <h3 class="user__name">Nikulás Óskarsson</h3>
-        <p class="user__handler">@nikulasoskarsson</p>
+        <h3 class="user__name"></h3>
+        <p class="user__handler"></p>
       </div>
       <svg viewBox="0 0 24 24" class="user__icon">
         <g>
@@ -301,6 +301,7 @@ require('php/components/update-tweet-modal.php'); ?>
 <script src="js/sub-page-selector.js"></script>
 <script src="js/modals.js"></script>
 <script src="js/dropdowns.js"></script>
+<script src="js/insert-user-data.js"></script>
 </body>
 
 </html>

@@ -464,14 +464,13 @@ button {
   width: 100%;
   position: sticky;
   top: 0; }
-  @media only screen and (max-width: 62.5em) {
-    #menu {
-      justify-content: center; } }
 
 .navigation {
   height: 100%;
-  display: flex;
-  justify-content: center; }
+  display: flex; }
+  @media only screen and (max-width: 62.5em) {
+    .navigation {
+      justify-content: center; } }
   .navigation__list {
     height: 100%;
     display: grid;
