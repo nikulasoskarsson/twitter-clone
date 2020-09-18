@@ -47,7 +47,7 @@
                     </p>
                 </div>
             </div>
-            <form method="post" action="php/actions/update-user.php">
+            <form method="POST" action="php/actions/update-user.php" enctype="multipart/form-data">
                 <button class="button-inverted-md">Edit profile</button>
                 <input type="file" name="user-image" id="user-image-upload" class="display-hidden">
             </form>
