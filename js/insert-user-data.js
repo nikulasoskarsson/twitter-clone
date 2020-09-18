@@ -27,11 +27,18 @@ function insertDataToProfile(user) {
     '.profile-userbar__join-date__text'
   );
 
+  const userImgField = profileUserbar.querySelector(
+    '.profile-userbar__user-img'
+  );
+
+  console.log(userImgField.src);
+
   console.log(twitterHandleField);
 
   userNameField.innerText = user.firstname + ' ' + user.lastname;
   twitterHandleField.innerText = `@${user.username}`;
   joinDateField.innerText = `Joined ${monthString} ${year}`;
+  userImgField.src = `img/user/${user.userImg}`;
 }
 
 // Get the user data and pass it into the other functions to load the user data into the dom
