@@ -1,13 +1,24 @@
+function insertDataToTweetBar(user) {
+  const tweetBarImgField = document.querySelector('.tweetbar__img');
+  tweetBarImgField.src = `img/user/${user.userImg}`;
+}
+
 function insertDataToUserCard(user) {
   const userCard = document.getElementById('user-card');
 
   const userNameField = userCard.querySelector('h3');
   const twitterHandleField = userCard.querySelector('p');
   const logoutBtn = userCard.querySelector('button');
+  const userImgField = userCard.querySelector('.user__img');
+  const userSmallScreenImg = document
+    .querySelector('.user__smaller-screen')
+    .querySelector('.user__img');
 
   userNameField.innerText = user.firstname + ' ' + user.lastname;
   twitterHandleField.innerText = `@${user.username}`;
   logoutBtn.innerText = `logout as ${user.username}`;
+  userImgField.src = `img/user/${user.userImg}`;
+  userSmallScreenImg.src = `img/user/${user.userImg}`;
 }
 
 function insertDataToProfile(user) {
@@ -31,10 +42,6 @@ function insertDataToProfile(user) {
     '.profile-userbar__user-img'
   );
 
-  console.log(userImgField.src);
-
-  console.log(twitterHandleField);
-
   userNameField.innerText = user.firstname + ' ' + user.lastname;
   twitterHandleField.innerText = `@${user.username}`;
   joinDateField.innerText = `Joined ${monthString} ${year}`;
@@ -45,6 +52,7 @@ function insertDataToProfile(user) {
 async function init() {
   const user = await getUser();
 
+  insertDataToTweetBar(user);
   insertDataToUserCard(user);
   insertDataToProfile(user);
 }

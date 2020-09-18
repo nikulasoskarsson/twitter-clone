@@ -399,7 +399,8 @@ button {
     height: 40px;
     width: 40px;
     border-radius: 50%;
-    margin: 0.5rem; }
+    margin: 0.5rem;
+    object-fit: cover; }
   .user__name {
     font-size: 1rem;
     font-weight: 700; }
@@ -786,7 +787,8 @@ button {
     height: 55px;
     width: 55px;
     border-radius: 50%;
-    margin-right: 0.5rem; }
+    margin-right: 0.5rem;
+    object-fit: cover; }
   .tweetbar__content {
     width: 100%; }
   .tweetbar__input-field {
