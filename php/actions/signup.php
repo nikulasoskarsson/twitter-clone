@@ -87,7 +87,8 @@
         "dob" => [
             "month" => $_POST['month'], "year" => $_POST['year'], "day" => $_POST['day']
         ],
-        "signUpDate" => strtotime('now')
+        "signUpDate" => strtotime('now'),
+        "userImg" => "placeholder.jpg",
     ];
 
     array_push($aUsers, $newUser);
