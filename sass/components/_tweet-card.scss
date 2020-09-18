@@ -57,6 +57,7 @@
   &__tweet-date {
     font-size: 0.9rem;
     color: var(--color-light-gray);
+    cursor: pointer;
   }
   &__tweet {
     font-size: 0.9rem;
@@ -89,6 +90,7 @@
     align-items: center;
     color: var(--color-light-gray);
     font-weight: 700;
+    font-size: 0.8rem;
     &-icon {
       width: 1.25rem;
       fill: var(--color-light-gray);
@@ -100,6 +102,7 @@
     &-icon {
       width: 1rem;
       fill: var(--color-light-gray);
+      cursor: pointer;
     }
   }
 

@@ -5,10 +5,14 @@
   padding: 0;
   box-sizing: border-box;
 }
+html {
+  @media only screen and (max-width: $bp-smallest) {
+    font-size: 80%; //1rem = 8px
+  }
+}
 body {
   font-family: 'Roboto', sans-serif;
-  font-size: 62.5%; // 1rem = 10px
-  // font-weight: 300;
+  font-size: 62.5%; //1rem = 10px
   height: 100vh;
 
   overflow: hidden;
@@ -25,4 +29,10 @@ button {
 }
 #page {
   padding: 0 10%;
+  @media only screen and (max-width: $bp-large) {
+    padding: 0 5%;
+  }
+  @media only screen and (max-width: $bp-medium) {
+    padding: 0;
+  }
 }

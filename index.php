@@ -4,7 +4,10 @@ if (!$isSignedIn) {
   header('Location: auth.php');
 }
 require('php/components/header.php');
-require('php/components/tweet-modal.php'); ?>
+require('php/components/tweet-modal.php');
+require('php/components/update-tweet-modal.php'); ?>
+
+
 <div id="page">
   <div id="menu">
     <nav class="navigation">
@@ -92,19 +95,30 @@ require('php/components/tweet-modal.php'); ?>
       </ul>
     </nav>
     <div>
+      <div class="nav-btn-smaller-screens">
+        <svg viewBox="0 0 24 24" class="nav-btn-smaller-screens__icon">
+          <g>
+            <path d="M8.8 7.2H5.6V3.9c0-.4-.3-.8-.8-.8s-.7.4-.7.8v3.3H.8c-.4 0-.8.3-.8.8s.3.8.8.8h3.3v3.3c0 .4.3.8.8.8s.8-.3.8-.8V8.7H9c.4 0 .8-.3.8-.8s-.5-.7-1-.7zm15-4.9v-.1h-.1c-.1 0-9.2 1.2-14.4 11.7-3.8 7.6-3.6 9.9-3.3 9.9.3.1 3.4-6.5 6.7-9.2 5.2-1.1 6.6-3.6 6.6-3.6s-1.5.2-2.1.2c-.8 0-1.4-.2-1.7-.3 1.3-1.2 2.4-1.5 3.5-1.7.9-.2 1.8-.4 3-1.2 2.2-1.6 1.9-5.5 1.8-5.7z"></path>
+          </g>
+        </svg>
+      </div>
       <button id="open-tweet-modal" class="button-primary">Tweet</button>
     </div>
-    <div class="user">
-      <div class="user__modal">
+
+    <div class="user__smaller-screen">
+      <img src="img/placeholder.jpg" alt="Placeholder image" class="user__img" />
+    </div>
+    <div class="user" id="user-card">
+      <div class="user__modal display-hidden" id="user-modal">
 
         <form action="php/actions/logout.php">
-          <button class="user__modal-logout-btn">Logout as @nikulasoskarsson</button>
+          <button class="user__modal-logout-btn"></button>
         </form>
       </div>
       <img src="img/placeholder.jpg" alt="Placeholder image" class="user__img" />
-      <div class="user__text-column">
-        <h3 class="user__name">Nikulás Óskarsson</h3>
-        <p class="user__handler">@nikulasoskarsson</p>
+      <div class="user__text-column" id="open-user-modal">
+        <h3 class="user__name"></h3>
+        <p class="user__handler"></p>
       </div>
       <svg viewBox="0 0 24 24" class="user__icon">
         <g>
@@ -115,7 +129,7 @@ require('php/components/tweet-modal.php'); ?>
   </div>
   <main id="main">
 
-    <div class="subpage subpage-visible" id="subpage-home">
+    <div class="subpage subpage-hidden" id="subpage-home">
       <?php require_once('php/subpages/home.php'); ?>
     </div>
 
@@ -139,7 +153,7 @@ require('php/components/tweet-modal.php'); ?>
       <?php require_once('php/subpages/lists.php'); ?>
     </div>
 
-    <div class="subpage subpage-hidden" id="subpage-profile">
+    <div class="subpage subpage-visible" id="subpage-profile">
       <?php require_once('php/subpages/profile.php'); ?>
     </div>
 
@@ -283,9 +297,12 @@ require('php/components/tweet-modal.php'); ?>
     </div>
   </div>
 </div>
+<script src="js/global.js"></script>
 <script src="js/script.js"></script>
 <script src="js/sub-page-selector.js"></script>
 <script src="js/modals.js"></script>
+<script src="js/dropdowns.js"></script>
+<script src="js/insert-user-data.js"></script>
 </body>
 
 </html>

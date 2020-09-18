@@ -1,4 +1,6 @@
 .auth {
+  max-width: 100%;
+  overflow: hidden;
   &__left {
     // Background image
     height: 100vh;
@@ -38,6 +40,12 @@
   }
   &__right {
     position: relative;
+    @media only screen and (max-width: $bp-large) {
+      grid-row: 1;
+    }
+    @media only screen and (max-width: $bp-smallest) {
+      padding: 0 1rem;
+    }
   }
 
   &__cta {
@@ -62,6 +70,9 @@
       font-weight: 700;
       font-size: 1.8rem;
       padding-top: 1rem;
+      @media only screen and (max-width: $bp-smallest) {
+        font-size: 1.4rem;
+      }
     }
     &-tagline {
       padding-top: 6rem;
@@ -73,7 +84,7 @@
   &__footer {
     height: 3rem;
     width: 100%;
-    position: absolute;
+    position: sticky;
     bottom: 0;
     left: 0;
 
@@ -84,6 +95,13 @@
       justify-content: space-between;
       padding: 0 12rem;
       background-color: #fff;
+      flex-wrap: wrap;
+      @media only screen and (max-width: $bp-largest) {
+        padding: 0 6rem;
+      }
+      @media only screen and (max-width: $bp-smallest) {
+        padding: 0 1rem;
+      }
     }
 
     &-link,
@@ -101,8 +119,14 @@
   font-size: 0.8rem;
 
   color: var(--color-dark-gray);
+  @media only screen and (max-width: $bp-smallest) {
+    flex-direction: column;
+  }
   &__input-field {
     margin: 1rem;
+    @media only screen and (max-width: $bp-smallest) {
+      width: 100%;
+    }
 
     & > .link {
     }
@@ -111,4 +135,19 @@
   }
   &__input {
   }
+  button {
+    @media only screen and (max-width: $bp-smallest) {
+      width: 100%;
+      margin-top: 2rem;
+      height: 3rem;
+    }
+  }
+}
+
+.error-msg {
+  position: absolute;
+  bottom: -3rem;
+  color: var(--color-red);
+  font-size: var(--font-xxs);
+  left: 0;
 }

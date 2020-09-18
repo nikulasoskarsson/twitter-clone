@@ -1,7 +1,7 @@
-<div id="modal-container" class="modal-container display-hidden">
-    <div id="tweet-modal" class="modal tweet-modal display-hidden">
+<div id="update-modal-container" class="modal-container display-hidden">
+    <div id="update-tweet-modal" class="modal tweet-modal display-hidden">
         <div class="tweet-modal__header">
-            <h3 id="close-modal">X</h3>
+            <h3 id="close-update-modal">X</h3>
         </div>
         <div class="tweet-modal__content">
             <img src="img/cat.jpg" alt="" class="tweet-modal__img img-round-md">
@@ -9,7 +9,7 @@
 
                 <div class="tweet-modal__input-field">
 
-                    <input type="text" class="tweet-modal__input input-placeholder-large" placeholder="What's happening">
+                    <input type="text" class="tweet-modal__input input-placeholder-large" placeholder="">
                     <span class="tagline-primary-md">
                         <svg viewBox="0 0 24 24" class="tagline-primary-md-img">
                             <g>
@@ -61,7 +61,7 @@
                             </g>
                         </svg>
                     </div>
-                    <button class="button-primary-small" id="create-tweet-from-modal">Tweet</button>
+                    <button class="button-primary-small" id="create-tweet-from-modal">Update</button>
                 </div>
             </div>
         </div>

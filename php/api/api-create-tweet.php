@@ -48,7 +48,7 @@ $newTweet = [
 $sTweets = file_get_contents('../../db/tweets.json');
 $aTweets = json_decode($sTweets);
 
-array_push($aTweets, $newTweet);
+array_unshift($aTweets, $newTweet);
 $sTweets = json_encode($aTweets);
 file_put_contents('../../db/tweets.json', $sTweets);
 echo '{"message": "You have created a new tweet with the id of ' . $_POST['userId'] . '"}';

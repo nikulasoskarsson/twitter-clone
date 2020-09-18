@@ -8,6 +8,7 @@
   --color-light-gray: #aab8c2;
   --color-lighter-gray: #e1e8ed;
   --color-very-light-gray: #f5f8fa;
+  --color-red: #e02463;
 
   --font-xl: 1.8rem;
   --font-lg: 1.4rem;
@@ -27,3 +28,7 @@
   --padding-lg: padding 1rem;
   --padding-md: padding 0.8rem;
 }
+$bp-largest: 75em; // 1200px
+$bp-large: 62.5em; // 1000px
+$bp-medium: 50em; // 800px
+$bp-smallest: 31.25em; //500px

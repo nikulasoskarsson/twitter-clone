@@ -1,5 +1,12 @@
 #page {
   display: grid;
-  grid-template-columns: minmax(0, 0.8fr) 1.8fr 1.2fr;
+  grid-template-columns: minmax(auto, 0.8fr) 1.8fr 1.2fr;
   grid-gap: 0.1rem;
+
+  // @media only screen and (max-width: $bp-largest) {
+  //   grid-template-columns: 0.05fr 1.8fr 1.2fr;
+  // }
+  @media only screen and (max-width: $bp-large) {
+    grid-template-columns: minmax(auto, 0.2fr) 1.8fr;
+  }
 }

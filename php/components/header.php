@@ -23,6 +23,6 @@
         }
     })();
     ?>
-    <form action="php/actions/logout.php">
+    <!-- <form action="php/actions/logout.php">
         <button>Logout</button>
-    </form>
+    </form> -->

@@ -5,11 +5,16 @@
   position: relative;
   z-index: 51701;
   grid-template-columns: 1fr 5fr 1fr;
+  cursor: pointer;
+  @media only screen and (max-width: $bp-largest) {
+    display: none;
+  }
   &__img {
     height: 40px;
     width: 40px;
     border-radius: 50%;
     margin: 0.5rem;
+    object-fit: cover;
   }
 
   &__name {
@@ -28,23 +33,29 @@
   }
 
   &__modal {
-    height: 5rem;
-    width: 120%;
+    width: 100%;
     bottom: 4rem;
 
     position: absolute;
     background-color: #fff;
-    border: var(--border-primary);
+    border: 2px solid var(--color-light-gray);
     z-index: 51701;
     border-radius: 5px;
-    overflow: hidden;
+
     &-logout-btn {
       width: 100%;
-      background: transparent;
+      background: #fff;
       padding: 1rem 0;
       text-transform: uppercase;
       text-align: center;
       border: none;
+    }
+  }
+
+  &__smaller-screen {
+    display: none;
+    @media only screen and (max-width: $bp-largest) {
+      display: block;
     }
   }
 }

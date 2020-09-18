@@ -1,4 +1,5 @@
 const signupForm = document.getElementById('signup-form');
+const loginForm = document.getElementById('login-form');
 
 function init() {
   const allFormFields = getAllFormFields();
@@ -67,7 +68,7 @@ function showErrorCharCount(charCountDiv, containerDiv) {
   charCountDiv.classList.remove('success');
   containerDiv.classList.add('border-fail');
 
-  containerDiv.classList.remove('border-nutural');
+  containerDiv.classList.remove('border-neaturual');
   containerDiv.classList.remove('border-success');
 }
 function showSuccessCharCount(charCountDiv, containerDiv) {
@@ -75,18 +76,23 @@ function showSuccessCharCount(charCountDiv, containerDiv) {
   charCountDiv.classList.remove('fail');
   containerDiv.classList.add('border-success');
 
-  containerDiv.classList.remove('border-nutural');
+  containerDiv.classList.remove('border-neaturual');
   containerDiv.classList.remove('border-fail');
 }
 
 function showErrorBorder(containerDiv) {
   containerDiv.classList.add('border-fail');
   containerDiv.classList.remove('border-success');
-  containerDiv.classList.remove('border-nutural');
+  containerDiv.classList.remove('border-neaturual');
 }
 function showSuccesBorder(containerDiv) {
   containerDiv.classList.add('border-success');
-  containerDiv.classList.remove('border-nutural');
+  containerDiv.classList.remove('border-neaturual');
+  containerDiv.classList.remove('border-fail');
+}
+function showNeaturalBorder(containerDiv) {
+  containerDiv.classList.add('border-neaturual');
+  containerDiv.classList.remove('border-success');
   containerDiv.classList.remove('border-fail');
 }
 
@@ -129,9 +135,67 @@ function showError(input, errorMsg) {}
 getAllFormFields();
 
 function handleSubmit(e) {
-  e.preventDefault();
+  const errors = [];
+  const username = loginForm['username'];
+  const password = loginForm['password'];
+
+  // Check the fields
+  if (!username.value.length) {
+    errors.push({ field: username, msg: 'Username cannot be empty' });
+  } else if (username.value.length < 5) {
+    errors.push({
+      field: username,
+      msg: 'Username cannot be less then 5 characters',
+    });
+  } else if (username.value.length > 50) {
+    errors.push({
+      field: username,
+      msg: 'Username cannot be more then 50 characters',
+    });
+  }
+  if (!password.value.length) {
+    errors.push({ field: password, msg: 'Password cannot be empty' });
+  } else if (password.value.length < 6) {
+    errors.push({
+      field: password,
+      msg: 'Password cannot be more then 6 characters',
+    });
+  } else if (password.value.length > 20) {
+    errors.push({
+      field: password,
+      msg: 'Password cannot be more then 20 characters',
+    });
+  }
+
+  // Add errors to the dom if there are any
+  if (errors.length) {
+    e.preventDefault();
+    showErrors(errors);
+  }
+  // Submit the form if it is error free
 }
 
-signupForm.addEventListener('submit', (e) => handleSubmit(e));
+function showErrors(errors) {
+  errors.forEach((error) => {
+    const errorField = error.field.nextElementSibling;
+    const containerDiv = error.field.parentNode;
+    showErrorBorder(containerDiv);
+    console.log(error);
+    errorField.innerText = error.msg;
+    errorField.classList.remove('display-hidden');
+  });
+}
+function clearLoginErrors(e) {
+  const errorField = e.target.nextElementSibling;
+  const containerDiv = e.target.parentNode;
+
+  errorField.innerText = '';
+  errorField.classList.add('display-hidden');
+  showNeaturalBorder(containerDiv);
+}
+
+loginForm.addEventListener('submit', (e) => handleSubmit(e));
+loginForm['username'].addEventListener('focus', (e) => clearLoginErrors(e));
+loginForm['password'].addEventListener('focus', (e) => clearLoginErrors(e));
 
 init();
