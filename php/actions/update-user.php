@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 (function () {
 
     if (!isset($_POST)) {
@@ -39,8 +39,26 @@
             return;
         }
         // If there are no errors the code keeps running
+
+        // Save the image to img/user
         $fileName = uniqid('', true) . '.' . $fileActualExt;
         $fileDestination = "../../img/user/$fileName";
         move_uploaded_file($fileTmp, $fileDestination);
+
+        // Save the name of the image to the user object
+
+        $userId = $_SESSION['userId'];
+        $sUsers = file_get_contents('../../db/users.json');
+        $aUsers = json_decode($sUsers);
+
+        foreach ($aUsers as $jUser) {
+            if ($jUser->id === $userId) {
+                $jUser->userImg = $fileName;
+                break;
+            }
+        }
+        $sUsers = json_encode($aUsers);
+        file_put_contents('../../db/users.json', $sUsers);
+        header('Location: ../../index.php');
     }
 })();
