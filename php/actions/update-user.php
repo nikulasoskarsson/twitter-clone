@@ -16,7 +16,7 @@ session_start();
         $fileType = $_FILES['user-image']['type'];
 
         $fileExt = explode('.', $fileName); // ['cat', 'png']
-        var_dump($fileExt);
+
         $fileActualExt = strtolower(end($fileExt)); //jpg, png, etc..
 
         $allowed = array(
