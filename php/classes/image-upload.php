@@ -1,7 +1,10 @@
 <?php
 class ImageUpload
 {
+
     private $file;
+    private $folderToUpload;
+
     private $fileDestination;
     private $fileName;
     private $fileTmp;
@@ -9,15 +12,19 @@ class ImageUpload
     private $fileErrors;
     private $fileType;
 
+    private $fileExt;
+    private $fileActualExt;
+
     private $errors = array();
     private $allowed = array(
         'jpg', 'jpeg', 'png'
     );
 
 
-    public function __construct($fileFromPost)
+    public function __construct($fileFromPost, $folder)
     {
         $this->file = $fileFromPost;
+        $this->folderToUpload = $folder;
     }
     public function uploadImage()
     {
@@ -31,6 +38,10 @@ class ImageUpload
         $this->fileSize = $this->file['size'];
         $this->fileErrors = $this->file['error'];
         $this->fileType = $this->file['type'];
+
+        $this->fileExt = explode('.', $this->fileName); // ['cat', 'png']
+        $this->fileActualExt = strtolower(end($this->fileExt)); //jpg, png, etc..
+
 
         // If the extension that comes from post is inside of the array of allowed extensions
         if (!in_array($this->fileActualExt, $this->allowed)) {
@@ -46,7 +57,12 @@ class ImageUpload
         }
         // If there are no errors the code keeps running
         if (!count($this->errors)) {
-            echo 'no errors upploading the image';
+            $this->fileName = uniqid('', true) . '.' . $this->fileActualExt;
+            $this->fileDestination = $this->folderToUpload . $this->fileName;
+            echo $this->fileDestination;
+            move_uploaded_file($this->fileTmp, $this->fileDestination);
+        } else {
+            var_dump($this->errors);
         }
     }
 }
