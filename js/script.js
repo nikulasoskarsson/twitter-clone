@@ -15,12 +15,11 @@ async function createTweet(e) {
   const tweet = e.target.parentNode.parentNode.querySelectorAll('input')[1]
     .value;
   const image = e.target.parentNode.parentNode.querySelectorAll('input')[0];
-  console.log(image);
 
   const data = new FormData();
   data.append('userId', id);
   data.append('tweet', tweet);
-  data.append('tweet-image', image);
+  data.append('tweet-image', image.files[0]);
 
   try {
     const conn = await fetch('php/api/api-create-tweet.php', {
@@ -140,7 +139,9 @@ function createTweetCard(tweet, user) {
       <div>
           <div class="tweet-card__info">
               <div class="tweet-card__user">
-                  <h3 class="tweet-card__user-name">${user.firstname} ${user.lastname}</h3>
+                  <h3 class="tweet-card__user-name">${user.firstname} ${
+    user.lastname
+  }</h3>
                   <span class="tweet-card__user-handle">@${user.username}</span>
               </div>
               <span class="tweet-card__tweet-date">1h</span>
@@ -149,6 +150,7 @@ function createTweetCard(tweet, user) {
           <p class="tweet-card__tweet">
               ${tweet.body}
           </p>
+          ${tweet.tweetImage ? showTweetImage(tweet.tweetImage) : ''}
           <div class="tweet-card__icon-container">
               <div class="tweet-card__icon-field">
                   <svg viewBox="0 0 24 24" class="tweet-card__icon-field-icon">
@@ -195,7 +197,9 @@ function createTweetCard(tweet, user) {
                 </svg>
                 <div class="dropdown-primary display-hidden">
                     <ul class="dropdown-primary__list">
-                        <li class="dropdown-primary__list-item" id="${tweet.id}" onclick="deleteTweet();">
+                        <li class="dropdown-primary__list-item" id="${
+                          tweet.id
+                        }" onclick="deleteTweet();">
                             <svg viewBox="0 0 24 24" class="dropdown-primary__icon dropdown-primary__icon-delete"">
                                 <g>
                                     <path d=" M20.746 5.236h-3.75V4.25c0-1.24-1.01-2.25-2.25-2.25h-5.5c-1.24 0-2.25 1.01-2.25 2.25v.986h-3.75c-.414 0-.75.336-.75.75s.336.75.75.75h.368l1.583 13.262c.216 1.193 1.31 2.027 2.658 2.027h8.282c1.35 0 2.442-.834 2.664-2.072l1.577-13.217h.368c.414 0 .75-.336.75-.75s-.335-.75-.75-.75zM8.496 4.25c0-.413.337-.75.75-.75h5.5c.413 0 .75.337.75.75v.986h-7V4.25zm8.822 15.48c-.1.55-.664.795-1.18.795H7.854c-.517 0-1.083-.246-1.175-.75L5.126 6.735h13.74L17.32 19.732z"></path>
@@ -204,7 +208,9 @@ function createTweetCard(tweet, user) {
                             </svg>
                             <a href="#" class="dropdown-primary__link dropdown-primary__link-delete">Delete</a>
                         </li>
-                        <li class="dropdown-primary__list-item" onclick="openUpdateTweetModal('${tweet.body}','${tweet.id}');">
+                        <li class="dropdown-primary__list-item" onclick="openUpdateTweetModal('${
+                          tweet.body
+                        }','${tweet.id}');">
                             <svg class="dropdown-primary__icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="528.899px" height="528.899px" viewBox="0 0 528.899 528.899" style="enable-background:new 0 0 528.899 528.899;" xml:space="preserve">
                                 <g>
                                     <path d="M328.883,89.125l107.59,107.589l-272.34,272.34L56.604,361.465L328.883,89.125z M518.113,63.177l-47.981-47.981   c-18.543-18.543-48.653-18.543-67.259,0l-45.961,45.961l107.59,107.59l53.611-53.611   C532.495,100.753,532.495,77.559,518.113,63.177z M0.3,512.69c-1.958,8.812,5.998,16.708,14.811,14.565l119.891-29.069   L27.473,390.597L0.3,512.69z" />
@@ -286,6 +292,10 @@ function closeUpdateTweetModal() {
 
   updateTweetModal.classList.add('display-hidden');
   updateTweetmodalContainer.classList.add('display-hidden');
+}
+
+function showTweetImage(img) {
+  return `<img src="img/tweets/${img}" alt="" class="tweet-card__img" />`;
 }
 
 createTweetBtn.addEventListener('click', (e) => createTweet(e));

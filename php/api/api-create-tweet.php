@@ -21,6 +21,10 @@ if (!$userExists) {
     exit();
 }
 
+require_once('../classes/image-upload.php');
+$imageUpload = new ImageUpload($_FILES['tweet-image'], '../../img/tweets/', '../../db/tweets.json');
+$imageUpload->uploadImage();
+
 if (strlen($_POST['tweet']) < 2) {
     http_response_code(400);
     header('Content-Type: application/json');
@@ -43,6 +47,7 @@ $newTweet = [
     'userId' => $_POST['userId'],
     'body' => $_POST['tweet'],
     'active' => 1,
+    'tweetImage' => $imageUpload->getFileName()
 ];
 
 $sTweets = file_get_contents('../../db/tweets.json');

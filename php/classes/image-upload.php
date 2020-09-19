@@ -5,7 +5,7 @@ class ImageUpload
     private $file;
     private $folderToUpload;
     private $txtFileToSave;
-    private $idToMatch;
+
 
     private $fileDestination;
     private $fileName;
@@ -23,16 +23,19 @@ class ImageUpload
     );
 
 
-    public function __construct($fileFromPost, $folder, $txtFile, $id)
+    public function __construct($fileFromPost, $folder, $txtFile)
     {
         $this->file = $fileFromPost;
         $this->folderToUpload = $folder;
         $this->txtFileToSave = $txtFile;
-        $this->idToMatch = $id;
     }
     public function uploadImage()
     {
         $this->validateImage();
+    }
+    public function getFileName()
+    {
+        return $this->fileName;
     }
 
     private function validateImage()
@@ -64,7 +67,7 @@ class ImageUpload
 
             // Save image name to the correct text file
             $this->saveImageInFolder();
-            $this->saveImageInTextFile();
+            // $this->saveImageInTextFile();
         } else {
             var_dump($this->errors);
         }
@@ -74,22 +77,22 @@ class ImageUpload
         // Save image in folder
         $this->fileName = uniqid('', true) . '.' . $this->fileActualExt;
         $this->fileDestination = $this->folderToUpload . $this->fileName;
-        echo $this->fileDestination;
+
         move_uploaded_file($this->fileTmp, $this->fileDestination);
     }
-    private function saveImageInTextFile()
-    {
-        $sData = file_get_contents($this->txtFileToSave);
-        $aData = json_decode($sData);
+    // private function saveImageInTextFile()
+    // {
+    //     $sData = file_get_contents($this->txtFileToSave);
+    //     $aData = json_decode($sData);
 
-        foreach ($aData as $jData) {
-            if ($jData->id === $this->idToMatch) {
-                $jData->image = $this->fileName;
-                break;
-            }
-        }
+    //     foreach ($aData as $jData) {
+    //         if ($jData->id === $this->idToMatch) {
+    //             $jData->image = $this->fileName;
+    //             break;
+    //         }
+    //     }
 
-        $sData = json_encode($aData);
-        file_put_contents($this->txtFileToSave, $sData);
-    }
+    //     $sData = json_encode($aData);
+    //     file_put_contents($this->txtFileToSave, $sData);
+    // }
 }
