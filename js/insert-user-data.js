@@ -1,6 +1,6 @@
 function insertDataToTweetBar(user) {
   const tweetBarImgField = document.querySelector('.tweetbar__img');
-  tweetBarImgField.src = `img/user/${user.userImg}`;
+  tweetBarImgField.src = `img/user/${user.image}`;
 }
 
 function insertDataToUserCard(user) {
@@ -17,8 +17,8 @@ function insertDataToUserCard(user) {
   userNameField.innerText = user.firstname + ' ' + user.lastname;
   twitterHandleField.innerText = `@${user.username}`;
   logoutBtn.innerText = `logout as ${user.username}`;
-  userImgField.src = `img/user/${user.userImg}`;
-  userSmallScreenImg.src = `img/user/${user.userImg}`;
+  userImgField.src = `img/user/${user.image}`;
+  userSmallScreenImg.src = `img/user/${user.image}`;
 }
 
 function insertDataToProfile(user) {
@@ -45,7 +45,7 @@ function insertDataToProfile(user) {
   userNameField.innerText = user.firstname + ' ' + user.lastname;
   twitterHandleField.innerText = `@${user.username}`;
   joinDateField.innerText = `Joined ${monthString} ${year}`;
-  userImgField.src = `img/user/${user.userImg}`;
+  userImgField.src = `img/user/${user.image}`;
 }
 
 // Get the user data and pass it into the other functions to load the user data into the dom

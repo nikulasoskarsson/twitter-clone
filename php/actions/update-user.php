@@ -7,9 +7,9 @@ session_start();
     } else {
 
         require_once('../classes/image-upload.php');
-        $imageUpload = new ImageUpload($_FILES['user-image'], '../../img/user/', '../../db/users.json');
+        $imageUpload = new ImageUpload($_FILES['user-image'], '../../img/user/', '../../db/users.json', $_SESSION['userId']);
         $imageUpload->uploadImage();
 
-        header('Location: ../../index.php');
+        // header('Location: ../../index.php');
     }
 })();

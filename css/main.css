@@ -817,7 +817,8 @@ button {
     height: 25px;
     width: 25px;
     fill: var(--color-primary);
-    margin-right: 1rem; }
+    margin-right: 1rem;
+    cursor: pointer; }
     @media only screen and (max-width: 62.5em) {
       .tweetbar-menu__icon {
         height: 15px;

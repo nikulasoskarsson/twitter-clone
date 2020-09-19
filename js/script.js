@@ -12,11 +12,15 @@ const closeUpdateTweetModalBtn = document.getElementById('close-update-modal');
 async function createTweet(e) {
   const id = document.getElementById('user-id').getAttribute('data-user-id');
 
-  const tweet = e.target.parentNode.parentNode.querySelectorAll('input')[0]
+  const tweet = e.target.parentNode.parentNode.querySelectorAll('input')[1]
     .value;
+  const image = e.target.parentNode.parentNode.querySelectorAll('input')[0];
+  console.log(image);
+
   const data = new FormData();
   data.append('userId', id);
   data.append('tweet', tweet);
+  data.append('tweet-image', image);
 
   try {
     const conn = await fetch('php/api/api-create-tweet.php', {
