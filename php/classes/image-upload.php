@@ -4,7 +4,9 @@ class ImageUpload
 
     private $file;
     private $folderToUpload;
+    private $txtFileToSave;
 
+    private $userId;
     private $fileDestination;
     private $fileName;
     private $fileTmp;
@@ -21,10 +23,11 @@ class ImageUpload
     );
 
 
-    public function __construct($fileFromPost, $folder)
+    public function __construct($fileFromPost, $folder, $txtFile)
     {
         $this->file = $fileFromPost;
         $this->folderToUpload = $folder;
+        $this->txtFileToSave = $txtFile;
     }
     public function uploadImage()
     {
@@ -57,10 +60,26 @@ class ImageUpload
         }
         // If there are no errors the code keeps running
         if (!count($this->errors)) {
+            // Save image in folder
             $this->fileName = uniqid('', true) . '.' . $this->fileActualExt;
             $this->fileDestination = $this->folderToUpload . $this->fileName;
             echo $this->fileDestination;
             move_uploaded_file($this->fileTmp, $this->fileDestination);
+
+            // Save image name to the correct text file
+            $this->userId = $_SESSION['userId']; // Take in as param instead?
+            $sUsers = file_get_contents($this->txtFileToSave);
+            $aUsers = json_decode($sUsers);
+
+            foreach ($aUsers as $jUser) {
+                if ($jUser->id === $this->userId) {
+                    $jUser->userImg = $this->fileName;
+                    break;
+                }
+            }
+
+            $sUsers = json_encode($aUsers);
+            file_put_contents($this->txtFileToSave, $sUsers);
         } else {
             var_dump($this->errors);
         }
