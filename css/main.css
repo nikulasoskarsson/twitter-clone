@@ -317,7 +317,8 @@ button {
     .tweet-card__user-img {
       height: 3.5rem;
       width: 3.5rem;
-      border-radius: 50%; }
+      border-radius: 50%;
+      object-fit: cover; }
     .tweet-card__user-name, .retweet-card__user-name {
       font-size: 0.9rem; }
   .tweet-card__user-handle, .tweet-card__tweet-date, .retweet-card__user-handle, .retweet-card__tweet-date {

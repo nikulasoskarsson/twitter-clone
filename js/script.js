@@ -76,7 +76,7 @@ async function deleteTweet() {
   } catch (error) {}
 }
 
-async function updateTweet(tweetId, newTweet) {
+async function updateTweet(tweetId, newTweet, newImage) {
   const userId = document
     .getElementById('user-id')
     .getAttribute('data-user-id');
@@ -86,6 +86,7 @@ async function updateTweet(tweetId, newTweet) {
   data.append('userId', userId);
   data.append('tweetId', tweetId);
   data.append('newTweetBody', newTweet);
+  data.append('tweet-image', newImage.files[0]);
 
   try {
     const conn = await fetch('php/api/api-update-tweet.php', {
@@ -135,7 +136,7 @@ function displaySingleTweet(tweet, user) {
 function createTweetCard(tweet, user) {
   return `<div class="tweet-card">
   <div class="tweet-card__grid-container">
-      <img class="tweet-card__user-img" src="img/placeholder.jpg" />
+      <img class="tweet-card__user-img" src="img/user/${user.userImg}" />
       <div>
           <div class="tweet-card__info">
               <div class="tweet-card__user">
@@ -267,6 +268,7 @@ function createTweetCard(tweet, user) {
 }
 
 function openUpdateTweetModal(tweetBody, tweetId) {
+  console.log('tweetbpdy', tweetBody);
   const updateTweetmodalContainer = document.getElementById(
     'update-modal-container'
   );
@@ -275,12 +277,13 @@ function openUpdateTweetModal(tweetBody, tweetId) {
   updateTweetModal.classList.remove('display-hidden');
 
   const updateTweetBtn = updateTweetModal.getElementsByTagName('button');
-  const newTweetInput = updateTweetModal.getElementsByTagName('input')[0];
+  const newTweetInput = updateTweetModal.getElementsByTagName('input')[1];
+  const newImage = updateTweetModal.getElementsByTagName('input')[0];
 
-  newTweetInput.placeholder = tweetBody;
+  newTweetInput.value = tweetBody;
 
   updateTweetBtn[0].addEventListener('click', () =>
-    updateTweet(tweetId, newTweetInput.value)
+    updateTweet(tweetId, newTweetInput.value, newImage)
   );
 }
 
