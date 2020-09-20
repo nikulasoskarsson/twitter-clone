@@ -63,7 +63,7 @@
                             </g>
                         </svg>
                     </div>
-                    <button class="button-primary-small" id="create-tweet-from-modal">Update</button>
+                    <button onclick="updateTweet(); " class="button-primary-small" id="update-tweet-from-modal">Update</button>
                 </div>
             </div>
         </div>

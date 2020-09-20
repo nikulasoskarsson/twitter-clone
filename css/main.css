@@ -252,6 +252,8 @@ button {
   display: flex;
   justify-content: space-between;
   align-self: center; }
+.tweet-modal svg {
+  cursor: pointer; }
 
 .signup-modal {
   padding: 2rem;

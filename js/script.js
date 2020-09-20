@@ -15,6 +15,7 @@ async function createTweet(e) {
   const tweet = e.target.parentNode.parentNode.querySelectorAll('input')[1]
     .value;
   const image = e.target.parentNode.parentNode.querySelectorAll('input')[0];
+  console.log(image);
 
   const data = new FormData();
   data.append('userId', id);
@@ -26,6 +27,9 @@ async function createTweet(e) {
       method: 'POST',
       body: data,
     });
+
+    e.target.parentNode.parentNode.querySelectorAll('input')[1].value = '';
+    e.target.parentNode.parentNode.querySelectorAll('input')[0].value = '';
 
     const res = await conn.text();
     getData();
@@ -55,11 +59,10 @@ async function getUser() {
   return JSON.parse(res);
 }
 
-async function deleteTweet() {
+async function deleteTweet(tweetId) {
   const userId = document
     .getElementById('user-id')
     .getAttribute('data-user-id');
-  const tweetId = event.target.id;
 
   const data = new FormData();
   data.append('userId', userId);
@@ -76,10 +79,16 @@ async function deleteTweet() {
   } catch (error) {}
 }
 
-async function updateTweet(tweetId, newTweet, newImage) {
+async function updateTweet() {
   const userId = document
     .getElementById('user-id')
     .getAttribute('data-user-id');
+
+  const updateTweetModal = document.getElementById('update-tweet-modal');
+
+  const tweetId = updateTweetModal.getAttribute('data-tweet-id');
+  const newTweet = updateTweetModal.getElementsByTagName('input')[1].value;
+  const newImage = updateTweetModal.getElementsByTagName('input')[0];
 
   const data = new FormData();
 
@@ -94,6 +103,7 @@ async function updateTweet(tweetId, newTweet, newImage) {
       body: data,
     });
     const res = await conn.text();
+    newImage.value = '';
 
     if (!conn.status !== 200) {
       console.log(res);
@@ -198,9 +208,9 @@ function createTweetCard(tweet, user) {
                 </svg>
                 <div class="dropdown-primary display-hidden">
                     <ul class="dropdown-primary__list">
-                        <li class="dropdown-primary__list-item" id="${
+                        <li class="dropdown-primary__list-item"  onclick="deleteTweet('${
                           tweet.id
-                        }" onclick="deleteTweet();">
+                        }');">
                             <svg viewBox="0 0 24 24" class="dropdown-primary__icon dropdown-primary__icon-delete"">
                                 <g>
                                     <path d=" M20.746 5.236h-3.75V4.25c0-1.24-1.01-2.25-2.25-2.25h-5.5c-1.24 0-2.25 1.01-2.25 2.25v.986h-3.75c-.414 0-.75.336-.75.75s.336.75.75.75h.368l1.583 13.262c.216 1.193 1.31 2.027 2.658 2.027h8.282c1.35 0 2.442-.834 2.664-2.072l1.577-13.217h.368c.414 0 .75-.336.75-.75s-.335-.75-.75-.75zM8.496 4.25c0-.413.337-.75.75-.75h5.5c.413 0 .75.337.75.75v.986h-7V4.25zm8.822 15.48c-.1.55-.664.795-1.18.795H7.854c-.517 0-1.083-.246-1.175-.75L5.126 6.735h13.74L17.32 19.732z"></path>
@@ -268,7 +278,6 @@ function createTweetCard(tweet, user) {
 }
 
 function openUpdateTweetModal(tweetBody, tweetId) {
-  console.log('tweetbpdy', tweetBody);
   const updateTweetmodalContainer = document.getElementById(
     'update-modal-container'
   );
@@ -276,15 +285,10 @@ function openUpdateTweetModal(tweetBody, tweetId) {
   updateTweetmodalContainer.classList.remove('display-hidden');
   updateTweetModal.classList.remove('display-hidden');
 
-  const updateTweetBtn = updateTweetModal.getElementsByTagName('button');
+  updateTweetModal.setAttribute('data-tweet-id', tweetId);
+
   const newTweetInput = updateTweetModal.getElementsByTagName('input')[1];
-  const newImage = updateTweetModal.getElementsByTagName('input')[0];
-
   newTweetInput.value = tweetBody;
-
-  updateTweetBtn[0].addEventListener('click', () =>
-    updateTweet(tweetId, newTweetInput.value, newImage)
-  );
 }
 
 function closeUpdateTweetModal() {

@@ -64,6 +64,7 @@ foreach ($aTweets as $jTweet) {
                 echo '{
             "message": "New tweet cannot be the same was it was before"
         }';
+                exit();
             } else {
                 $jTweet->body = $_POST['newTweetBody'];
             }

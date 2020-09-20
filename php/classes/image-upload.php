@@ -80,19 +80,4 @@ class ImageUpload
 
         move_uploaded_file($this->fileTmp, $this->fileDestination);
     }
-    // private function saveImageInTextFile()
-    // {
-    //     $sData = file_get_contents($this->txtFileToSave);
-    //     $aData = json_decode($sData);
-
-    //     foreach ($aData as $jData) {
-    //         if ($jData->id === $this->idToMatch) {
-    //             $jData->image = $this->fileName;
-    //             break;
-    //         }
-    //     }
-
-    //     $sData = json_encode($aData);
-    //     file_put_contents($this->txtFileToSave, $sData);
-    // }
 }
