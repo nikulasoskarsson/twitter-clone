@@ -252,6 +252,8 @@ button {
   display: flex;
   justify-content: space-between;
   align-self: center; }
+.tweet-modal svg {
+  cursor: pointer; }
 
 .signup-modal {
   padding: 2rem;
@@ -317,7 +319,8 @@ button {
     .tweet-card__user-img {
       height: 3.5rem;
       width: 3.5rem;
-      border-radius: 50%; }
+      border-radius: 50%;
+      object-fit: cover; }
     .tweet-card__user-name, .retweet-card__user-name {
       font-size: 0.9rem; }
   .tweet-card__user-handle, .tweet-card__tweet-date, .retweet-card__user-handle, .retweet-card__tweet-date {
@@ -817,7 +820,8 @@ button {
     height: 25px;
     width: 25px;
     fill: var(--color-primary);
-    margin-right: 1rem; }
+    margin-right: 1rem;
+    cursor: pointer; }
     @media only screen and (max-width: 62.5em) {
       .tweetbar-menu__icon {
         height: 15px;
