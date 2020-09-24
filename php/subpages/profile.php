@@ -6,21 +6,21 @@
             </g>
         </svg>
         <div class="profile-topbar__txt-container">
-            <h3 class="profile-topbar__heading">Nikulás Óskarsson</h3>
-            <p class="profile-topbar__tweets-nr">9 Tweets</p>
+            <h3 class="profile-topbar__heading user-name"></h3>
+            <p class="profile-topbar__tweets-nr user-tweets-nr"></p>
         </div>
     </div>
     <div id="profile-userbar" class="profile-userbar">
-        <div class="profile-userbar__background-img"></div>
+        <div class="profile-userbar__background-img user-bg"></div>
 
         <label for="user-image-upload" class="profile-userbar__user-img-label">
-            <img src="img/placeholder.jpg" alt="" class="profile-userbar__user-img" />
+            <img src="img/placeholder.jpg" alt="" class="profile-userbar__user-img user-img" />
         </label>
 
         <div class="profile-userbar__flex-container">
             <div class="profile-userbar__txt-container">
-                <h3 class="profile-userbar__username heading-secondary "></h3>
-                <p class="profile-userbar__handle text-xs-light marginBottom05 "></p>
+                <h3 class="profile-userbar__username heading-secondary user-name"></h3>
+                <p class="profile-userbar__handle text-xs-light marginBottom05 user-handle"></p>
                 <div class="profile-userbar__join-date marginBottom05 ">
                     <svg viewBox="0 0 24 24" class="profile-userbar__join-date__icon">
                         <g>

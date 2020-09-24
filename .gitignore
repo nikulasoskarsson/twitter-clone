@@ -1,2 +1,10 @@
 .sass-cache
 .sass-cache/*
+db
+db/*
+img/tweets/*
+img/user/*
+
+!img/tweets/.gitkeep
+!img/user/.gitkeep
+!img/user/placeholder.jpg
