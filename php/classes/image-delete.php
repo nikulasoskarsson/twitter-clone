@@ -23,7 +23,7 @@ class ImageDelete
             if ($jData->id == $this->id) {
                 $tmpName = $this->nameOfRow;
                 $imgName = $jData->$tmpName;
-                if (file_exists("$this->dirToDeleteFrom/$imgName")) {
+                if (file_exists("$this->dirToDeleteFrom/$imgName") && $imgName != 'placeholder.jpg') {
                     unlink("$this->dirToDeleteFrom/$imgName");
                 }
 
