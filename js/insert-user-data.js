@@ -72,6 +72,18 @@ function insertUserHandle(user) {
   );
 }
 
+function insertUserJoinDate(user) {
+  const joinDate = new Date(user.signUpDate * 1000);
+  const monthString = getMonthAsString(joinDate.getMonth());
+  const year = joinDate.getFullYear();
+
+  const userJoinDateElements = document.querySelectorAll('.user-handle');
+  userJoinDateElements.forEach(
+    (userJoinDateElement) =>
+      (userJoinDateElement.innerText = `Joined ${monthString} ${year}`)
+  );
+}
+
 function insertNumberOfTweets(user) {
   const userTweetsNrElements = document.querySelectorAll('.user-tweets-nr');
   userTweetsNrElements.forEach(
@@ -85,9 +97,7 @@ async function init() {
   insertUserName(user);
   insertUserHandle(user);
   insertNumberOfTweets(user);
-  // insertDataToTweetBar(user);
-  // insertDataToUserCard(user);
-  // insertDataToProfile(user);
+  insertUserJoinDate(user);
 }
 
 init();
