@@ -2,4 +2,9 @@
 .sass-cache/*
 db
 db/*
-img/*
+img/tweets/*
+img/user/*
+
+!img/tweets/.gitkeep
+!img/user/.gitkeep
+!img/user/placeholder.jpg

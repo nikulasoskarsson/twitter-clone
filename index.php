@@ -106,19 +106,19 @@ require('php/components/update-tweet-modal.php'); ?>
     </div>
 
     <div class="user__smaller-screen">
-      <img src="img/placeholder.jpg" alt="Placeholder image" class="user__img" />
+      <img src="img/placeholder.jpg" alt="Placeholder image" class="user__img user-img" />
     </div>
     <div class="user" id="user-card">
       <div class="user__modal display-hidden" id="user-modal">
 
         <form action="php/actions/logout.php">
-          <button class="user__modal-logout-btn"></button>
+          <button class="user__modal-logout-btn user-handle">Logout as </button>
         </form>
       </div>
-      <img src="img/placeholder.jpg" alt="Placeholder image" class="user__img" />
+      <img src="img/placeholder.jpg" alt="Placeholder image" class="user__img user-img" />
       <div class="user__text-column" id="open-user-modal">
-        <h3 class="user__name"></h3>
-        <p class="user__handler"></p>
+        <h3 class="user__name user-name"></h3>
+        <p class="user__handler user-handle"></p>
       </div>
       <svg viewBox="0 0 24 24" class="user__icon">
         <g>

@@ -8,7 +8,7 @@
 </div>
 
 <div class="tweetbar">
-    <img src="img/placeholder.jpg" alt="placeholder image" class="tweetbar__img" />
+    <img src="img/placeholder.jpg" alt="placeholder image" class="tweetbar__img user-img" />
 
     <div class="tweetbar__content">
         <div class="tweetbar__input-field">
@@ -371,13 +371,13 @@
         </div>
 
         <div class="tweet-card__grid-container padding-bottom-1">
-            <img class="tweet-card__user-img" src="img/follow1.jpg" />
+            <img class="tweet-card__user-img user-img" src="img/follow1.jpg" />
 
             <div>
                 <div class="tweet-card__info">
                     <div class="tweet-card__user">
-                        <h3 class="tweet-card__user-name">Rick G. Rosner</h3>
-                        <span class="tweet-card__user-handle">@dumbassgenius</span>
+                        <h3 class="tweet-card__user-name user-name">Rick G. Rosner</h3>
+                        <span class="tweet-card__user-handle user-handle">@dumbassgenius</span>
                     </div>
                     <span class="tweet-card__tweet-date">1h</span>
                 </div>
