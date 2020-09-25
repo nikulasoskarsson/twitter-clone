@@ -72,6 +72,10 @@ foreach ($aTweets as $jTweet) {
     }
 }
 
+// delete the old image if it's being updated
+require_once('../classes/image-delete.php');
+$imageDelete = new ImageDelete($_POST['tweetId'], '../../img/tweets/', 'tweetImage', '../../db/tweets.json');
+$imageDelete->deleteSingleImage();
 
 
 $sTweets = json_encode($aTweets);
