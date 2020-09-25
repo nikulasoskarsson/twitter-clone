@@ -28,7 +28,7 @@ session_start();
         }
         // delete the old image if it's being updated
         require_once('../classes/image-delete.php');
-        $imageDelete = new ImageDelete('5f6390b6efea5', '../../img/user/', 'userImg', '../../db/users.json');
+        $imageDelete = new ImageDelete($userId, '../../img/user/', 'userImg', '../../db/users.json');
         $imageDelete->deleteSingleImage();
 
         $sUsers = json_encode($aUsers);
