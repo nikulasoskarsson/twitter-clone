@@ -30,7 +30,6 @@
             </div>
             <p class="error-msg display-hidden" id="lastname-error-msg">Character count invalid</p>
 
-
             <div class="signup-form__input-field form-input-field border-neaturual">
                 <label for="" class="signup-form__label form-input-field__label">Choose a username</label>
                 <input type="text" name="username" id="username" class="signup-form__input form-input-field__input" />

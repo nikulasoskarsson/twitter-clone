@@ -266,18 +266,64 @@ button {
       margin-right: 0 !important; }
   .signup-modal .signup-form__input-field {
     margin: 1rem 0; }
-  .signup-modal .signup-form__dob-container {
-    display: grid;
-    grid-template-columns: 4fr 2fr 3fr;
-    grid-template-rows: 1fr;
-    align-items: center;
-    gap: 30px; }
-  .signup-modal .signup-form__dob-input-field {
-    padding: 0.5rem 0 !important; }
   .signup-modal select {
     position: relative; }
     .signup-modal select option {
       width: 100%; }
+
+.update-user-modal {
+  width: 40%;
+  top: 0;
+  height: 70%;
+  background: #fff; }
+  .update-user-modal__header {
+    padding: 0.5rem 1rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: var(--border-primary); }
+    .update-user-modal__header-close {
+      margin-right: 2rem;
+      color: var(--color-primary); }
+    .update-user-modal__header button {
+      justify-self: flex-end; }
+  .update-user-modal__content {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 100%;
+    background: #fff; }
+  .update-user-modal .update-user-modal__img-bar {
+    position: relative;
+    display: flex; }
+    .update-user-modal .update-user-modal__img-bar__background-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 200px;
+      width: 100%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      object-fit: cover;
+      padding: 0.2rem;
+      display: block;
+      cursor: pointer; }
+    .update-user-modal .update-user-modal__img-bar__user-img {
+      height: 6.5rem;
+      width: 6.5rem;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #fff;
+      position: absolute;
+      top: 135px;
+      left: 10px;
+      cursor: pointer; }
+  .update-user-modal #update-user-form {
+    margin-top: 250px;
+    padding: 0 1rem; }
+    .update-user-modal #update-user-form .form-input-field,
+    .update-user-modal #update-user-form .dob-container {
+      margin-bottom: 1rem; }
 
 .display-hidden {
   display: none; }
@@ -287,6 +333,16 @@ button {
 
 .display-flex {
   display: flex; }
+
+.dob-container {
+  display: grid;
+  grid-template-columns: 4fr 2fr 3fr;
+  grid-template-rows: 1fr;
+  align-items: center;
+  gap: 30px; }
+
+.dob-input-field {
+  padding: 0.5rem 0 !important; }
 
 .tweet-card, .retweet-card {
   position: relative;

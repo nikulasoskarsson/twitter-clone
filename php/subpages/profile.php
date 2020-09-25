@@ -1,3 +1,4 @@
+<?php require_once(__DIR__ . '/../components/update-user-modal.php') ?>
 <div>
     <div id="profile-topbar" class="profile-topbar">
         <svg viewBox="0 0 24 24" class="profile-topbar__icon icon-25px-primary">
