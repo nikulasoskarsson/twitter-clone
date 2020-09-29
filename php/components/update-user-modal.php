@@ -1,5 +1,5 @@
-<div id="update-user-container" class="modal-container">
-    <div id="update-user-modal" class="modal update-user-modal">
+<div id="update-user-container" class="modal-container display-hidden">
+    <div id="update-user-modal" class="modal update-user-modal display-hidden">
         <div class="update-user-modal__header">
             <h1 class="update-user-modal__header-close">X</h1>
             <h1 class="update-user-modal__header-heading header-primary">Edit Profile</h1>
