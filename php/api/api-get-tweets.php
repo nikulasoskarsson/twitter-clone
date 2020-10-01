@@ -1,25 +1,8 @@
 <?php
+require_once(__DIR__ . '/../classes/helper-api.php');
+$apiHelper = new ApiHelper();
 
-$userExists = false;
-$sUsers = file_get_contents('../../db/users.json');
-$aUsers = json_decode($sUsers);
-
-// Check if the user exists with the id retrived from post
-foreach ($aUsers as $jUser) {
-    if ($jUser->id == $_GET['userId']) {
-        $userExists = true;
-        break;
-    }
-}
-
-if (!$userExists) {
-    http_response_code(400);
-    header('Content-Type: application/json');
-    echo '{
-        "message": "user not found"
-    }';
-    exit();
-}
+$apiHelper->validateUserId($_GET); // Exit if not provided with existing id of a user
 
 $sTweets = file_get_contents('../../db/tweets.json');
 $aTweets = json_decode($sTweets);
@@ -30,7 +13,9 @@ foreach ($aTweets as $jTweet) {
         array_push($aUserTweets, $jTweet);
     }
 }
-$sUserTweets = json_encode($aUserTweets);
-
-header('Content-Type: application/json');
-echo $sUserTweets;
+if (!count($aUserTweets)) {
+    $apiHelper->sendResponse(400, '{"message":"Could not find tweets for this user"}');
+} else {
+    $sUserTweets = json_encode($aUserTweets);
+    $apiHelper->sendResponse(200, $sUserTweets);
+}
