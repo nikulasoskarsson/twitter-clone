@@ -1,43 +1,21 @@
 <?php
 
-$userExists = false;
-$sUsers = file_get_contents('../../db/users.json');
-$aUsers = json_decode($sUsers);
+require_once(__DIR__ . '/../classes/helper-api.php');
+$apiHelper = new ApiHelper();
 
-// Check if the user exists with the id retrived from post
-foreach ($aUsers as $jUser) {
-    if ($jUser->id == $_POST['userId']) {
-        $userExists = true;
-        break;
-    }
-}
-
-if (!$userExists) {
-    http_response_code(400);
-    header('Content-Type: application/json');
-    echo '{
-        "message": "user not found"
-    }';
-    exit();
-}
+$apiHelper->validateUserId($_POST); // Exit if not provided with existing id of a user
 
 
 if (strlen($_POST['newTweetBody']) < 2) {
-    http_response_code(400);
-    header('Content-Type: application/json');
-    echo '{
+    $apiHelper->sendResponse(400, '{
         "message": "Tweet has to be at least 2 characters long"
-    }';
-    exit();
+    }');
 }
 
 if (strlen($_POST['newTweetBody']) > 240) {
-    http_response_code(400);
-    header('Content-Type: application/json');
-    echo '{
+    $apiHelper->sendResponse(400, '{
         "message": "Tweet cannot be longer then 240 characters long"
-    }';
-    exit();
+    }');
 }
 
 $sTweets = file_get_contents('../../db/tweets.json');
@@ -45,7 +23,6 @@ $aTweets = json_decode($sTweets);
 foreach ($aTweets as $jTweet) {
     if ($jTweet->id == $_POST['tweetId']) {
         if (isset($_FILES['tweet-image'])) {
-            echo 'image found';
 
             //If the body is not the same was it was before update it..
             if ($jTweet->body != $_POST['newTweetBody']) {
@@ -59,12 +36,9 @@ foreach ($aTweets as $jTweet) {
             $jTweet->tweetImage = $imageUpload->getFileName();
         } else {
             if ($jTweet->body ==  $_POST['newTweetBody']) {
-                http_response_code(400);
-                header('Content-Type: application/json');
-                echo '{
-            "message": "New tweet cannot be the same was it was before"
-        }';
-                exit();
+                $apiHelper->sendResponse(400, '{
+                    "message": "New tweet cannot be the same was it was before"
+                }');
             } else {
                 $jTweet->body = $_POST['newTweetBody'];
             }
@@ -72,10 +46,15 @@ foreach ($aTweets as $jTweet) {
     }
 }
 
+// delete the old image if it's being updated
+require_once('../classes/image-delete.php');
+$imageDelete = new ImageDelete($_POST['tweetId'], '../../img/tweets/', 'tweetImage', '../../db/tweets.json');
+$imageDelete->deleteSingleImage();
 
 
 $sTweets = json_encode($aTweets);
 file_put_contents('../../db/tweets.json', $sTweets);
-header('Content-Type: application/json');
-echo '{"message": "You have successfully updated a tweet"}';
-exit();
+
+$apiHelper->sendResponse(200, '{
+    "message": "message": "You have successfully updated a tweet"
+}');

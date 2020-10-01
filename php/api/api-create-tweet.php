@@ -1,54 +1,36 @@
 <?php
+require_once(__DIR__ . '/../classes/helper-api.php');
+$apiHelper = new ApiHelper();
 
-$userExists = false;
-$sUsers = file_get_contents('../../db/users.json');
-$aUsers = json_decode($sUsers);
-
-// Check if the user exists with the id retrived from post
-foreach ($aUsers as $jUser) {
-    if ($jUser->id == $_POST['userId']) {
-        $userExists = true;
-        break;
-    }
-}
-
-if (!$userExists) {
-    http_response_code(400);
-    header('Content-Type: application/json');
-    echo '{
-        "message": "user not found"
-    }';
-    exit();
-}
-
-require_once('../classes/image-upload.php');
-$imageUpload = new ImageUpload($_FILES['tweet-image'], '../../img/tweets/', '../../db/tweets.json');
-$imageUpload->uploadImage();
+$apiHelper->validateUserId($_POST); // Checks if userId exists and if its 
 
 if (strlen($_POST['tweet']) < 2) {
-    http_response_code(400);
-    header('Content-Type: application/json');
-    echo '{
+    $apiHelper->sendResponse(400, '{
         "message": "Tweet has to be at least 2 characters long"
-    }';
-    exit();
+    }');;
 }
 
 if (!strlen($_POST['tweet']) > 240) {
-    http_response_code(400);
-    header('Content-Type: application/json');
-    echo '{
+    $apiHelper->sendResponse(400, '{
         "message": "Tweet cannot be longer then 2 characters long"
-    }';
-    exit();
+    }');
 }
+
+
 $newTweet = [
     'id' => uniqid(),
     'userId' => $_POST['userId'],
     'body' => $_POST['tweet'],
     'active' => 1,
-    'tweetImage' => $imageUpload->getFileName()
 ];
+
+if (isset($_FILES['tweet-image'])) {
+    require_once('../classes/image-upload.php');
+    $imageUpload = new ImageUpload($_FILES['tweet-image'], '../../img/tweets/', '../../db/tweets.json');
+    $imageUpload->uploadImage();
+    $newTweet['tweetImage'] = $imageUpload->getFileName();
+}
+
 
 $sTweets = file_get_contents('../../db/tweets.json');
 $aTweets = json_decode($sTweets);
@@ -56,4 +38,5 @@ $aTweets = json_decode($sTweets);
 array_unshift($aTweets, $newTweet);
 $sTweets = json_encode($aTweets);
 file_put_contents('../../db/tweets.json', $sTweets);
-echo '{"message": "You have created a new tweet with the id of ' . $_POST['userId'] . '"}';
+$apiHelper->sendResponse(400, '{"message": "You have created a new tweet",
+"id": "' . $newTweet['id'] . '"}');

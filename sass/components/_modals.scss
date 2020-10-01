@@ -16,6 +16,21 @@
   border-radius: 25px;
   z-index: 701;
   position: relative;
+
+  @media only screen and (max-width: $bp-medium) {
+    height: 100% !important;
+    width: 100% !important;
+    border-radius: 0 !important;
+  }
+
+  &__content {
+    @media only screen and (max-width: $bp-medium) {
+      overflow-y: scroll;
+      overflow-x: hidden;
+      height: 100%;
+      background: #fff;
+    }
+  }
 }
 .tweet-modal {
   &__header {
@@ -68,6 +83,14 @@
 .signup-modal {
   padding: 2rem;
   width: 40%;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  &__content {
+    position: relative;
+    height: 100%;
+    width: 100%;
+  }
 
   &__header {
     display: flex;
@@ -80,25 +103,99 @@
     }
   }
   .signup-form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    .button-primary-small {
+      @media only screen and (max-width: $bp-large) {
+        display: flex;
+        width: 100% !important;
+        align-self: flex-end;
+        flex: 1;
+        justify-content: center;
+        align-items: center;
+      }
+    }
     &__input-field {
       margin: 1rem 0;
-    }
-
-    &__dob-container {
-      display: grid;
-      grid-template-columns: 4fr 2fr 3fr;
-      grid-template-rows: 1fr;
-      align-items: center;
-      gap: 30px;
-    }
-    &__dob-input-field {
-      padding: 0.5rem 0 !important;
     }
   }
   select {
     position: relative;
     option {
       width: 100%;
+    }
+  }
+}
+
+.update-user-modal {
+  width: 40%;
+  top: 0;
+  height: 70%;
+  background: #fff;
+
+  &__header {
+    padding: 0.5rem 1rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: var(--border-primary);
+
+    &-close {
+      margin-right: 2rem;
+      color: var(--color-primary);
+    }
+    button {
+      justify-self: flex-end;
+    }
+  }
+  &__content {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 100%;
+    background: #fff;
+  }
+
+  .update-user-modal__img-bar {
+    position: relative;
+    display: flex;
+
+    &__background-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 200px;
+      width: 100%;
+      // background: url('../img/cat.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      object-fit: cover;
+      padding: 0.2rem;
+
+      display: block;
+      cursor: pointer;
+    }
+
+    &__user-img {
+      height: 6.5rem;
+      width: 6.5rem;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #fff;
+      position: absolute;
+      top: 135px;
+      left: 10px;
+      cursor: pointer;
+    }
+  }
+  #update-user-form {
+    margin-top: 250px;
+    padding: 0 1rem;
+
+    .form-input-field,
+    .dob-container {
+      margin-bottom: 1rem;
     }
   }
 }
@@ -112,4 +209,21 @@
 }
 .display-flex {
   display: flex;
+}
+
+// General styles for different modals
+.dob-container {
+  display: grid;
+  grid-template-columns: 4fr 2fr 3fr;
+  grid-template-rows: 1fr;
+  align-items: center;
+  gap: 30px;
+  @media only screen and (max-width: $bp-smallest) {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding-top: 1rem;
+  }
+}
+.dob-input-field {
+  padding: 0.5rem 0 !important;
 }

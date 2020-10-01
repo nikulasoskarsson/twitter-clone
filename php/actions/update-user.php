@@ -21,12 +21,18 @@ session_start();
             if ($jUser->id === $userId) {
                 $jUser->userImg = $imageUpload->getFileName();
                 break;
+            } else {
+                //TODO send back error msg
+                exit();
             }
         }
+        // delete the old image if it's being updated
+        require_once('../classes/image-delete.php');
+        $imageDelete = new ImageDelete($userId, '../../img/user/', 'userImg', '../../db/users.json');
+        $imageDelete->deleteSingleImage();
+
         $sUsers = json_encode($aUsers);
         file_put_contents('../../db/users.json', $sUsers);
         header('Location: ../../index.php');
-
-        // header('Location: ../../index.php');
     }
 })();

@@ -1,21 +1,19 @@
 <?php
 
 
+require_once(__DIR__ . '/../classes/helper-api.php');
+$apiHelper = new ApiHelper();
+!isset($_GET['userId']) && $apiHelper->sendResponse(400, '{"message":"No userId in GET"}');
+
 $sUsers = file_get_contents('../../db/users.json');
 $aUsers = json_decode($sUsers);
 
 // Check if the user exists with the id retrived from post
 foreach ($aUsers as $jUser) {
     if ($jUser->id == $_GET['userId']) {
-
-        echo json_encode($jUser);
-        exit();
+        $apiHelper->sendResponse(200, json_encode($jUser));
     }
 }
-
-http_response_code(400);
-header('Content-Type: application/json');
-echo '{
-        "message": "user not found"
-    }';
-exit();
+$apiHelper->sendResponse(200, '{
+    "message": "user not found"
+}');

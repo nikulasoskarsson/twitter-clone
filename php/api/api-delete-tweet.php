@@ -1,41 +1,22 @@
 <?php
 
-$userExists = false;
-$sUsers = file_get_contents('../../db/users.json');
-$aUsers = json_decode($sUsers);
+require_once(__DIR__ . '/../classes/helper-api.php');
+$apiHelper = new ApiHelper();
 
-// Check if the user exists with the id retrived from post
-foreach ($aUsers as $jUser) {
-    if ($jUser->id == $_POST['userId']) {
-        $userExists = true;
-        break;
-    }
-}
-
-if (!$userExists) {
-    http_response_code(400);
-    header('Content-Type: application/json');
-    echo '{
-        "message": "user not found"
-    }';
-    exit();
-}
-
+$apiHelper->validateUserId($_POST); // Exit if not provided with existing id of a user
 
 $sTweets = file_get_contents('../../db/tweets.json');
 $aTweets = json_decode($sTweets);
 
+// Find a match for the userId
 foreach ($aTweets as  $index => $jTweet) {
     if ($jTweet->id == $_POST['tweetId']) {
-        echo 'match';
         array_splice($aTweets, $index, 1);
-        break;
+        $sTweets = json_encode($aTweets);
+        file_put_contents('../../db/tweets.json', $sTweets);
+
+        $apiHelper->sendResponse(200, '{"message": "You have deleted a tweet successfully", "id": "' . $jTweet->id .  '"}');
     }
 }
-
-$sTweets = json_encode($aTweets);
-file_put_contents('../../db/tweets.json', $sTweets);
-
-header('Content-Type: application/json');
-echo '{"message": "You have deleted a tweet successfully"}';
-exit();
+// No match is found
+$apiHelper->sendResponse(400, '{"message": "Error deleting tweet"}');
