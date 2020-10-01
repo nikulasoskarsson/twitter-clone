@@ -11,7 +11,7 @@ class ApiHelper
 }');
 
         // Return with a status code of 400 and an error message if the id is not found in the db
-        if (!$this->findUserIdMatch($_POST['userId'])) {
+        if (!$this->findUserIdMatch($method['userId'])) {
             $this->sendResponse(400, '{
     "message": "user not found"
 }');
