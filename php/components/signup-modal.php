@@ -2,7 +2,7 @@
     <div id="signup-modal" class="modal signup-modal display-hidden">
 
         <div class="modal__content">
-            <form action="php/actions/signup.php" id="signup-form" class="signup-form" method="POST">
+            <form onsubmit="signup(); return false;" id="signup-form" class="signup-form">
                 <div class="signup-modal__header">
                     <div></div>
                     <svg viewBox="0 0 24 24" aria-label="Twitter" class="signup-modal__header-icon icon-25px-primary ">

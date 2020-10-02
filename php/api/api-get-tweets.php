@@ -10,6 +10,7 @@ $aUserTweets = [];
 
 foreach ($aTweets as $jTweet) {
     if ($jTweet->userId == $_GET['userId']) {
+        $jTweet->formattedTimestamp = $apiHelper->getFormattedTimeOrDate($jTweet->timestamp);
         array_push($aUserTweets, $jTweet);
     }
 }

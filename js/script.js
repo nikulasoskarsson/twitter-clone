@@ -155,7 +155,9 @@ function createTweetCard(tweet, user) {
   }</h3>
                   <span class="tweet-card__user-handle">@${user.username}</span>
               </div>
-              <span class="tweet-card__tweet-date">1h</span>
+              <span class="tweet-card__tweet-date">${
+                tweet.formattedTimestamp
+              }</span>
           </div>
 
           <p class="tweet-card__tweet">
