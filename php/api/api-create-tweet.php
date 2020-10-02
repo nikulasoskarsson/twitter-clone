@@ -22,6 +22,7 @@ $newTweet = [
     'userId' => $_POST['userId'],
     'body' => $_POST['tweet'],
     'active' => 1,
+    'timestamp' => strtotime('now')
 ];
 
 if (isset($_FILES['tweet-image'])) {

@@ -12,6 +12,10 @@ $aTweets = json_decode($sTweets);
 
 foreach ($aTweets as $jTweet) {
     if ($jTweet->id == $_GET['tweetId']) {
+        $date = "2011-07-26 20:05:00";
+        $date = strtotime($date);
+
+        $jTweet->formattedTimestamp = $apiHelper->getFormattedTimeOrDate($date);
         $apiHelper->sendResponse(200, json_encode($jTweet));
     }
 }
