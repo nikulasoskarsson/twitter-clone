@@ -38,4 +38,32 @@ class ApiHelper
         echo $response;
         exit;
     }
+    public function getFormattedTimeOrDate($timestamp)
+    {
+        // Timestamp of seconds since tweet used to return time since tweet in seconds, minutes and hours
+        $timeSinceTweet = strtotime('now') - $timestamp;
+        // Less then one minute
+        if ($timeSinceTweet < 60) {
+            $formattedTimestamp = $timeSinceTweet . 's';
+        }
+        // Less then one hour 
+        else if ($timeSinceTweet < 3600) {
+            $formattedTimestamp = floor($timeSinceTweet / 60) . 'm';
+            // less then 24 hours
+        } else if ($timeSinceTweet < 86400) {
+            $formattedTimestamp = floor($timeSinceTweet / 3600) . 'h';
+        }
+        // If the time since tweet is more then 24 hours use the timestmap of the tweet to return a formatted date 
+        else {
+            date('y', $timestamp) !== date('y') ? $year = date('Y', $timestamp) : $year = null;
+            //If the year is not the current year show it in the response
+            if (!$year) {
+                $formattedTimestamp  = date("M", $timestamp) . ' ' . date('n', $timestamp);
+                // $formattedTimestamp = $date = date("M", $date) . ', ' . date('Y', $date); // see the date manual page for format options
+            } else {
+                $formattedTimestamp  = date("M", $timestamp) .  ' ' . date('n', $timestamp) . ', ' . $year;
+            }
+        }
+        return $formattedTimestamp;
+    }
 }
