@@ -1,38 +1,18 @@
 <?php
 class ImageDelete
 {
-    private $id; // Could be user id or tweet id
+    private $url; //name of image
     private $dirToDeleteFrom; // img/user, img/tweets etc..
-    private $txtFile;
-    private $nameOfRow; // What it's called in the db. userImg, img etc..
 
-    public function __construct($id, $dirToDeleteFrom, $nameOfRow, $txtFile)
+    public function __construct($url, $dirToDeleteFrom)
     {
-        $this->id = $id;
+        $this->url = $url;
         $this->dirToDeleteFrom = $dirToDeleteFrom;
-        $this->txtFile = $txtFile;
-        $this->nameOfRow = $nameOfRow;
     }
 
     // function that will delete a single image like a profile picture
     public function deleteSingleImage()
     {
-        $sData = file_get_contents($this->txtFile);
-        $aData = json_decode($sData);
-        foreach ($aData as $jData) {
-            if ($jData->id == $this->id) {
-                $tmpName = $this->nameOfRow;
-                $imgName = $jData->$tmpName;
-                if (file_exists("$this->dirToDeleteFrom/$imgName") && $imgName != 'placeholder.jpg') {
-                    unlink("$this->dirToDeleteFrom/$imgName");
-                }
-
-
-
-                break;
-            } else {
-                echo 'match not found';
-            }
-        }
+        unlink("$this->dirToDeleteFrom/$this->url");
     }
 }
