@@ -7,9 +7,41 @@ class DbHelper
     {
         $this->connection = $connection;
     }
+    public function updateMultipleFromPK($id, $arrayOfFields, $arrayOfValues, $tableName)
+    {
+        // $id = fk
+        $statement = '';
+        foreach ($arrayOfFields as $i => $field) {
+
+            $statement .= "$field=:$field" . (($i + 1 !== count($arrayOfFields)) ? ', ' :  ' ');
+            echo $statement;
+        }
+
+
+        $query = $this->connection->prepare("UPDATE $tableName SET $statement WHERE id = $id ");
+        foreach ($arrayOfFields as $index => $field) {
+            $query->bindValue(":$field", $arrayOfValues[$index]);
+        }
+        var_dump($query);
+        $query->execute();
+    }
+
+    public function insertOrUpdateTextFromPK($id, $textToAdd, $tableName)
+    {
+        // $id = pk
+    }
+    public function insertOrUpdateTextFromFK($id, $rowName, $textToAdd, $tableName)
+    {
+        // $id = fk
+        $query = $this->connection->prepare("INSERT INTO $tableName values(null,:userId,:$rowName)
+        ON DUPLICATE KEY UPDATE $rowName=:$rowName");
+        $query->bindValue(":userId", $id);
+        $query->bindValue(":$rowName", "$textToAdd");
+        $query->execute();
+    }
     public function insertOrUpdateImage($id, $fieldName, $folderName, $tableName)
     {
-        echo $folderName;
+        // $id = fk
         require_once(__DIR__ . '/image-upload.php');
         require_once(__DIR__ . '/image-delete.php');
         $imageUpload = new ImageUpload($_FILES["$fieldName"],  __DIR__ . "/../../img/$folderName/");

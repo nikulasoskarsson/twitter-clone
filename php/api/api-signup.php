@@ -96,7 +96,7 @@ try {
     $query->bindValue(':year', $_POST['year']);
     $query->bindValue(':day', $_POST['day']);
     $query->bindValue(':timestamp', strtotime('now'));
-
+    $query->execute();
 
 
     $apiHelper->sendResponse(200, '{"message": "You have successfuly signed up to twitter clone!",
