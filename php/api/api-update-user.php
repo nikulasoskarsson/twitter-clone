@@ -16,21 +16,21 @@ $dbHelper = new DbHelper($db);
 
 
 if (isset($_FILES['user-img'])) {
-    $dbHelper->insertOrUpdateImage($_POST['id'], 'user-img', 'user', 'user_images');
+    $dbHelper->insertOrUpdateImage($_POST['id'], 'user-img', 'user_id', 'user', 'user_images');
 }
 if (isset($_FILES['background-img'])) {
-    $dbHelper->insertOrUpdateImage($_POST['id'], 'background-img', 'background', 'background_images');
+    $dbHelper->insertOrUpdateImage($_POST['id'], 'background-img', 'user_id', 'background', 'background_images');
 }
 if (isset($_POST['bio'])) {
-    $dbHelper->insertOrUpdateTextFromFK($_POST['id'], 'text', $_POST['bio'], 'user_bio');
+    $dbHelper->insertOrUpdateTextFromFK($_POST['id'], 'text', 'user_id', $_POST['bio'], 'user_bio');
 }
 
 if (isset($_POST['website'])) {
-    $dbHelper->insertOrUpdateTextFromFK($_POST['id'], 'url', $_POST['website'], 'user_website');
+    $dbHelper->insertOrUpdateTextFromFK($_POST['id'], 'url', 'user_id',  $_POST['website'], 'user_website');
 }
 
 if (isset($_POST['location'])) {
-    $dbHelper->insertOrUpdateTextFromFK($_POST['id'], 'location', $_POST['location'], 'user_location');
+    $dbHelper->insertOrUpdateTextFromFK($_POST['id'], 'location', 'user_id', $_POST['location'], 'user_location');
 }
 
 

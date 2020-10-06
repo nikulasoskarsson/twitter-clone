@@ -30,16 +30,16 @@ class DbHelper
     {
         // $id = pk
     }
-    public function insertOrUpdateTextFromFK($id, $rowName, $textToAdd, $tableName)
+    public function insertOrUpdateTextFromFK($id, $rowName, $fkName, $textToAdd, $tableName)
     {
         // $id = fk
-        $query = $this->connection->prepare("INSERT INTO $tableName values(null,:userId,:$rowName)
+        $query = $this->connection->prepare("INSERT INTO $tableName values(null,:$fkName,:$rowName)
         ON DUPLICATE KEY UPDATE $rowName=:$rowName");
-        $query->bindValue(":userId", $id);
+        $query->bindValue(":$fkName", $id);
         $query->bindValue(":$rowName", "$textToAdd");
         $query->execute();
     }
-    public function insertOrUpdateImage($id, $fieldName, $folderName, $tableName)
+    public function insertOrUpdateImage($id, $fieldName, $fkName, $folderName, $tableName)
     {
         // $id = fk
         require_once(__DIR__ . '/image-upload.php');
@@ -48,7 +48,7 @@ class DbHelper
         $imageUpload->uploadImage();
         try {
             // get the old img name
-            $query = $this->connection->prepare("SELECT url FROM $tableName where user_id = $id LIMIT 1");
+            $query = $this->connection->prepare("SELECT url FROM $tableName where $fkName = $id LIMIT 1");
             $query->execute();
             $row = $query->fetch();
             // If there is already an image delete it from the folder
