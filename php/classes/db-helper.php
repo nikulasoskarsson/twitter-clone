@@ -54,12 +54,14 @@ class DbHelper
             // If there is already an image delete it from the folder
             if ($row) {
                 $oldImgName = $row[0];
-                $deleteImage = new ImageDelete($oldImgName, __DIR__ . "/../../img/$folderName");
+                $deleteImage = new ImageDelete($oldImgName, __DIR__ . "/../../img/$folderName/");
+                $query = $this->connection->prepare("DELETE FROM $tableName WHERE $fkName = $id");
+                $query->execute();
                 $deleteImage->deleteSingleImage();
             }
-            $query = $this->connection->prepare("INSERT INTO $tableName VALUES (NULL,:userId, :url) 
+            $query = $this->connection->prepare("INSERT INTO $tableName VALUES (NULL,:$fkName, :url) 
             ON DUPLICATE KEY UPDATE url=:url");
-            $query->bindValue(':userId', $id);
+            $query->bindValue(":$fkName", $id);
             $query->bindValue(':url', $imageUpload->getFileName());
             $query->execute();
         } catch (PDOException $ex) {
