@@ -11,3 +11,5 @@
 //     "msg": "api res func working",
 //     "id": "' . $_POST['id'] . '"
 // }');
+
+var_dump($_FILES['images']);
