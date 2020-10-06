@@ -69,4 +69,34 @@ class DbHelper
             exit;
         }
     }
+    public function insertOrUpdateMultipleImages($id, $fkName, $fieldName, $folderName, $tableName)
+    {
+
+        // Delete the old images 
+        $query = $this->connection->prepare("SELECT url FROM $tableName where $fkName = $id LIMIT 1");
+        $query->execute();
+        $row = $query->fetch();
+        // If there is already an image delete it from the folder
+        if ($row) {
+            require_once(__DIR__ . '/image-delete.php');
+            $oldImgName = $row[0];
+            $deleteImage = new ImageDelete($oldImgName, __DIR__ . "/../../img/$folderName");
+            $query = $this->connection->prepare("DELETE FROM $tableName WHERE $fkName = $id");
+            $query->execute();
+            $deleteImage->deleteSingleImage();
+        }
+
+        require_once(__DIR__ . '/multiple-image-upload.php');
+        $imageUploadMultiple = new ImageUploadMultipe($_FILES[$fieldName], $folderName);
+        $imageUploadMultiple->uploadImages();
+
+        $imageNames = $imageUploadMultiple->getUploadedFileNames();
+        foreach ($imageNames as $image) {
+            $query = $this->connection->prepare("INSERT INTO $tableName VALUES(null, :$fkName, :url)");
+            $query->bindValue(":$fkName", $id);
+            $query->bindValue(':url', $image);
+            var_dump($query);
+            $query->execute();
+        }
+    }
 }
