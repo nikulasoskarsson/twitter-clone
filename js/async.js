@@ -1,11 +1,3 @@
-// const signupFormEl = document.getElementById('signup-form');
-const loginFormEl = document.getElementById('login-form');
-
-async function getForm(e) {
-  e.preventDefault();
-  await login(loginFormEl);
-}
-
 async function signup(form) {
   const formData = new FormData(form);
 
@@ -14,8 +6,11 @@ async function signup(form) {
       method: 'post',
       body: formData,
     });
-    const res = await conn.text();
-    return JSON.stringify(res);
+
+    let res = await conn.text();
+    res = JSON.parse(res);
+    res.status = conn.status;
+    return res;
   } catch (error) {
     console.log(error);
   }
@@ -27,11 +22,37 @@ async function login(form) {
       method: 'post',
       body: formData,
     });
-    const res = await conn.text();
-    return JSON.stringify(res);
+
+    let res = await conn.text();
+    res = JSON.parse(res);
+    res.status = conn.status;
+    return res;
   } catch (error) {
     console.log(error);
   }
 }
-loginFormEl.addEventListener('submit', (e) => getForm(e));
-// signupFormEl.addEventListener('submit', (e) => getForm(e));
+
+async function createTweet(userId, body, images) {
+  const data = new FormData();
+  data.append('userId', userId);
+  data.append('tweet', body);
+  data.append('tweetImages', images.files);
+
+  try {
+    const conn = await fetch('php/api/api-create-tweet.php', {
+      method: 'POST',
+      body: data,
+    });
+
+    let res = await conn.text();
+    console.log(res);
+    res = JSON.parse(res);
+    res.status = conn.status;
+
+    return res;
+
+    // TODO show user he has created a tweet
+  } catch (error) {
+    console.log(error);
+  }
+}

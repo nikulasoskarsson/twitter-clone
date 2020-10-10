@@ -51,5 +51,5 @@ if (!password_verify($_POST['password'], $row[0])) {
 
     session_start();
     $_SESSION['userId'] = $row[0];
-    $apiHelper->sendResponse(400, '{"message": "Successfully logged in","id": "' . $row[0] .  '"}');
+    $apiHelper->sendResponse(200, '{"message": "Successfully logged in","id": "' . $row[0] .  '"}');
 }

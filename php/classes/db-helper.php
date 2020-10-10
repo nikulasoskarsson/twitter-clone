@@ -69,7 +69,7 @@ class DbHelper
             exit;
         }
     }
-    public function insertOrUpdateMultipleImages($id, $fkName, $fieldName, $folderName, $tableName)
+    public function insertOrUpdateMultipleImages($id, $fieldName, $fkName, $folderName, $tableName)
     {
 
         // Delete the old images 

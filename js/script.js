@@ -1,7 +1,7 @@
-const createTweetBtn = document.getElementById('create-tweet');
-const createTweetFromModalBtn = document.getElementById(
-  'create-tweet-from-modal'
-);
+// const createTweetBtn = document.getElementById('create-tweet');
+// const createTweetFromModalBtn = document.getElementById(
+//   'create-tweet-from-modal'
+// );
 const profileTweetContianer = document.getElementById(
   'profile-tweet-container'
 );
@@ -271,8 +271,6 @@ function createTweetCard(tweet, user) {
                         </li>
                     </ul>
 
-
-
                 </div>
             </div>
   </div>
@@ -307,8 +305,8 @@ function showTweetImage(img) {
   return `<img src="img/tweets/${img}" alt="" class="tweet-card__img" />`;
 }
 
-createTweetBtn.addEventListener('click', (e) => createTweet(e));
-createTweetFromModalBtn.addEventListener('click', (e) => createTweet(e));
+// createTweetBtn.addEventListener('click', (e) => createTweet(e));
+// createTweetFromModalBtn.addEventListener('click', (e) => createTweet(e));
 
 document.addEventListener('load', getData());
 closeUpdateTweetModalBtn.addEventListener('click', closeUpdateTweetModal);

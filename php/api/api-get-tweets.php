@@ -4,19 +4,11 @@ $apiHelper = new ApiHelper();
 
 $apiHelper->validateUserId($_GET); // Exit if not provided with existing id of a user
 
-$sTweets = file_get_contents('../../db/tweets.json');
-$aTweets = json_decode($sTweets);
-$aUserTweets = [];
+require(__DIR__ . '/../private/db.php');
 
-foreach ($aTweets as $jTweet) {
-    if ($jTweet->userId == $_GET['userId']) {
-        $jTweet->formattedTimestamp = $apiHelper->getFormattedTimeOrDate($jTweet->timestamp);
-        array_push($aUserTweets, $jTweet);
-    }
-}
-if (!count($aUserTweets)) {
-    $apiHelper->sendResponse(400, '{"message":"Could not find tweets for this user"}');
-} else {
-    $sUserTweets = json_encode($aUserTweets);
-    $apiHelper->sendResponse(200, $sUserTweets);
-}
+$userId = $_GET['userId'];
+$query = $db->prepare("SELECT * FROM tweets WHERE user_id =$userId");
+$query->execute();
+$rows = $query->fetchAll();
+
+$apiHelper->sendResponse(200, json_encode($rows));

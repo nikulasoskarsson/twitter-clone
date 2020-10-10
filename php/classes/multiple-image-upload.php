@@ -13,6 +13,7 @@ class ImageUploadMultipe
 
     public function uploadImages()
     {
+        var_dump($this->files);
         foreach ($this->files['tmp_name'] as $i => $file) {
             $name =  $_FILES['images']['name'][$i];
             $tmp = $_FILES['images']['tmp_name'][$i];
@@ -20,9 +21,16 @@ class ImageUploadMultipe
             $errors = $_FILES['images']['error'][$i];
             $type = $_FILES['images']['type'][$i];
 
-            array_push($this->fileNamesToReturn, $name);;
+            $fileExt = explode('.', $name); // ['cat', 'png']
+            $this->fileActualExt = strtolower(end($fileExt)); //jpg, png, etc..
 
-            move_uploaded_file($tmp, __DIR__ . "/../../img/$this->folder/$name");
+            $newFileName = uniqid('', true) . '.' . $this->fileActualExt;
+
+
+            array_push($this->fileNamesToReturn, $newFileName);;
+
+            move_uploaded_file($tmp, __DIR__ . "/../../img/$this->folder/$newFileName");
+            echo 'image uplod running';
         }
     }
     public function getUploadedFileNames()

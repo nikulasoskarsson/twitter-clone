@@ -6,7 +6,7 @@
         <div class="tweet-modal__content">
             <img src="img/cat.jpg" alt="" class="tweet-modal__img img-round-md">
             <div>
-                <input type="file" name="tweet-image" id="upload-tweet-image-modal" " class=" display-hidden" />
+                <input type="file" name="tweetImages[]" id="upload-tweet-image-modal" " class=" display-hidden" multiple />
                 <div class="tweet-modal__input-field">
 
                     <input type="text" class="tweet-modal__input input-placeholder-large" placeholder="What's happening">

@@ -2,11 +2,11 @@
 require_once(__DIR__ . '/../classes/helper-api.php');
 $apiHelper = new ApiHelper();
 
-$apiHelper->validateUserId($_POST); // Checks if userId exists and if its 
+$apiHelper->validateUserId($_POST);
 
 // Tweet can be emtpy if it has an image
 
-if (!isset($_FILES['tweetImage']) && !isset($_POST['tweet'])) {
+if (!isset($_FILES['images']) && !isset($_POST['tweet'])) {
     $apiHelper->sendResponse(400, '{
         "message": "Tweet must contain either text or a image"
     }');;
@@ -31,20 +31,20 @@ $lastInsertedId =  $db->lastInsertId();
 
 
 // Insert into tweet_images table
-if (isset($_FILES['tweetImage'])) {
+if (isset($_FILES['images'])) {
 
-    $dbHeper->insertOrUpdateImage($lastInsertedId, 'tweetImage', 'tweet_id', 'tweets', 'tweet_images');
+    $dbHeper->insertOrUpdateMultipleImages($lastInsertedId, 'images', 'tweet_id', 'tweets', 'tweet_images');
 }
 
 // Insert into tweet_body table
 if (isset($_POST['tweet'])) {
-    if (strlen($_POST['tweet']) < 2) {
+    if (!isset($_FILES['tweetImages']) && strlen($_POST['tweet']) < 2) {
         $apiHelper->sendResponse(400, '{
             "message": "Tweet has to be at least 2 characters long"
         }');;
     }
 
-    if (!strlen($_POST['tweet']) > 240) {
+    if (isset($_FILES['tweetImages']) && !strlen($_POST['tweet']) > 240) {
         $apiHelper->sendResponse(400, '{
             "message": "Tweet cannot be longer then 2 characters long"
         }');
@@ -56,5 +56,5 @@ if (isset($_POST['tweet'])) {
 
 
 
-$apiHelper->sendResponse(400, '{"message": "You have created a new tweet",
+$apiHelper->sendResponse(200, '{"message": "You have created a new tweet",
 "id": "' . $lastInsertedId . '"}');

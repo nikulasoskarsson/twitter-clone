@@ -21,10 +21,10 @@ class ApiHelper
     // Every protected route requires an id
     public function findUserIdMatch($id)
     {
-
         require(__DIR__ . '/../private/db.php');
-        var_dump($db);
-        $query = $db->prepare("SELECT * FROM users WHERE id = 2 LIMIT 1");
+
+        $query = $db->prepare("SELECT * FROM users WHERE id = :id LIMIT 1");
+        $query->bindValue(':id', $id);
         $query->execute();
         $row = $query->fetch();
 
