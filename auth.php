@@ -49,7 +49,7 @@ require('php/components/signup-modal.php');
       </div>
     </div>
     <div class="auth__right">
-      <form action="php/actions/login.php" id="login-form" class="login" method="POST">
+      <form onsubmit="return false;" action="php/actions/login.php" id="login-form" class="login" method="POST">
         <div class="login__input-field form-input-field border-neaturual">
           <label for="" class="login__label  form-input-field__label">Email or username</label>
           <input type="text" name="username" id="username" class="login__input  form-input-field__input" />
@@ -110,7 +110,7 @@ require('php/components/signup-modal.php');
 <script src="js/add-date-fields.js"></script>
 <script src="js/form-validation.js"></script>
 <script src="js/signup.js"></script>
-<script src="js/auth.js"></script>
+<script src="js/async.js"></script>
 </body>
 
 </html>
