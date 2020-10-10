@@ -110,6 +110,7 @@ require('php/components/signup-modal.php');
 <script src="js/add-date-fields.js"></script>
 <script src="js/form-validation.js"></script>
 <script src="js/signup.js"></script>
+<script src="js/auth.js"></script>
 </body>
 
 </html>

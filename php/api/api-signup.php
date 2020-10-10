@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once(__DIR__ . '/../classes/helper-api.php');
 $apiHelper = new ApiHelper();
 
@@ -99,6 +99,7 @@ try {
     $query->execute();
 
 
+    $_SESSION['userId'] = $db->lastInsertId();
     $apiHelper->sendResponse(200, '{"message": "You have successfuly signed up to twitter clone!",
     "id": "' . $db->lastInsertId() . '"}');
 } catch (PDOException $ex) {

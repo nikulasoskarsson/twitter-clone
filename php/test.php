@@ -20,4 +20,4 @@
 require_once('classes/db-helper.php');
 require_once('private/db.php');
 $dbHelper = new DbHelper($db);
-$dbHelper->insertOrUpdateMultipleImages(50, 'tweet_id', 'images', 'test', 'tweet_images');
+$dbHelper->insertOrUpdateMultipleImages(36, 'tweet_id', 'images', 'test', 'tweet_images');

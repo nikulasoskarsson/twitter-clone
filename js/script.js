@@ -312,11 +312,3 @@ createTweetFromModalBtn.addEventListener('click', (e) => createTweet(e));
 
 document.addEventListener('load', getData());
 closeUpdateTweetModalBtn.addEventListener('click', closeUpdateTweetModal);
-
-// setInterval(getData, 5000);
-
-/*  <div class="tweet-card__button-container">
-              <button class="tweet-card__button delete" id="${tweet.id}"onclick="deleteTweet();">Delete</button>
-              <button class="tweet-card__button update" id="${tweet.id}"onclick="updateTweet();">Update</button>
-            </div> */
-console.log(closeUpdateTweetModalBtn);
