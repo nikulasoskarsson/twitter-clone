@@ -52,22 +52,6 @@ if (strlen($_POST['password']) > 50) {
     $apiHelper->sendResponse(400, '{"message": "Password cannot be longer then 50 characters"}');
 }
 
-$newUser = [
-    "id" => uniqid(),
-    "firstname" => $_POST['firstname'],
-    "lastname" => $_POST['lastname'],
-    "username" => $_POST['username'],
-    "email" => $_POST['email'],
-    "password" => password_hash($_POST['password'], PASSWORD_DEFAULT),
-    "dob" => [
-        "month" => $_POST['month'], "year" => $_POST['year'], "day" => $_POST['day']
-    ],
-    "signUpDate" => strtotime('now'),
-    "userImg" => "placeholder.jpg",
-];
-
-
-
 require_once(__DIR__ . '/../private/db.php');
 try {
     $query = $db->prepare('SELECT * FROM users where email = :email OR username = :username LIMIT 1');
@@ -91,7 +75,7 @@ try {
     $query->bindValue(':lastname', $_POST['lastname']);
     $query->bindValue(':username', $_POST['username']);
     $query->bindValue(':email', $_POST['email']);
-    $query->bindValue(':password', $_POST['password']);
+    $query->bindValue(':password', password_hash($_POST['password'], PASSWORD_DEFAULT));
     $query->bindValue(':month', $_POST['month']);
     $query->bindValue(':year', $_POST['year']);
     $query->bindValue(':day', $_POST['day']);
