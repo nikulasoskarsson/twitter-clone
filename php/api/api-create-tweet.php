@@ -16,7 +16,7 @@ if (!isset($_FILES['images']) && !isset($_POST['tweet'])) {
 
 require(__DIR__ . '/../private/db.php');
 require_once(__DIR__ . '/../classes/db-helper.php');
-$dbHeper = new DbHelper($db);
+$dbHelper = new DbHelper($db);
 
 $lastInsertedId;
 $now = strtotime('now');
@@ -33,25 +33,35 @@ $lastInsertedId =  $db->lastInsertId();
 // Insert into tweet_images table
 if (isset($_FILES['images'])) {
 
-    $dbHeper->insertOrUpdateMultipleImages($lastInsertedId, 'images', 'tweet_id', 'tweets', 'tweet_images');
+    $dbHelper->insertOrUpdateMultipleImages($lastInsertedId, 'images', 'tweet_id', 'tweets', 'tweet_images');
+    // $dbHelper->insertOrUpdateMultipleImages(36, 'images', 'tweet_id',  'test', 'tweet_images');
 }
 
 // Insert into tweet_body table
 if (isset($_POST['tweet'])) {
-    if (!isset($_FILES['tweetImages']) && strlen($_POST['tweet']) < 2) {
+    if (strlen($_POST['tweet']) < 2) {
+        delPrevTweets($db,$lastInsertedId);
         $apiHelper->sendResponse(400, '{
             "message": "Tweet has to be at least 2 characters long"
         }');;
     }
 
-    if (isset($_FILES['tweetImages']) && !strlen($_POST['tweet']) > 240) {
+    if (!strlen($_POST['tweet']) > 240) {
         $apiHelper->sendResponse(400, '{
             "message": "Tweet cannot be longer then 2 characters long"
         }');
     }
-    $dbHeper->insertOrUpdateTextFromFK($lastInsertedId, 'body', 'tweet_id', $_POST['tweet'], 'tweet_body');
+    $dbHelper->insertOrUpdateTextFromFK($lastInsertedId, 'body', 'tweet_id', $_POST['tweet'], 'tweet_body');
 }
+function delPrevTweets($db, $id){
+    $query = $db->prepare("DELETE FROM tweets WHERE id=:id");
+    $query->bindValue(':id',$id);
+    $query->execute();
 
+    $query = $db->prepare("DELETE FROM tweet_images WHERE tweet_id=:id");
+    $query->bindValue(':id',$id);
+    $query->execute();
+}
 
 
 

@@ -3,7 +3,8 @@
 // require_once('classes/image-upload.php');
 // $imageUpload = new ImageUpload($_FILES['images'], __DIR__ . '/../img/test/');
 
-// var_dump($_FILES['images']['name']);
+var_dump($_FILES['images']['tmp_name']);
+
 // foreach ($_FILES['images']['tmp_name'] as $i => $file) {
 
 

@@ -36,7 +36,7 @@ class ApiHelper
         http_response_code($statusCode);
         header('Content-Type: application/json');
         echo $response;
-        exit;
+        exit();
     }
     public function getFormattedTimeOrDate($timestamp)
     {

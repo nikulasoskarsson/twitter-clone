@@ -13,7 +13,8 @@ class ImageUploadMultipe
 
     public function uploadImages()
     {
-        var_dump($this->files);
+        var_dump($this->files['tmp_name']);
+        
         foreach ($this->files['tmp_name'] as $i => $file) {
             $name =  $_FILES['images']['name'][$i];
             $tmp = $_FILES['images']['tmp_name'][$i];

@@ -1,24 +1,25 @@
-const loginFormEl = document.getElementById('login-form');
-const signupFormEl = document.getElementById('signup-form');
+const loginFormEl = document.getElementById('login-form')
+const signupFormEl = document.getElementById('signup-form')
 
 async function handleLogin(e) {
-  e.preventDefault();
+  e.preventDefault()
 
-  const res = await login(loginFormEl);
+  const res = await login(loginFormEl)
 
   if (res.status === 200) {
-    document.location.href = 'index.php';
+    console.log('everything is good')
+    document.location.href = 'index.php'
   }
 }
 
 async function handleSignup(e) {
-  e.preventDefault();
+  e.preventDefault()
 
-  const res = await signup(signupFormEl);
+  const res = await signup(signupFormEl)
   if (res.status === 200) {
-    document.location.href = 'index.php';
+    document.location.href = 'index.php'
   }
 }
 
-loginFormEl.addEventListener('submit', (e) => handleLogin(e));
-signupFormEl.addEventListener('submit', (e) => handleSignup(e));
+loginFormEl.addEventListener('submit', (e) => handleLogin(e))
+signupFormEl.addEventListener('submit', (e) => handleSignup(e))
