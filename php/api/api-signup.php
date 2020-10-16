@@ -7,7 +7,7 @@ if (!isset($_POST)) {
     $apiHelper->sendResponse(400, '{"message": "POST cannot be empty"}');
 }
 // Check if any of the fields are empty
-$fields = ['firstname', 'lastname', 'username', 'email', 'password', 'month', 'day', 'year'];
+$fields = ['firstName', 'lastName', 'userName', 'email', 'password', 'month', 'day', 'year'];
 foreach ($fields as $field) {
     if (empty($_POST["$field"])) {
         $apiHelper->sendResponse(400, '{"message": "' . $field . ' cannot be empty"}');
@@ -18,27 +18,27 @@ if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
     $apiHelper->sendResponse(400, '{"message": "Please insert a legit email"}');
 }
 
-if (strlen($_POST['firstname']) < 2) {
+if (strlen($_POST['firstName']) < 2) {
     $apiHelper->sendResponse(400, '{"message": "Firstname has to be at least 2 characters"}');
 }
 
-if (strlen($_POST['firstname']) > 50) {
+if (strlen($_POST['firstName']) > 50) {
     $apiHelper->sendResponse(400, '{"message": "Firstname cannot be more then 50 characters"}');
 }
 
-if (strlen($_POST['lastname']) < 2) {
+if (strlen($_POST['lastName']) < 2) {
     $apiHelper->sendResponse(400, '{"message": "Lastname has to be at least 2 characters"}');;
 }
 
-if (strlen($_POST['lastname']) > 50) {
+if (strlen($_POST['lastName']) > 50) {
     $apiHelper->sendResponse(400, '{"message": "Lastname cannot be more then 50 characters"}');
 }
 
-if (strlen($_POST['username']) < 2) {
+if (strlen($_POST['userName']) < 2) {
     $apiHelper->sendResponse(400, '{"message": "Username cannot be more then 50 characters"}');
 }
 
-if (strlen($_POST['username']) > 50) {
+if (strlen($_POST['userName']) > 50) {
     $apiHelper->sendResponse(400, '{"message": "Username cannot be more then 50 characters"}');
 }
 
@@ -71,9 +71,9 @@ try {
     }
     // No duplicate enteries = save user to the db
     $query = $db->prepare('INSERT INTO users VALUES (NULL, :firstname, :lastname, :username, :email, :password, :month, :year, :day, :timestamp)');
-    $query->bindValue(':firstname', $_POST['firstname']);
-    $query->bindValue(':lastname', $_POST['lastname']);
-    $query->bindValue(':username', $_POST['username']);
+    $query->bindValue(':firstname', $_POST['firstName']);
+    $query->bindValue(':lastname', $_POST['lastName']);
+    $query->bindValue(':username', $_POST['userName']);
     $query->bindValue(':email', $_POST['email']);
     $query->bindValue(':password', password_hash($_POST['password'], PASSWORD_DEFAULT));
     $query->bindValue(':month', $_POST['month']);

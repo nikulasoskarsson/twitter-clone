@@ -12,3 +12,9 @@ $query->execute();
 $rows = $query->fetchAll();
 
 $apiHelper->sendResponse(200, json_encode($rows));
+
+
+// SELECT * FROM tweets 
+// LEFT OUTER JOIN tweet_body ON tweet_body.tweet_id = tweets.id 
+// LEFT OUTER JOIN tweet_images ON tweet_images.tweet_id = tweets.id
+// WHERE user_id = 4

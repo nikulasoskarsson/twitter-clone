@@ -2,7 +2,7 @@ async function signup(form) {
   const formData = new FormData(form)
 
   try {
-    const conn = await fetch('/arango-api/api-create-user.php', {
+    const conn = await fetch('php/api/api-signup.php', {
       method: 'post',
       body: formData,
     })
@@ -10,7 +10,7 @@ async function signup(form) {
     console.log(conn)
     let res = await conn.text()
     console.log(res)
-    // res = JSON.parse(res)
+    res = JSON.parse(res)
     res.status = conn.status
     return res
   } catch (error) {
@@ -20,13 +20,13 @@ async function signup(form) {
 async function login(form) {
   const formData = new FormData(form)
   try {
-    const conn = await fetch('/arango-api/api-login.php', {
+    const conn = await fetch('php/api/api-login.php', {
       method: 'post',
       body: formData,
     })
 
     let res = await conn.text()
-    // res = JSON.parse(res)
+    res = JSON.parse(res)
     res.status = conn.status
     return res
   } catch (error) {
@@ -43,7 +43,7 @@ async function createTweet(userId, body, images) {
   }
 
   try {
-    const conn = await fetch('/arango-api/api-create-tweet.php', {
+    const conn = await fetch('php/api/api-create-tweet.php', {
       method: 'POST',
       body: data,
     })
