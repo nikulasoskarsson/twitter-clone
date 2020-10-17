@@ -48,7 +48,7 @@ async function getAllTweets(id) {
     const conn = await fetch(`php/api/api-get-tweets.php?userId=${id}`)
     const res = await conn.json()
     res.status = conn.status
-    console.log(res)
+    return res
     if (res.status !== 200) {
       console.log('running')
       return `Error fetching the tweets status ${res.status}`

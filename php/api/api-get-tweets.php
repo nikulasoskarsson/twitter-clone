@@ -17,14 +17,16 @@ $rows = $query->fetchAll();
 
 foreach($rows as &$row){
      if(isset($row[0])){
-        $row['images'] = array();
+    $row[3] = $apiHelper->getFormattedTimeOrDate($row[1]);
+
+        $row[4] = array();
         $query = $db->prepare("SELECT tweet_id, url FROM tweet_images WHERE tweet_id = :id");
         $query->bindValue(':id',$row[0]);
       
         $query->execute();
         $imgRows = $query->fetchAll();
         foreach($imgRows as $imgRow){
-            array_push($row['images'], $imgRow[1]);
+            array_push($row[4], $imgRow[1]);
         }
      }
    

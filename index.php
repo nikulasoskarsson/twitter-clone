@@ -304,7 +304,7 @@ require('php/components/update-tweet-modal.php'); ?>
 <script src="js/dropdowns.js"></script>
 <!-- <script src="js/insert-user-data.js"></script> -->
 <script src="js/async.js"></script>
-<!-- <script src="js/tweets.js"></script> -->
+<script src="js/tweets.js"></script>
 </body>
 
 </html>
