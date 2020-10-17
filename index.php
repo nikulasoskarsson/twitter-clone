@@ -129,7 +129,7 @@ require('php/components/update-tweet-modal.php'); ?>
   </div>
   <main id="main">
 
-    <div class="subpage subpage-visible" id="subpage-home">
+    <div class="subpage subpage-hidden" id="subpage-home">
       <?php require_once('php/subpages/home.php'); ?>
     </div>
 
@@ -153,13 +153,11 @@ require('php/components/update-tweet-modal.php'); ?>
       <?php require_once('php/subpages/lists.php'); ?>
     </div>
 
-    <div class="subpage subpage-hidden" id="subpage-profile">
+    <div class="subpage subpage-visible" id="subpage-profile">
       <?php require_once('php/subpages/profile.php'); ?>
     </div>
 
-    <div class="subpage subpage-hidden" id="subpage-more">
-      <?php require_once('php/subpages/more.php'); ?>
-    </div>
+ 
 
 
   </main>

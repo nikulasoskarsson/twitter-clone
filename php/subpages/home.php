@@ -129,7 +129,7 @@
                       <p class="last-image__amount">+8</p>
                     <img src="img/tweets/5f89c89d28bef6.54291619.jpg" alt="" class="tweet-card__img-mult tweet-card__img-mult-right tweet-card__img-mult-last">
                         
-                </div>
+                </div></div>
                 <div class="tweet-card__icon-container">
                     <div class="tweet-card__icon-field">
                         <svg viewBox="0 0 24 24" class="tweet-card__icon-field-icon">
