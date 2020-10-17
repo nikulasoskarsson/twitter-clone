@@ -2,146 +2,138 @@
 // const createTweetFromModalBtn = document.getElementById(
 //   'create-tweet-from-modal'
 // );
-const profileTweetContianer = document.getElementById(
-  'profile-tweet-container'
-);
+const profileTweetContianer = document.getElementById('profile-tweet-container')
 
-const closeUpdateTweetModalBtn = document.getElementById('close-update-modal');
+const closeUpdateTweetModalBtn = document.getElementById('close-update-modal')
 
 // AJAX functions that communicate with the API
 async function createTweet(e) {
-  const id = document.getElementById('user-id').getAttribute('data-user-id');
+  const id = document.getElementById('user-id').getAttribute('data-user-id')
 
   const tweet = e.target.parentNode.parentNode.querySelectorAll('input')[1]
-    .value;
-  const image = e.target.parentNode.parentNode.querySelectorAll('input')[0];
-  console.log(image);
+    .value
+  const image = e.target.parentNode.parentNode.querySelectorAll('input')[0]
+  console.log(image)
 
-  const data = new FormData();
-  data.append('userId', id);
-  data.append('tweet', tweet);
-  data.append('tweet-image', image.files[0]);
+  const data = new FormData()
+  data.append('userId', id)
+  data.append('tweet', tweet)
+  data.append('tweet-image', image.files[0])
 
   try {
     const conn = await fetch('php/api/api-create-tweet.php', {
       method: 'POST',
       body: data,
-    });
+    })
 
-    e.target.parentNode.parentNode.querySelectorAll('input')[1].value = '';
-    e.target.parentNode.parentNode.querySelectorAll('input')[0].value = '';
+    e.target.parentNode.parentNode.querySelectorAll('input')[1].value = ''
+    e.target.parentNode.parentNode.querySelectorAll('input')[0].value = ''
 
-    const res = await conn.text();
-    getData();
+    const res = await conn.text()
+    getData()
     // TODO show user he has created a tweet
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
 }
 
 async function getData() {
-  const tweets = await getAllTweets();
-  const user = await getUser();
+  const tweets = await getAllTweets()
+  const user = await getUser()
 
-  displayTweets(tweets, user);
+  displayTweets(tweets, user)
 }
 async function getAllTweets() {
-  const id = document.getElementById('user-id').getAttribute('data-user-id'); // Get the user id to only fetch his tweets
-  const conn = await fetch(`php/api/api-get-tweets.php?userId=${id}`);
-  const res = await conn.text();
-  return JSON.parse(res);
+  const id = document.getElementById('user-id').getAttribute('data-user-id') // Get the user id to only fetch his tweets
+  const conn = await fetch(`php/api/api-get-tweets.php?userId=${id}`)
+  const res = await conn.text()
+  return JSON.parse(res)
 }
 
 async function getUser() {
-  const id = document.getElementById('user-id').getAttribute('data-user-id');
-  const conn = await fetch(`php/api/api-get-user.php?userId=${id}`);
-  const res = await conn.text();
-  return JSON.parse(res);
+  const id = document.getElementById('user-id').getAttribute('data-user-id')
+  const conn = await fetch(`php/api/api-get-user.php?userId=${id}`)
+  const res = await conn.text()
+  return JSON.parse(res)
 }
 
 async function deleteTweet(tweetId) {
-  const userId = document
-    .getElementById('user-id')
-    .getAttribute('data-user-id');
+  const userId = document.getElementById('user-id').getAttribute('data-user-id')
 
-  const data = new FormData();
-  data.append('userId', userId);
-  data.append('tweetId', tweetId);
+  const data = new FormData()
+  data.append('userId', userId)
+  data.append('tweetId', tweetId)
 
   try {
     const conn = await fetch('php/api/api-delete-tweet.php', {
       method: 'POST',
       body: data,
-    });
-    const res = await conn.text();
+    })
+    const res = await conn.text()
 
-    getData();
+    getData()
   } catch (error) {}
 }
 
 async function updateTweet() {
-  const userId = document
-    .getElementById('user-id')
-    .getAttribute('data-user-id');
+  const userId = document.getElementById('user-id').getAttribute('data-user-id')
 
-  const updateTweetModal = document.getElementById('update-tweet-modal');
+  const updateTweetModal = document.getElementById('update-tweet-modal')
 
-  const tweetId = updateTweetModal.getAttribute('data-tweet-id');
-  const newTweet = updateTweetModal.getElementsByTagName('input')[1].value;
-  const newImage = updateTweetModal.getElementsByTagName('input')[0];
+  const tweetId = updateTweetModal.getAttribute('data-tweet-id')
+  const newTweet = updateTweetModal.getElementsByTagName('input')[1].value
+  const newImage = updateTweetModal.getElementsByTagName('input')[0]
 
-  const data = new FormData();
+  const data = new FormData()
 
-  data.append('userId', userId);
-  data.append('tweetId', tweetId);
-  data.append('newTweetBody', newTweet);
-  data.append('tweet-image', newImage.files[0]);
+  data.append('userId', userId)
+  data.append('tweetId', tweetId)
+  data.append('newTweetBody', newTweet)
+  data.append('tweet-image', newImage.files[0])
 
   try {
     const conn = await fetch('php/api/api-update-tweet.php', {
       method: 'POST',
       body: data,
-    });
-    const res = await conn.text();
-    newImage.value = '';
+    })
+    const res = await conn.text()
+    newImage.value = ''
 
     if (!conn.status !== 200) {
-      console.log(res);
+      console.log(res)
     }
-    closeUpdateTweetModal();
-    getData();
+    closeUpdateTweetModal()
+    getData()
   } catch (error) {
-    console.log('error:', error);
+    console.log('error:', error)
   }
 }
 
 async function getSingleTweet(id) {
-  const userId = document
-    .getElementById('user-id')
-    .getAttribute('data-user-id');
+  const userId = document.getElementById('user-id').getAttribute('data-user-id')
 
-  const user = await getUser();
+  const user = await getUser()
 
   const conn = await fetch(
     `php/api/api-get-single-tweet.php?userId=${userId}&tweetId=${id}`
-  );
+  )
 
-  const res = JSON.parse(await conn.text());
+  const res = JSON.parse(await conn.text())
 
   // TODO move code below to seperate function
-  displaySingleTweet(res, user);
+  displaySingleTweet(res, user)
 }
 
 // Regular functions that don't communicate with the api
 
 function displayTweets(tweets, user) {
-  profileTweetContianer.innerHTML = ''; //reset
+  profileTweetContianer.innerHTML = '' //reset
   tweets.forEach(
     (tweet) => (profileTweetContianer.innerHTML += createTweetCard(tweet, user))
-  );
+  )
 }
 function displaySingleTweet(tweet, user) {
-  profileTweetContianer.innerHTML = createTweetCard(tweet, user);
+  profileTweetContianer.innerHTML = createTweetCard(tweet, user)
 }
 function createTweetCard(tweet, user) {
   return `<div class="tweet-card">
@@ -274,39 +266,39 @@ function createTweetCard(tweet, user) {
                 </div>
             </div>
   </div>
-</div>`;
+</div>`
 }
 
 function openUpdateTweetModal(tweetBody, tweetId) {
   const updateTweetmodalContainer = document.getElementById(
     'update-modal-container'
-  );
-  const updateTweetModal = document.getElementById('update-tweet-modal');
-  updateTweetmodalContainer.classList.remove('display-hidden');
-  updateTweetModal.classList.remove('display-hidden');
+  )
+  const updateTweetModal = document.getElementById('update-tweet-modal')
+  updateTweetmodalContainer.classList.remove('display-hidden')
+  updateTweetModal.classList.remove('display-hidden')
 
-  updateTweetModal.setAttribute('data-tweet-id', tweetId);
+  updateTweetModal.setAttribute('data-tweet-id', tweetId)
 
-  const newTweetInput = updateTweetModal.getElementsByTagName('input')[1];
-  newTweetInput.value = tweetBody;
+  const newTweetInput = updateTweetModal.getElementsByTagName('input')[1]
+  newTweetInput.value = tweetBody
 }
 
 function closeUpdateTweetModal() {
   const updateTweetmodalContainer = document.getElementById(
     'update-modal-container'
-  );
-  const updateTweetModal = document.getElementById('update-tweet-modal');
+  )
+  const updateTweetModal = document.getElementById('update-tweet-modal')
 
-  updateTweetModal.classList.add('display-hidden');
-  updateTweetmodalContainer.classList.add('display-hidden');
+  updateTweetModal.classList.add('display-hidden')
+  updateTweetmodalContainer.classList.add('display-hidden')
 }
 
 function showTweetImage(img) {
-  return `<img src="img/tweets/${img}" alt="" class="tweet-card__img" />`;
+  return `<img src="img/tweets/${img}" alt="" class="tweet-card__img" />`
 }
 
 // createTweetBtn.addEventListener('click', (e) => createTweet(e));
 // createTweetFromModalBtn.addEventListener('click', (e) => createTweet(e));
 
-document.addEventListener('load', getData());
-closeUpdateTweetModalBtn.addEventListener('click', closeUpdateTweetModal);
+document.addEventListener('load', getData())
+closeUpdateTweetModalBtn.addEventListener('click', closeUpdateTweetModal)

@@ -298,13 +298,13 @@ require('php/components/update-tweet-modal.php'); ?>
   </div>
 </div>
 <script src="js/global.js"></script>
-<script src="js/script.js"></script>
+<!-- <script src="js/script.js"></script> -->
 <script src="js/sub-page-selector.js"></script>
 <script src="js/modals.js"></script>
 <script src="js/dropdowns.js"></script>
-<script src="js/insert-user-data.js"></script>
+<!-- <script src="js/insert-user-data.js"></script> -->
 <script src="js/async.js"></script>
-<script src="js/tweets.js"></script>
+<!-- <script src="js/tweets.js"></script> -->
 </body>
 
 </html>

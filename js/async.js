@@ -33,7 +33,32 @@ async function login(form) {
     console.log(error)
   }
 }
+async function getUser(id) {
+  try {
+    const conn = await fetch(`php/api/api-get-user.php?userId=${id}`)
+    const res = await conn.json()
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
 
+async function getAllTweets(id) {
+  try {
+    const conn = await fetch(`php/api/api-get-tweets.php?userId=${id}`)
+    const res = await conn.json()
+    res.status = conn.status
+    console.log(res)
+    if (res.status !== 200) {
+      console.log('running')
+      return `Error fetching the tweets status ${res.status}`
+    }
+
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
 async function createTweet(userId, body, images) {
   const data = new FormData()
   data.append('userId', userId)
@@ -60,3 +85,5 @@ async function createTweet(userId, body, images) {
     console.log(error)
   }
 }
+
+getAllTweets(4)
