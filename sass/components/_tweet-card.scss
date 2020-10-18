@@ -74,11 +74,50 @@
       }
     }
   }
+&__multiple-img-container{
+  display:grid;
+  grid-template-columns: repeat(2,1fr);
 
+  gap:0.1rem;
+}
+&__img-mult{
+  width: 100%;
+  height:12rem;
+  object-fit: cover;
+  cursor: pointer;
+
+ 
+  &-left{
+    border-top-left-radius:1rem;
+    border-bottom-left-radius:1rem;
+  }
+  &-right{
+    border-top-right-radius:1rem;
+    border-bottom-right-radius:1rem;
+  }
+  &-full{
+    border-radius: 1rem;
+    grid-column: 1 / -1;
+  }
+  &-last{
+    cursor: pointer !important;
+    &:after{
+      content:'';
+      height:100%;
+      width: 100%;
+      position: absolute;
+      top:0;
+      left:0;
+      background:green;
+      cursor: pointer;
+    }
+  }
+}
   &__img {
     width: 100%;
     margin: 1rem 0;
     border-radius: 1rem;
+    cursor:pointer;
   }
 
   &__icon-container {
@@ -166,4 +205,40 @@
   &__img {
     @extend .tweet-card__img;
   }
+}
+
+
+.last-image{
+  height:100%;
+  width:100%;
+  z-index: 4;
+  position: relative;
+  &__film{
+    position: absolute;
+    top:0;
+    left:0;
+    background:rgba(#444,0.7);
+    z-index: 5;
+    width:100%;
+    height:100%;
+    border-top-right-radius:1rem;
+    border-bottom-right-radius:1rem;
+    cursor: pointer;
+  }
+  &__amount{
+    color:#fff;
+    font-size: 1.6rem;
+    font-weight: bold;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    z-index: 6;
+  }
+  img{
+    z-index: 4;
+  }
+}
+.image-amount{
+
 }

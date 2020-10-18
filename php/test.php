@@ -1,13 +1,24 @@
 <?php
 
 // require_once('classes/image-upload.php');
-// $imageUpload = new ImageUpload($_FILES['user-image'], '../img/user/');
-// $imageUpload->uploadImage();
+// $imageUpload = new ImageUpload($_FILES['images'], __DIR__ . '/../img/test/');
 
-// require(__DIR__ . '/classes/helper-api.php');
-// $apiHelper = new ApiHelper();
-// echo $apiHelper->validateUserid($_POST['id']);
-// $apiHelper->sendResponse(400, '{
-//     "msg": "api res func working",
-//     "id": "' . $_POST['id'] . '"
-// }');
+var_dump($_FILES['images']['tmp_name']);
+
+// foreach ($_FILES['images']['tmp_name'] as $i => $file) {
+
+
+//     $name =  $_FILES['images']['name'][$i];
+//     $tmp = $_FILES['images']['tmp_name'][$i];
+//     $size =  $_FILES['images']['size'][$i];
+//     $errors = $_FILES['images']['errors'][$i];
+//     $type = $_FILES['images']['type'][$i];
+
+//     $newImg = [$name, $tmp, $size, $errors, $type];
+// }
+
+
+require_once('classes/db-helper.php');
+require_once('private/db.php');
+$dbHelper = new DbHelper($db);
+$dbHelper->insertOrUpdateMultipleImages(36, 'images', 'tweet_id',  'test', 'tweet_images');

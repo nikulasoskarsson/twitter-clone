@@ -1,8 +1,8 @@
-<div id="modal-container" class="modal-container display-hidden">
+
     <div id="signup-modal" class="modal signup-modal display-hidden">
 
         <div class="modal__content">
-            <form action="php/actions/signup.php" id="signup-form" class="signup-form" method="POST">
+            <form id="signup-form" class="signup-form">
                 <div class="signup-modal__header">
                     <div></div>
                     <svg viewBox="0 0 24 24" aria-label="Twitter" class="signup-modal__header-icon icon-25px-primary ">
@@ -17,7 +17,7 @@
 
                 <div class="signup-form__input-field form-input-field border-neaturual">
                     <label for="" class="signup-form__label form-input-field__label">Firstname</label>
-                    <input type="firstname" name="firstname" id="firstname" class="signup-form__input form-input-field__input" />
+                    <input type="firstname" name="firstName" id="firstname" class="signup-form__input form-input-field__input" />
                     <div id="firstname-character-display"><span id="firstname-character-count">0</span> / 50</div>
                 </div>
                 <p class="error-msg display-hidden" id="firstname-error-msg">Character count invalid</p>
@@ -25,14 +25,14 @@
 
                 <div class="signup-form__input-field form-input-field border-neaturual">
                     <label for="" class="signup-form__label form-input-field__label">Lastname</label>
-                    <input type="text" name="lastname" id="lastname" class="signup-form__input form-input-field__input" />
+                    <input type="text" name="lastName" id="lastname" class="signup-form__input form-input-field__input" />
                     <div id="lastname-character-display"><span id="lastname-character-count">0</span> / 50</div>
                 </div>
                 <p class="error-msg display-hidden" id="lastname-error-msg">Character count invalid</p>
 
                 <div class="signup-form__input-field form-input-field border-neaturual">
                     <label for="" class="signup-form__label form-input-field__label">Choose a username</label>
-                    <input type="text" name="username" id="username" class="signup-form__input form-input-field__input" />
+                    <input type="text" name="userName" id="username" class="signup-form__input form-input-field__input" />
                     <div id="lastname-character-display"><span id="lastname-character-count">0</span> / 50</div>
                 </div>
                 <p class="error-msg display-hidden" id="username-error-msg">Character count invalid</p>
@@ -86,4 +86,3 @@
             </form>
         </div>
     </div>
-</div>

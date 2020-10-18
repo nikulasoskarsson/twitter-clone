@@ -11,6 +11,7 @@ class ApiHelper
 }');
 
         // Return with a status code of 400 and an error message if the id is not found in the db
+
         if (!$this->findUserIdMatch($method['userId'])) {
             $this->sendResponse(400, '{
     "message": "user not found"
@@ -20,15 +21,14 @@ class ApiHelper
     // Every protected route requires an id
     public function findUserIdMatch($id)
     {
-        $sUsers = file_get_contents(__DIR__ . '/../../db/users.json');
-        $aUsers = json_decode($sUsers);
-        foreach ($aUsers as $jUser) {
+        require(__DIR__ . '/../private/db.php');
 
-            if ($jUser->id === $id) {
-                return true;
-            }
-        }
-        return false;
+        $query = $db->prepare("SELECT * FROM users WHERE id = :id LIMIT 1");
+        $query->bindValue(':id', $id);
+        $query->execute();
+        $row = $query->fetch();
+
+        return $row;
     }
 
     public function sendResponse($statusCode, $response)
@@ -36,7 +36,7 @@ class ApiHelper
         http_response_code($statusCode);
         header('Content-Type: application/json');
         echo $response;
-        exit;
+        exit();
     }
     public function getFormattedTimeOrDate($timestamp)
     {

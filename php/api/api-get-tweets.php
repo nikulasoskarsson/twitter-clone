@@ -4,18 +4,38 @@ $apiHelper = new ApiHelper();
 
 $apiHelper->validateUserId($_GET); // Exit if not provided with existing id of a user
 
-$sTweets = file_get_contents('../../db/tweets.json');
-$aTweets = json_decode($sTweets);
-$aUserTweets = [];
+require(__DIR__ . '/../private/db.php');
 
-foreach ($aTweets as $jTweet) {
-    if ($jTweet->userId == $_GET['userId']) {
-        array_push($aUserTweets, $jTweet);
-    }
+
+$query = $db->prepare("SELECT tweets.id, tweets.timestamp, tweet_body.body FROM tweets 
+LEFT OUTER JOIN tweet_body ON tweet_body.tweet_id = tweets.id 
+WHERE user_id = :id");
+$query->bindValue(':id',$_GET['userId']);
+$query->execute();
+
+$rows = $query->fetchAll();
+
+foreach($rows as &$row){
+     if(isset($row[0])){
+    $row[3] = $apiHelper->getFormattedTimeOrDate($row[1]);
+
+        $row[4] = array();
+        $query = $db->prepare("SELECT tweet_id, url FROM tweet_images WHERE tweet_id = :id");
+        $query->bindValue(':id',$row[0]);
+      
+        $query->execute();
+        $imgRows = $query->fetchAll();
+        foreach($imgRows as $imgRow){
+            array_push($row[4], $imgRow[1]);
+        }
+     }
+   
 }
-if (!count($aUserTweets)) {
-    $apiHelper->sendResponse(400, '{"message":"Could not find tweets for this user"}');
-} else {
-    $sUserTweets = json_encode($aUserTweets);
-    $apiHelper->sendResponse(200, $sUserTweets);
-}
+
+ $apiHelper->sendResponse(200, json_encode($rows));
+
+
+// SELECT * FROM tweets 
+// LEFT OUTER JOIN tweet_body ON tweet_body.tweet_id = tweets.id 
+// LEFT OUTER JOIN tweet_images ON tweet_images.tweet_id = tweets.id
+// WHERE user_id = :id

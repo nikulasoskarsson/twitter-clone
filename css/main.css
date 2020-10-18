@@ -269,13 +269,17 @@ button {
 .signup-modal {
   padding: 2rem;
   width: 40%;
-  height: 100%;
-  width: 100%;
   position: relative; }
+  @media only screen and (max-width: 31.25em) {
+    .signup-modal {
+      height: 100%;
+      width: 100%; } }
   .signup-modal__content {
-    position: relative;
-    height: 100%;
-    width: 100%; }
+    position: relative; }
+    @media only screen and (max-width: 50em) {
+      .signup-modal__content {
+        height: 100%;
+        width: 100%; } }
   .signup-modal__header {
     display: flex;
     justify-content: space-between;
@@ -356,13 +360,13 @@ button {
       margin-bottom: 1rem; }
 
 .display-hidden {
-  display: none; }
+  display: none !important; }
 
 .display-inline-block {
-  display: inline-block; }
+  display: inline-block !important; }
 
 .display-flex {
-  display: flex; }
+  display: flex !important; }
 
 .dob-container {
   display: grid;
@@ -378,6 +382,25 @@ button {
 
 .dob-input-field {
   padding: 0.5rem 0 !important; }
+
+.image-modal {
+  height: 80%;
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center; }
+  .image-modal__icon {
+    width: 2rem;
+    height: 2rem;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    cursor: pointer; }
+  .image-modal__img {
+    height: 100%;
+    width: 90%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto; }
 
 .tweet-card, .retweet-card {
   position: relative;
@@ -428,10 +451,40 @@ button {
       height: 100%; }
       .tweet-card__tweet-input:focus {
         outline: none; }
+  .tweet-card__multiple-img-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.1rem; }
+  .tweet-card__img-mult {
+    width: 100%;
+    height: 12rem;
+    object-fit: cover;
+    cursor: pointer; }
+    .tweet-card__img-mult-left {
+      border-top-left-radius: 1rem;
+      border-bottom-left-radius: 1rem; }
+    .tweet-card__img-mult-right {
+      border-top-right-radius: 1rem;
+      border-bottom-right-radius: 1rem; }
+    .tweet-card__img-mult-full {
+      border-radius: 1rem;
+      grid-column: 1 / -1; }
+    .tweet-card__img-mult-last {
+      cursor: pointer !important; }
+      .tweet-card__img-mult-last:after {
+        content: '';
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: green;
+        cursor: pointer; }
   .tweet-card__img, .retweet-card__img {
     width: 100%;
     margin: 1rem 0;
-    border-radius: 1rem; }
+    border-radius: 1rem;
+    cursor: pointer; }
   .tweet-card__icon-container {
     padding-top: 1rem;
     display: grid;
@@ -477,6 +530,34 @@ button {
     height: 1.5rem;
     width: 1.5rem;
     border-radius: 50%; }
+
+.last-image {
+  height: 100%;
+  width: 100%;
+  z-index: 4;
+  position: relative; }
+  .last-image__film {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(68, 68, 68, 0.7);
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    cursor: pointer; }
+  .last-image__amount {
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 6; }
+  .last-image img {
+    z-index: 4; }
 
 .user {
   display: grid;

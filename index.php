@@ -3,10 +3,16 @@ require('php/isSignedIn.php');
 if (!$isSignedIn) {
   header('Location: auth.php');
 }
+?>
+
+<div id="modal-container" class="modal-container display-hidden">
+  <?php
 require('php/components/header.php');
 require('php/components/tweet-modal.php');
-require('php/components/update-tweet-modal.php'); ?>
-
+require('php/components/update-tweet-modal.php');
+require('php/components/image-modal.php');
+?>
+</div>
 
 <div id="page">
   <div id="menu">
@@ -157,9 +163,7 @@ require('php/components/update-tweet-modal.php'); ?>
       <?php require_once('php/subpages/profile.php'); ?>
     </div>
 
-    <div class="subpage subpage-hidden" id="subpage-more">
-      <?php require_once('php/subpages/more.php'); ?>
-    </div>
+ 
 
 
   </main>
@@ -298,10 +302,13 @@ require('php/components/update-tweet-modal.php'); ?>
   </div>
 </div>
 <script src="js/global.js"></script>
-<script src="js/script.js"></script>
+
 <script src="js/sub-page-selector.js"></script>
 <script src="js/modals.js"></script>
 <script src="js/dropdowns.js"></script>
+
+<script src="js/async.js"></script>
+<script src="js/tweets.js"></script>
 <script src="js/insert-user-data.js"></script>
 </body>
 

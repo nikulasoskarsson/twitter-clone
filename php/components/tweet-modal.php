@@ -1,4 +1,4 @@
-<div id="modal-container" class="modal-container display-hidden">
+
     <div id="tweet-modal" class="modal tweet-modal display-hidden">
         <div class="tweet-modal__header">
             <h3 id="close-modal">X</h3>
@@ -6,10 +6,10 @@
         <div class="tweet-modal__content">
             <img src="img/cat.jpg" alt="" class="tweet-modal__img img-round-md">
             <div>
-                <input type="file" name="tweet-image" id="upload-tweet-image-modal" " class=" display-hidden" />
+                <input type="file" name="images[]" id="upload-tweet-image-modal" " class=" display-hidden" multiple />
                 <div class="tweet-modal__input-field">
 
-                    <input type="text" class="tweet-modal__input input-placeholder-large" placeholder="What's happening">
+                    <input type="text" name="body" class="tweet-modal__input input-placeholder-large" placeholder="What's happening">
                     <span class="tagline-primary-md">
                         <svg viewBox="0 0 24 24" class="tagline-primary-md-img">
                             <g>
@@ -68,4 +68,3 @@
             </div>
         </div>
     </div>
-</div>

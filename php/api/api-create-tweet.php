@@ -2,42 +2,69 @@
 require_once(__DIR__ . '/../classes/helper-api.php');
 $apiHelper = new ApiHelper();
 
-$apiHelper->validateUserId($_POST); // Checks if userId exists and if its 
+$apiHelper->validateUserId($_POST);
 
-if (strlen($_POST['tweet']) < 2) {
+// Tweet can be emtpy if it has an image
+
+if (!isset($_FILES['images']) && !isset($_POST['tweet'])) {
     $apiHelper->sendResponse(400, '{
-        "message": "Tweet has to be at least 2 characters long"
+        "message": "Tweet must contain either text or a image"
     }');;
 }
 
-if (!strlen($_POST['tweet']) > 240) {
-    $apiHelper->sendResponse(400, '{
-        "message": "Tweet cannot be longer then 2 characters long"
-    }');
+
+
+require(__DIR__ . '/../private/db.php');
+require_once(__DIR__ . '/../classes/db-helper.php');
+$dbHelper = new DbHelper($db);
+
+$lastInsertedId;
+$now = strtotime('now');
+
+// Insert into tweets table
+$query = $db->prepare("INSERT INTO tweets VALUES(null, :userId, $now)");
+$query->bindValue('userId', $_POST['userId']);
+
+
+$query->execute();
+$lastInsertedId =  $db->lastInsertId();
+
+
+// Insert into tweet_images table
+if (isset($_FILES['images'])) {
+
+    $dbHelper->insertOrUpdateMultipleImages($lastInsertedId, 'images', 'tweet_id', 'tweets', 'tweet_images');
+    // $dbHelper->insertOrUpdateMultipleImages(36, 'images', 'tweet_id',  'test', 'tweet_images');
+}
+
+// Insert into tweet_body table
+if (isset($_POST['tweet'])) {
+    if (strlen($_POST['tweet']) < 2) {
+        delPrevTweets($db,$lastInsertedId);
+        $apiHelper->sendResponse(400, '{
+            "message": "Tweet has to be at least 2 characters long"
+        }');;
+    }
+
+    if (!strlen($_POST['tweet']) > 240) {
+        $apiHelper->sendResponse(400, '{
+            "message": "Tweet cannot be longer then 2 characters long"
+        }');
+    }
+    $dbHelper->insertOrUpdateTextFromFK($lastInsertedId, 'body', 'tweet_id', $_POST['tweet'], 'tweet_body');
+}
+function delPrevTweets($db, $id){
+    $query = $db->prepare("DELETE FROM tweets WHERE id=:id");
+    $query->bindValue(':id',$id);
+    $query->execute();
+
+    $query = $db->prepare("DELETE FROM tweet_images WHERE tweet_id=:id");
+    $query->bindValue(':id',$id);
+    $query->execute();
 }
 
 
-$newTweet = [
-    'id' => uniqid(),
-    'userId' => $_POST['userId'],
-    'body' => $_POST['tweet'],
-    'active' => 1,
-    'timestamp' => strtotime('now')
-];
-
-if (isset($_FILES['tweet-image'])) {
-    require_once('../classes/image-upload.php');
-    $imageUpload = new ImageUpload($_FILES['tweet-image'], '../../img/tweets/', '../../db/tweets.json');
-    $imageUpload->uploadImage();
-    $newTweet['tweetImage'] = $imageUpload->getFileName();
-}
 
 
-$sTweets = file_get_contents('../../db/tweets.json');
-$aTweets = json_decode($sTweets);
-
-array_unshift($aTweets, $newTweet);
-$sTweets = json_encode($aTweets);
-file_put_contents('../../db/tweets.json', $sTweets);
-$apiHelper->sendResponse(400, '{"message": "You have created a new tweet",
-"id": "' . $newTweet['id'] . '"}');
+$apiHelper->sendResponse(200, '{"message": "You have created a new tweet",
+"id": "' . $lastInsertedId . '"}');

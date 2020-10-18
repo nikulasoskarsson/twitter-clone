@@ -1,130 +1,29 @@
-// const createTweetBtn = document.getElementById('create-tweet');
-// const createTweetFromModalBtn = document.getElementById(
-//   'create-tweet-from-modal'
-// );
 const profileTweetContianer = document.getElementById('profile-tweet-container')
+const createTweetBtn = document.getElementById('create-tweet')
+const createTweetFromModalBtn = document.getElementById(
+  'create-tweet-from-modal'
+)
 
-const closeUpdateTweetModalBtn = document.getElementById('close-update-modal')
-
-// AJAX functions that communicate with the API
-async function createTweet(e) {
+async function handleCreateTweet(e) {
+  console.log('handle create tweet running')
   const id = document.getElementById('user-id').getAttribute('data-user-id')
-
   const tweet = e.target.parentNode.parentNode.querySelectorAll('input')[1]
     .value
-  const image = e.target.parentNode.parentNode.querySelectorAll('input')[0]
-  console.log(image)
+  const images = e.target.parentNode.parentNode.querySelectorAll('input')[0]
 
-  const data = new FormData()
-  data.append('userId', id)
-  data.append('tweet', tweet)
-  data.append('tweet-image', image.files[0])
-
-  try {
-    const conn = await fetch('php/api/api-create-tweet.php', {
-      method: 'POST',
-      body: data,
-    })
-
-    e.target.parentNode.parentNode.querySelectorAll('input')[1].value = ''
-    e.target.parentNode.parentNode.querySelectorAll('input')[0].value = ''
-
-    const res = await conn.text()
-    getData()
-    // TODO show user he has created a tweet
-  } catch (error) {
-    console.log(error)
-  }
+  const res = await createTweet(id, tweet, images)
+  console.log(res)
+  //   if (res.status === 200) {
+  //   }
 }
 
-async function getData() {
-  const tweets = await getAllTweets()
-  const user = await getUser()
+async function handleDisplayingTweets() {
+  const id = document.getElementById('user-id').getAttribute('data-user-id')
+  const tweets = await getAllTweets(id)
+  const user = await getUser(id)
 
   displayTweets(tweets, user)
 }
-async function getAllTweets() {
-  const id = document.getElementById('user-id').getAttribute('data-user-id') // Get the user id to only fetch his tweets
-  const conn = await fetch(`php/api/api-get-tweets.php?userId=${id}`)
-  const res = await conn.text()
-  return JSON.parse(res)
-}
-
-async function getUser() {
-  const id = document.getElementById('user-id').getAttribute('data-user-id')
-  const conn = await fetch(`php/api/api-get-user.php?userId=${id}`)
-  const res = await conn.text()
-  return JSON.parse(res)
-}
-
-async function deleteTweet(tweetId) {
-  const userId = document.getElementById('user-id').getAttribute('data-user-id')
-
-  const data = new FormData()
-  data.append('userId', userId)
-  data.append('tweetId', tweetId)
-
-  try {
-    const conn = await fetch('php/api/api-delete-tweet.php', {
-      method: 'POST',
-      body: data,
-    })
-    const res = await conn.text()
-
-    getData()
-  } catch (error) {}
-}
-
-async function updateTweet() {
-  const userId = document.getElementById('user-id').getAttribute('data-user-id')
-
-  const updateTweetModal = document.getElementById('update-tweet-modal')
-
-  const tweetId = updateTweetModal.getAttribute('data-tweet-id')
-  const newTweet = updateTweetModal.getElementsByTagName('input')[1].value
-  const newImage = updateTweetModal.getElementsByTagName('input')[0]
-
-  const data = new FormData()
-
-  data.append('userId', userId)
-  data.append('tweetId', tweetId)
-  data.append('newTweetBody', newTweet)
-  data.append('tweet-image', newImage.files[0])
-
-  try {
-    const conn = await fetch('php/api/api-update-tweet.php', {
-      method: 'POST',
-      body: data,
-    })
-    const res = await conn.text()
-    newImage.value = ''
-
-    if (!conn.status !== 200) {
-      console.log(res)
-    }
-    closeUpdateTweetModal()
-    getData()
-  } catch (error) {
-    console.log('error:', error)
-  }
-}
-
-async function getSingleTweet(id) {
-  const userId = document.getElementById('user-id').getAttribute('data-user-id')
-
-  const user = await getUser()
-
-  const conn = await fetch(
-    `php/api/api-get-single-tweet.php?userId=${userId}&tweetId=${id}`
-  )
-
-  const res = JSON.parse(await conn.text())
-
-  // TODO move code below to seperate function
-  displaySingleTweet(res, user)
-}
-
-// Regular functions that don't communicate with the api
 
 function displayTweets(tweets, user) {
   profileTweetContianer.innerHTML = '' //reset
@@ -136,26 +35,25 @@ function displaySingleTweet(tweet, user) {
   profileTweetContianer.innerHTML = createTweetCard(tweet, user)
 }
 function createTweetCard(tweet, user) {
+  console.log(tweet[3])
   return `<div class="tweet-card">
   <div class="tweet-card__grid-container">
-      <img class="tweet-card__user-img" src="img/user/${user.userImg}" />
+      <img class="tweet-card__user-img" src="img/user/${
+        user[9] ? user[9] : 'placeholder.jpg'
+      }" />
       <div>
           <div class="tweet-card__info">
               <div class="tweet-card__user">
-                  <h3 class="tweet-card__user-name">${user.firstname} ${
-    user.lastname
-  }</h3>
-                  <span class="tweet-card__user-handle">@${user.username}</span>
+                  <h3 class="tweet-card__user-name">${user[1]} ${user[2]}</h3>
+                  <span class="tweet-card__user-handle">@${user[3]}</span>
               </div>
-              <span class="tweet-card__tweet-date">${
-                tweet.formattedTimestamp
-              }</span>
+              <span class="tweet-card__tweet-date">${tweet[3]}</span>
           </div>
 
           <p class="tweet-card__tweet">
-              ${tweet.body}
+              ${tweet[2]}
           </p>
-          ${tweet.tweetImage ? showTweetImage(tweet.tweetImage) : ''}
+          ${tweet[4].length ? showTweetImages(tweet[4]) : ''}
           <div class="tweet-card__icon-container">
               <div class="tweet-card__icon-field">
                   <svg viewBox="0 0 24 24" class="tweet-card__icon-field-icon">
@@ -268,37 +166,65 @@ function createTweetCard(tweet, user) {
   </div>
 </div>`
 }
+function showTweetImages(images) {
+  return images.length > 1
+    ? showMultipleImages(images)
+    : showSingleImage(images)
+}
+function showSingleImage(img) {
+  return `<img onclick="openImageModal('${img}')" src="img/tweets/${img}" alt="" class="tweet-card__img" />`
+}
+function showMultipleImages(images) {
+  const imgContainer = document.createElement('div')
+  imgContainer.classList.add('tweet-card__multiple-img-container')
 
-function openUpdateTweetModal(tweetBody, tweetId) {
-  const updateTweetmodalContainer = document.getElementById(
-    'update-modal-container'
-  )
-  const updateTweetModal = document.getElementById('update-tweet-modal')
-  updateTweetmodalContainer.classList.remove('display-hidden')
-  updateTweetModal.classList.remove('display-hidden')
+  for (let i = 0; i < 4; i++) {
+    // break out of the for loop if there are no more images
+    if (i > images.length) {
+      break
+    }
+    if (i === images.length) {
+      break
+    }
+    // add extra container class if you have more then 4 images
 
-  updateTweetModal.setAttribute('data-tweet-id', tweetId)
-
-  const newTweetInput = updateTweetModal.getElementsByTagName('input')[1]
-  newTweetInput.value = tweetBody
+    if (i === 3 && images.length > 4) {
+      imgContainer.innerHTML += `   <div class="last-image" >
+    <div class="last-image__film" onclick="openImageModal('${
+      images[i]
+    }', '${images}', ${i})">  <p class="last-image__amount">+${
+        images.length - i - 1
+      }</p></div>
+  
+  <img src="img/tweets/${
+    images[i]
+  }" alt="" class="tweet-card__img-mult tweet-card__img-mult-right tweet-card__img-mult-last">
+      
+</div>`
+    } else {
+      imgContainer.innerHTML += `<img onclick="openImageModal('${
+        images[i]
+      }', '${images}', ${i})" src="img/tweets/${
+        images[i]
+      }" alt="" class='${getTweetImgClassName(images, i)}' />`
+    }
+  }
+  return imgContainer.outerHTML
+}
+// function that will return a classname for the image depanding on a lot of factors like if its on the left or right
+function getTweetImgClassName(images, index) {
+  let classes = 'tweet-card__img-mult'
+  if (index === 2 && images.length === 3) {
+    classes += ' tweet-card__img-mult-full'
+  } else if (index === 0 || index === 2) {
+    classes += ' tweet-card__img-mult-left'
+  } else if (index === 1 || index === 3) {
+    classes += ' tweet-card__img-mult-right'
+  }
+  return classes
 }
 
-function closeUpdateTweetModal() {
-  const updateTweetmodalContainer = document.getElementById(
-    'update-modal-container'
-  )
-  const updateTweetModal = document.getElementById('update-tweet-modal')
+createTweetBtn.addEventListener('click', (e) => handleCreateTweet(e))
+createTweetFromModalBtn.addEventListener('click', (e) => handleCreateTweet(e))
 
-  updateTweetModal.classList.add('display-hidden')
-  updateTweetmodalContainer.classList.add('display-hidden')
-}
-
-function showTweetImage(img) {
-  return `<img src="img/tweets/${img}" alt="" class="tweet-card__img" />`
-}
-
-// createTweetBtn.addEventListener('click', (e) => createTweet(e));
-// createTweetFromModalBtn.addEventListener('click', (e) => createTweet(e));
-
-document.addEventListener('load', getData())
-closeUpdateTweetModalBtn.addEventListener('click', closeUpdateTweetModal)
+handleDisplayingTweets()
