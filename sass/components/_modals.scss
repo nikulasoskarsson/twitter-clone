@@ -206,13 +206,13 @@
 
 // for js functonality
 .display-hidden {
-  display: none;
+  display: none !important;
 }
 .display-inline-block {
-  display: inline-block;
+  display: inline-block !important;
 }
 .display-flex {
-  display: flex;
+  display: flex !important;
 }
 
 // General styles for different modals
@@ -230,4 +230,29 @@
 }
 .dob-input-field {
   padding: 0.5rem 0 !important;
+}
+
+.image-modal{
+  height:80%;
+  width:80%;
+  margin:0 auto;
+  display:flex;
+ align-items: center;
+  
+  &__icon{
+    width:2rem;
+    height:2rem;
+    background:rgba(#fff,0.4);
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  &__img{
+    height:100%;
+    width:90%;
+    object-fit:cover;
+    display:block;
+    margin:0 auto;
+   
+  }
 }

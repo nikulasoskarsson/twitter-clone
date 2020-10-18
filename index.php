@@ -3,10 +3,16 @@ require('php/isSignedIn.php');
 if (!$isSignedIn) {
   header('Location: auth.php');
 }
+?>
+
+<div id="modal-container" class="modal-container display-hidden">
+  <?php
 require('php/components/header.php');
 require('php/components/tweet-modal.php');
-require('php/components/update-tweet-modal.php'); ?>
-
+require('php/components/update-tweet-modal.php');
+require('php/components/image-modal.php');
+?>
+</div>
 
 <div id="page">
   <div id="menu">

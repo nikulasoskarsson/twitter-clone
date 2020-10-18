@@ -1,4 +1,4 @@
-<div id="modal-container" class="modal-container display-hidden">
+
     <div id="tweet-modal" class="modal tweet-modal display-hidden">
         <div class="tweet-modal__header">
             <h3 id="close-modal">X</h3>
@@ -68,4 +68,3 @@
             </div>
         </div>
     </div>
-</div>

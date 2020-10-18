@@ -172,7 +172,7 @@ function showTweetImages(images) {
     : showSingleImage(images)
 }
 function showSingleImage(img) {
-  return `<img src="img/tweets/${img}" alt="" class="tweet-card__img" />`
+  return `<img onclick="openImageModal('${img}')" src="img/tweets/${img}" alt="" class="tweet-card__img" />`
 }
 function showMultipleImages(images) {
   const imgContainer = document.createElement('div')
@@ -189,14 +189,22 @@ function showMultipleImages(images) {
     // add extra container class if you have more then 4 images
 
     if (i === 3 && images.length > 4) {
-      imgContainer.innerHTML += `   <div class="last-image">
-    <div class="last-image__film"></div>
-    <p class="last-image__amount">+8</p>
-  <img src="img/tweets/5f89c89d28bef6.54291619.jpg" alt="" class="tweet-card__img-mult tweet-card__img-mult-right tweet-card__img-mult-last">
+      imgContainer.innerHTML += `   <div class="last-image" >
+    <div class="last-image__film" onclick="openImageModal('${
+      images[i]
+    }', '${images}', ${i})">  <p class="last-image__amount">+${
+        images.length - i - 1
+      }</p></div>
+  
+  <img src="img/tweets/${
+    images[i]
+  }" alt="" class="tweet-card__img-mult tweet-card__img-mult-right tweet-card__img-mult-last">
       
-</div`
+</div>`
     } else {
-      imgContainer.innerHTML += `<img src="img/tweets/${
+      imgContainer.innerHTML += `<img onclick="openImageModal('${
+        images[i]
+      }', '${images}', ${i})" src="img/tweets/${
         images[i]
       }" alt="" class='${getTweetImgClassName(images, i)}' />`
     }
@@ -208,9 +216,9 @@ function getTweetImgClassName(images, index) {
   let classes = 'tweet-card__img-mult'
   if (index === 2 && images.length === 3) {
     classes += ' tweet-card__img-mult-full'
-  } else if (!index % 2) {
+  } else if (index === 0 || index === 2) {
     classes += ' tweet-card__img-mult-left'
-  } else if (index % 2) {
+  } else if (index === 1 || index === 3) {
     classes += ' tweet-card__img-mult-right'
   }
   return classes

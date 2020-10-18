@@ -1,4 +1,4 @@
-<div id="modal-container" class="modal-container display-hidden">
+
     <div id="signup-modal" class="modal signup-modal display-hidden">
 
         <div class="modal__content">
@@ -86,4 +86,3 @@
             </form>
         </div>
     </div>
-</div>
