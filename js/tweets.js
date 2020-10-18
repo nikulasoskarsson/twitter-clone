@@ -39,7 +39,7 @@ function createTweetCard(tweet, user) {
   return `<div class="tweet-card">
   <div class="tweet-card__grid-container">
       <img class="tweet-card__user-img" src="img/user/${
-        user[8] ? user[8] : 'placeholder.jpg'
+        user[9] ? user[9] : 'placeholder.jpg'
       }" />
       <div>
           <div class="tweet-card__info">
