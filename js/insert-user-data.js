@@ -63,6 +63,13 @@ function inserUserLocation(user) {
     (userLocationElement) => (userLocationElement.innerText += user[11])
   )
 }
+function insertUserBio(user) {
+  const userBioElements = document.querySelectorAll('.user-bio')
+  userBioElements.forEach(
+    (userBioElement) => (userBioElement.innerText += user[10])
+  )
+}
+
 // Get the user data and pass it into the other functions to load the user data into the dom
 async function init() {
   const id = document.getElementById('user-id').getAttribute('data-user-id')
@@ -77,6 +84,7 @@ async function init() {
   insertUserJoinDate(user)
   insertUserWebsite(user)
   inserUserLocation(user)
+  insertUserBio(user)
 }
 
 init()

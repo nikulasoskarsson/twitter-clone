@@ -116,4 +116,9 @@
     color:var( --color-primary);
     font-size: var(--font-xs);
   }
+  &-bio{
+    padding-bottom:0.5rem;
+    color:var(--color-black);
+    font-size: var(--font-xs);
+  }
 }

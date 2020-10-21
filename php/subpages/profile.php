@@ -24,9 +24,7 @@
             <div class="profile-userbar__txt-container">
                 <h3 class="profile-userbar__username heading-secondary user-name"></h3>
                 <p class="profile-userbar__handle text-xs-light marginBottom05 user-handle"></p>
-                <div class="profile-userbar__bio">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias soluta
-                    et reiciendis sapiente distinctio adipisci ipsa quisquam animi, sunt tempora totam deserunt
-                    blanditiis? Ea laborum iusto sint quas aperiam corporis?</div>
+                <div class="profile-userbar__bio user-bio"></div>
 
                 <div class="profile-userbar__misc marginBottom05 ">
                     <svg viewBox="0 0 24 24" class="profile-userbar__misc__icon">
