@@ -35,7 +35,6 @@ function displaySingleTweet(tweet, user) {
   profileTweetContianer.innerHTML = createTweetCard(tweet, user)
 }
 function createTweetCard(tweet, user) {
-  console.log(tweet[3])
   return `<div class="tweet-card">
   <div class="tweet-card__grid-container">
       <img class="tweet-card__user-img" src="img/user/${

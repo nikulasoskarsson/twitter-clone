@@ -164,7 +164,9 @@
   .update-user-modal__img-bar {
     position: relative;
     display: flex;
-
+    input{
+      max-height:2rem !important;
+    }
     &__background-img {
       position: absolute;
       top: 0;

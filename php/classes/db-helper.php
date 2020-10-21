@@ -7,13 +7,13 @@ class DbHelper
     {
         $this->connection = $connection;
     }
-    public function updateMultipleFromPK($id, $arrayOfFields, $arrayOfValues, $tableName)
+    public function updateMultipleFromPK($id, $arrayOfFields, $arrayOfValues, $arrayOfRows, $tableName)
     {
         // $id = fk
         $statement = '';
         foreach ($arrayOfFields as $i => $field) {
 
-            $statement .= "$field=:$field" . (($i + 1 !== count($arrayOfFields)) ? ', ' :  ' ');
+            $statement .= "$arrayOfRows[$i]=:$field" . (($i + 1 !== count($arrayOfFields)) ? ', ' :  ' ');
             echo $statement;
         }
 

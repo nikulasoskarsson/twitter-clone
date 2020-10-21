@@ -7,6 +7,15 @@ function insertUserImg(user) {
   )
 }
 
+function insertBackroundImg(user) {
+  const backgroundImgElements = document.querySelectorAll('.user-bg')
+  backgroundImgElements.forEach((backgroundImgElement) => {
+    backgroundImgElement.src = user[13]
+      ? `img/background/${user[13]}`
+      : 'placeholder.jpg'
+  })
+}
+
 // Take the full name of the user from the db an insert into every field with the class user-name
 function insertUserName(user) {
   const userNameElements = document.querySelectorAll('.user-name')
@@ -47,6 +56,7 @@ async function init() {
   console.log(user)
 
   insertUserImg(user)
+  insertBackroundImg(user)
   insertUserName(user)
   insertUserHandle(user)
   insertNumberOfTweets(user)

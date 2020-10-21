@@ -114,7 +114,7 @@ require('php/components/image-modal.php');
     <div class="user__smaller-screen">
       <img src="img/placeholder.jpg" alt="Placeholder image" class="user__img user-img" />
     </div>
-    <div class="user" id="user-card">
+    <div class="user" id="user-card" >
       <div class="user__modal display-hidden" id="user-modal">
 
         <form action="php/actions/logout.php">
@@ -122,7 +122,7 @@ require('php/components/image-modal.php');
         </form>
       </div>
       <img src="img/placeholder.jpg" alt="Placeholder image" class="user__img user-img" />
-      <div class="user__text-column" id="open-user-modal">
+      <div class="user__text-column">
         <h3 class="user__name user-name"></h3>
         <p class="user__handler user-handle"></p>
       </div>
@@ -302,11 +302,9 @@ require('php/components/image-modal.php');
   </div>
 </div>
 <script src="js/global.js"></script>
-
 <script src="js/sub-page-selector.js"></script>
 <script src="js/modals.js"></script>
 <script src="js/dropdowns.js"></script>
-
 <script src="js/async.js"></script>
 <script src="js/tweets.js"></script>
 <script src="js/insert-user-data.js"></script>

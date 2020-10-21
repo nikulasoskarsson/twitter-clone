@@ -18,11 +18,11 @@ users.dob_month,
 users.dob_year,
 users.dob_day,
 users.signup_timestamp,
-background_images.url AS background_url,
 user_images.url AS user_img,
 user_bio.text AS bio,
 user_location.location,
-user_website.url as website
+user_website.url as website,
+background_images.url AS background_url
 
 FROM
 users

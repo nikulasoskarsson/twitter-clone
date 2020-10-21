@@ -19,14 +19,14 @@
 
                 <div class="form-input-field border-neaturual">
                     <label for="" class="form-input-field__label">First name</label>
-                    <input type="text" name="firstname" id="first_name" class="form-input-field__input" />
+                    <input type="text" name="firstName" id="first_name" class="form-input-field__input" />
                     <p class="error-msg display-hidden"></p>
                     <div id="lastname-character-display"><span id="lastname-character-count">0</span> / 50</div>
                 </div>
 
                 <div class="form-input-field border-neaturual">
                     <label for="" class="form-input-field__label">Last name</label>
-                    <input type="text" name="lastname" id="last_name" class="form-input-field__input" />
+                    <input type="text" name="lastName" id="last_name" class="form-input-field__input" />
                     <p class="error-msg display-hidden"></p>
                     <div id="lastname-character-display"><span id="lastname-character-count">0</span> / 50</div>
                 </div>

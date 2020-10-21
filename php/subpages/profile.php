@@ -12,7 +12,7 @@
         </div>
     </div>
     <div id="profile-userbar" class="profile-userbar">
-        <div class="profile-userbar__background-img user-bg"></div>
+        <img class="profile-userbar__background-img user-bg"></img>
 
         <label for="user-image-upload" class="profile-userbar__user-img-label">
             <img src="img/placeholder.jpg" alt="" class="profile-userbar__user-img user-img" />
@@ -49,7 +49,7 @@
                 </div>
             </div>
             <form method="POST" action="php/actions/update-user.php" enctype="multipart/form-data">
-                <button class="button-inverted-md">Edit profile</button>
+                <button class="button-inverted-md" id="open-user-modal" onclick="return false;">Edit profile</button>
                 <input type="file" name="user-image" id="user-image-upload" class="display-hidden">
             </form>
         </div>

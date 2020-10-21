@@ -330,6 +330,8 @@ button {
   .update-user-modal .update-user-modal__img-bar {
     position: relative;
     display: flex; }
+    .update-user-modal .update-user-modal__img-bar input {
+      max-height: 2rem !important; }
     .update-user-modal .update-user-modal__img-bar__background-img {
       position: absolute;
       top: 0;
@@ -1041,9 +1043,7 @@ button {
     left: 0;
     height: 300px;
     width: 100%;
-    background: url("../img/cat.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
+    object-fit: cover;
     display: block; }
   .profile-userbar__user-img {
     height: 9rem;

@@ -14,6 +14,10 @@ const tweetModalCloseBtn = document.getElementById('create-tweet-from-modal')
 
 const imageModal = document.getElementById('image-modal')
 
+const openUpdateUserBtn = document.getElementById('open-user-modal')
+
+const openLogoutModalBtn = document.getElementById('user-card')
+
 function openModal(modal) {
   modalContainer.classList.add('display-flex')
   modal.classList.add('display-inline-block')
@@ -31,13 +35,22 @@ function openModalNoContainer(modal) {
   modal.classList.add('display-inline-block')
   modal.classList.remove('display-hidden')
 }
+function openUpdateUserModal() {
+  const updateUserModalContainer = document.getElementById(
+    'update-user-container'
+  )
+  const updateUserModal = document.getElementById('update-user-modal')
+
+  updateUserModalContainer.classList.remove('display-hidden')
+  updateUserModal.classList.remove('display-hidden')
+}
 
 function openImageModal(image, images, index) {
   modalContainer.classList.remove('display-hidden')
   imageModal.classList.remove('display-hidden')
 
   const imageEl = imageModal.querySelector('img')
-  imageEl.src = `${window.location.pathname}img/tweets/${image}`
+  imageEl.src = `img/tweets/${image}`
   const aImages = images.split(',')
 
   addPrevAndNextEventListeners(imageEl, aImages, index)
@@ -45,14 +58,14 @@ function openImageModal(image, images, index) {
 function showPrevImg(imageEl, images, index) {
   index--
 
-  imageEl.src = `${window.location.pathname}img/tweets/${images[index]}`
+  imageEl.src = `img/tweets/${images[index]}`
 
   addPrevAndNextEventListeners(imageEl, images, index)
 }
 function showNextImg(imageEl, images, index) {
   index++
 
-  imageEl.src = `${window.location.pathname}img/tweets/${images[index]}`
+  imageEl.src = `img/tweets/${images[index]}`
 
   addPrevAndNextEventListeners(imageEl, images, index)
 }
@@ -96,12 +109,19 @@ function closeImageModal(e) {
   }
 }
 
+function openLogoutModal() {
+  console.log('ran')
+  const logoutModal = document.getElementById('user-modal')
+  logoutModal.classList.remove('display-hidden')
+}
+
 if (openModalBtn) {
   openModalBtn.addEventListener('click', () => openModal(tweetModal))
 }
 if (closeModalBtn) {
   closeModalBtn.addEventListener('click', () => closeModal(tweetModal))
 }
+
 if (openSignUpModal) {
   openSignUpModal.addEventListener('click', () => openModal(signupModal))
 }
@@ -111,5 +131,8 @@ if (tweetModalCloseBtn) {
 if (openUserModal) {
   openUserModal.addEventListener('click', () => openModalNoContainer(userModal))
 }
-
+if (openLogoutModalBtn) {
+  openLogoutModalBtn.addEventListener('click', openLogoutModal)
+}
 modalContainer.addEventListener('click', (e) => closeImageModal(e))
+openUpdateUserBtn.addEventListener('click', openUpdateUserModal)
