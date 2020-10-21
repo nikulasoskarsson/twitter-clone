@@ -9,7 +9,7 @@
                 <input type="file" name="images[]" id="upload-tweet-image-modal" " class=" display-hidden" multiple />
                 <div class="tweet-modal__input-field">
 
-                    <input type="text" name="body" class="tweet-modal__input input-placeholder-large" placeholder="What's happening">
+                    <input autocomplete="off" type="text" name="body" class="tweet-modal__input input-placeholder-large" placeholder="What's happening">
                     <span class="tagline-primary-md">
                         <svg viewBox="0 0 24 24" class="tagline-primary-md-img">
                             <g>
