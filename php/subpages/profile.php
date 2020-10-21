@@ -28,8 +28,8 @@
                     et reiciendis sapiente distinctio adipisci ipsa quisquam animi, sunt tempora totam deserunt
                     blanditiis? Ea laborum iusto sint quas aperiam corporis?</div>
 
-                <div class="profile-userbar__join-date marginBottom05 ">
-                    <svg viewBox="0 0 24 24" class="profile-userbar__join-date__icon">
+                <div class="profile-userbar__misc marginBottom05 ">
+                    <svg viewBox="0 0 24 24" class="profile-userbar__misc__icon">
                         <g>
                             <path
                                 d="M19.708 2H4.292C3.028 2 2 3.028 2 4.292v15.416C2 20.972 3.028 22 4.292 22h15.416C20.972 22 22 20.972 22 19.708V4.292C22 3.028 20.972 2 19.708 2zm.792 17.708c0 .437-.355.792-.792.792H4.292c-.437 0-.792-.355-.792-.792V6.418c0-.437.354-.79.79-.792h15.42c.436 0 .79.355.79.79V19.71z">
@@ -44,10 +44,10 @@
                             <circle cx="12" cy="17.486" r="1.285"></circle>
                         </g>
                     </svg>
-                    <p class="profile-userbar__join-date__text text-xs-light user-join-date"></p>
+                    <p class="profile-userbar__misc__text text-xs-light user-join-date"></p>
                 </div>
-                <div class="profile-userbar__join-date marginBottom05 ">
-                    <svg viewBox="0 0 24 24" class="profile-userbar__join-date__icon">
+                <div class="profile-userbar__misc marginBottom05 ">
+                    <svg viewBox="0 0 24 24" class="profile-userbar__misc__icon ">
                         <g>
                             <path
                                 d="M11.96 14.945c-.067 0-.136-.01-.203-.027-1.13-.318-2.097-.986-2.795-1.932-.832-1.125-1.176-2.508-.968-3.893s.942-2.605 2.068-3.438l3.53-2.608c2.322-1.716 5.61-1.224 7.33 1.1.83 1.127 1.175 2.51.967 3.895s-.943 2.605-2.07 3.438l-1.48 1.094c-.333.246-.804.175-1.05-.158-.246-.334-.176-.804.158-1.05l1.48-1.095c.803-.592 1.327-1.463 1.476-2.45.148-.988-.098-1.975-.69-2.778-1.225-1.656-3.572-2.01-5.23-.784l-3.53 2.608c-.802.593-1.326 1.464-1.475 2.45-.15.99.097 1.975.69 2.778.498.675 1.187 1.15 1.992 1.377.4.114.633.528.52.928-.092.33-.394.547-.722.547z">
@@ -57,14 +57,14 @@
                             </path>
                         </g>
                     </svg>
-                    <p class="profile-userbar__join-date__text text-xs-light user-website"></p>
+                    <a target='blank' class="profile-userbar__misc__text user-website"></a>
                 </div>
 
 
 
 
-                <div class="profile-userbar__join-date marginBottom05 ">
-                    <svg viewBox="0 0 24 24" class="profile-userbar__join-date__icon">
+                <div class="profile-userbar__misc marginBottom05 ">
+                    <svg viewBox="0 0 24 24" class="profile-userbar__misc__icon">
                         <g>
                             <path
                                 d="M12 14.315c-2.088 0-3.787-1.698-3.787-3.786S9.913 6.74 12 6.74s3.787 1.7 3.787 3.787-1.7 3.785-3.787 3.785zm0-6.073c-1.26 0-2.287 1.026-2.287 2.287S10.74 12.814 12 12.814s2.287-1.025 2.287-2.286S13.26 8.24 12 8.24z">
@@ -74,7 +74,7 @@
                             </path>
                         </g>
                     </svg>
-                    <p class="profile-userbar__join-date__text text-xs-light user-location"></p>
+                    <p class="profile-userbar__misc__text text-xs-light user-location"></p>
                 </div>
 
                 <div class="profile-userbar__follower-info">

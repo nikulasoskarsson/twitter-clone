@@ -1062,10 +1062,10 @@ button {
     margin: 0 1.5rem; }
   .profile-userbar__txt-container {
     padding-top: 50px; }
-  .profile-userbar__join-date {
+  .profile-userbar__misc {
     display: flex;
     align-items: center; }
-    .profile-userbar__join-date__icon {
+    .profile-userbar__misc__icon {
       margin-right: 0.25rem;
       height: 20px;
       width: 20px;
@@ -1103,6 +1103,10 @@ button {
     font-weight: 700; }
     .profile-nav__link-active {
       color: var(--color-primary) !important; }
+
+.user-website {
+  color: var(--color-primary);
+  font-size: var(--font-xs); }
 
 .marginBottom05 {
   margin-bottom: 0.5rem; }

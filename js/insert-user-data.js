@@ -52,9 +52,10 @@ function insertNumberOfTweets(user) {
 
 function insertUserWebsite(user) {
   const userWebsiteElements = document.querySelectorAll('.user-website')
-  userWebsiteElements.forEach(
-    (userWebsiteElement) => (userWebsiteElement.innerText += user[12])
-  )
+  userWebsiteElements.forEach((userWebsiteElement) => {
+    userWebsiteElement.href = `http://www.${user[12]}`
+    userWebsiteElement.innerText = user[12]
+  })
 }
 function inserUserLocation(user) {
   const userLocationElements = document.querySelectorAll('.user-location')
