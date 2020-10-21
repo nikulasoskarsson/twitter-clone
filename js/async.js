@@ -43,6 +43,19 @@ async function getUser(id) {
   }
 }
 
+async function updateUser(id) {
+  try {
+    const conn = await fetch(`php/api/api.update.user.php`, {
+      method: 'POST',
+      body: data,
+    })
+    const res = await conn.json()
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 async function getAllTweets(id) {
   try {
     const conn = await fetch(`php/api/api-get-tweets.php?userId=${id}`)

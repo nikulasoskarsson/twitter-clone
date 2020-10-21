@@ -27,10 +27,7 @@
     left: 0;
     height: 300px;
     width: 100%;
-    background: url('../img/cat.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-
+    object-fit: cover;
     display: block;
   }
 

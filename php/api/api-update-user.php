@@ -1,11 +1,12 @@
 <?php
-if (!isset($_POST) && !isset($_FILES['user-img']) && !isset($_FILES['background-img'])) {
+if (!isset($_POST) && !isset($_FILES['userImg']) && !isset($_FILES['backgroundImg'])) {
     exit();
 }
 
 
 // Array with all the field names that you can update that belong to the user table
-$fields = ['first_name', 'last_name', 'month', 'year', 'day'];
+$fields = ['firstName', 'lastName', 'month', 'year', 'day'];
+$rows = ['first_name', 'last_name', 'month', 'year', 'day'];
 
 
 // validation is passed..
@@ -15,35 +16,37 @@ require_once(__DIR__ . '/../classes/db-helper.php'); // class with helper functi
 $dbHelper = new DbHelper($db);
 
 
-if (isset($_FILES['user-img'])) {
-    $dbHelper->insertOrUpdateImage($_POST['id'], 'user-img', 'user_id', 'user', 'user_images');
+if (isset($_FILES['userImg'])) {
+    $dbHelper->insertOrUpdateImage($_POST['userId'], 'userImg', 'user_id', 'user', 'user_images');
 }
-if (isset($_FILES['background-img'])) {
-    $dbHelper->insertOrUpdateImage($_POST['id'], 'background-img', 'user_id', 'background', 'background_images');
+if (isset($_FILES['backgroundImg'])) {
+    $dbHelper->insertOrUpdateImage($_POST['userId'], 'backgroundImg', 'user_id', 'background', 'background_images');
 }
 if (isset($_POST['bio'])) {
-    $dbHelper->insertOrUpdateTextFromFK($_POST['id'], 'text', 'user_id', $_POST['bio'], 'user_bio');
+    $dbHelper->insertOrUpdateTextFromFK($_POST['userId'], 'text', 'user_id', $_POST['bio'], 'user_bio');
 }
 
 if (isset($_POST['website'])) {
-    $dbHelper->insertOrUpdateTextFromFK($_POST['id'], 'url', 'user_id',  $_POST['website'], 'user_website');
+    $dbHelper->insertOrUpdateTextFromFK($_POST['userId'], 'url', 'user_id',  $_POST['website'], 'user_website');
 }
 
 if (isset($_POST['location'])) {
-    $dbHelper->insertOrUpdateTextFromFK($_POST['id'], 'location', 'user_id', $_POST['location'], 'user_location');
+    $dbHelper->insertOrUpdateTextFromFK($_POST['userId'], 'location', 'user_id', $_POST['location'], 'user_location');
 }
 
 
 $fieldsToUpdate = array();
 $valuesToUpdate = array();
+$rowsToUpdate = array();
 
-foreach ($fields as $field) {
+foreach ($fields as $i=>$field) {
     if (isset($_POST["$field"])) {
         array_push($fieldsToUpdate, $field);
         array_push($valuesToUpdate, $_POST["$field"]);
+        array_push($rowsToUpdate, $rows[$i]);
     }
 }
-$dbHelper->updateMultipleFromPK($_POST['id'], $fieldsToUpdate, $valuesToUpdate, 'users');
+$dbHelper->updateMultipleFromPK($_POST['userId'], $fieldsToUpdate, $valuesToUpdate, $rowsToUpdate, 'users');
 
 
 
