@@ -5,18 +5,17 @@ $apiHelper = new ApiHelper();
 
 $apiHelper->validateUserId($_POST); // Exit if not provided with existing id of a user
 
-$sTweets = file_get_contents('../../db/tweets.json');
-$aTweets = json_decode($sTweets);
 
-// Find a match for the userId
-foreach ($aTweets as  $index => $jTweet) {
-    if ($jTweet->id == $_POST['tweetId']) {
-        array_splice($aTweets, $index, 1);
-        $sTweets = json_encode($aTweets);
-        file_put_contents('../../db/tweets.json', $sTweets);
+require_once(__DIR__. '/../private/db.php');
+$query = $db->prepare('"DELETE FROM tweets WHERE id = :id');
+$query->bindValue(':id', $_POST['tweetId']);
+$query->execute();
 
-        $apiHelper->sendResponse(200, '{"message": "You have deleted a tweet successfully", "id": "' . $jTweet->id .  '"}');
-    }
+$rowCount = $query->rowCount();
+if(!$rowCount){
+    $apiHelper->sendResponse(400,'{
+        "message": "There was an error deleting your tweet",
+        "id": "'.$_POST['tweetId'] .'"
+    }');
 }
-// No match is found
-$apiHelper->sendResponse(400, '{"message": "Error deleting tweet"}');
+

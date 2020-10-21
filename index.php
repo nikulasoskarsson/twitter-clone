@@ -114,7 +114,7 @@ require('php/components/image-modal.php');
     <div class="user__smaller-screen">
       <img src="img/placeholder.jpg" alt="Placeholder image" class="user__img user-img" />
     </div>
-    <div class="user" id="user-card" >
+    <div class="user" id="user-card">
       <div class="user__modal display-hidden" id="user-modal">
 
         <form action="php/actions/logout.php">
