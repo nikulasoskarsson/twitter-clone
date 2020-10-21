@@ -27,7 +27,7 @@ function insertUserName(user) {
 function insertUserHandle(user) {
   const userHandleElements = document.querySelectorAll('.user-handle')
   userHandleElements.forEach(
-    (userHandleElement) => (userHandleElement.innerText += user[3])
+    (userHandleElement) => (userHandleElement.innerText += '@' + user[3])
   )
 }
 
@@ -36,7 +36,7 @@ function insertUserJoinDate(user) {
   const monthString = getMonthAsString(joinDate.getMonth())
   const year = joinDate.getFullYear()
 
-  const userJoinDateElements = document.querySelectorAll('.user-handle')
+  const userJoinDateElements = document.querySelectorAll('.user-join-date')
   userJoinDateElements.forEach(
     (userJoinDateElement) =>
       (userJoinDateElement.innerText = `Joined ${monthString} ${year}`)
@@ -47,6 +47,19 @@ function insertNumberOfTweets(user) {
   const userTweetsNrElements = document.querySelectorAll('.user-tweets-nr')
   userTweetsNrElements.forEach(
     (userTweetsNrElement) => (userTweetsNrElement.innerText += `5 Tweets`)
+  )
+}
+
+function insertUserWebsite(user) {
+  const userWebsiteElements = document.querySelectorAll('.user-website')
+  userWebsiteElements.forEach(
+    (userWebsiteElement) => (userWebsiteElement.innerText += user[12])
+  )
+}
+function inserUserLocation(user) {
+  const userLocationElements = document.querySelectorAll('.user-location')
+  userLocationElements.forEach(
+    (userLocationElement) => (userLocationElement.innerText += user[11])
   )
 }
 // Get the user data and pass it into the other functions to load the user data into the dom
@@ -61,6 +74,8 @@ async function init() {
   insertUserHandle(user)
   insertNumberOfTweets(user)
   insertUserJoinDate(user)
+  insertUserWebsite(user)
+  inserUserLocation(user)
 }
 
 init()
