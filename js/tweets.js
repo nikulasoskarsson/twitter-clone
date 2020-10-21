@@ -20,9 +20,11 @@ async function handleCreateTweet(e) {
 async function handleDisplayingTweets() {
   const id = document.getElementById('user-id').getAttribute('data-user-id')
   const tweets = await getAllTweets(id)
+  const sortedTweets = tweets.sort((a, b) => b[1] - a[1])
+  console.log(sortedTweets)
   const user = await getUser(id)
 
-  displayTweets(tweets, user)
+  displayTweets(sortedTweets, user)
 }
 
 function displayTweets(tweets, user) {
