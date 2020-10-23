@@ -19,3 +19,6 @@ if(!$rowCount){
     }');
 }
 
+$apiHelper->sendResponse(200,'{
+    "id": "'.$_POST['tweetId'] .'"
+}');

@@ -99,4 +99,18 @@ async function createTweet(userId, body, images) {
   }
 }
 
+async function deleteTweet(form) {
+  try {
+    const conn = await fetch('php/api/api-delete-tweet.php', {
+      method: 'POST',
+      body: form, // form should contain userId and tweetId
+    })
+
+    const res = await conn.json()
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 getAllTweets(4)

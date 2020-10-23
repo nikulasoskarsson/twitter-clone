@@ -225,7 +225,19 @@ function getTweetImgClassName(images, index) {
   return classes
 }
 
+async function handleDeletingTweet(tweetId) {
+  const userId = document.getElementById('user-id').getAttribute('data-user-id')
+  const form = new FormData()
+  form.append('userId', userId)
+  form.append('tweetId', tweetId)
+
+  const res = await deleteTweet(form)
+  console.log(res)
+}
+
 createTweetBtn.addEventListener('click', (e) => handleCreateTweet(e))
 createTweetFromModalBtn.addEventListener('click', (e) => handleCreateTweet(e))
 
 handleDisplayingTweets()
+
+handleDeletingTweet(159)
