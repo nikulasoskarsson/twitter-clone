@@ -101,8 +101,8 @@ function createTweetCard(tweet, user) {
                 </svg>
                 <div class="dropdown-primary display-hidden">
                     <ul class="dropdown-primary__list">
-                        <li class="dropdown-primary__list-item"  onclick="deleteTweet('${
-                          tweet.id
+                        <li class="dropdown-primary__list-item"  onclick="handleDeleteTweet('${
+                          tweet[0]
                         }');">
                             <svg viewBox="0 0 24 24" class="dropdown-primary__icon dropdown-primary__icon-delete"">
                                 <g>
@@ -225,19 +225,19 @@ function getTweetImgClassName(images, index) {
   return classes
 }
 
-async function handleDeletingTweet(tweetId) {
+async function handleDeleteTweet(tweetId) {
   const userId = document.getElementById('user-id').getAttribute('data-user-id')
   const form = new FormData()
   form.append('userId', userId)
   form.append('tweetId', tweetId)
 
   const res = await deleteTweet(form)
-  console.log(res)
+  if (res.status === 200) {
+    handleDisplayingTweets()
+  }
 }
 
 createTweetBtn.addEventListener('click', (e) => handleCreateTweet(e))
 createTweetFromModalBtn.addEventListener('click', (e) => handleCreateTweet(e))
 
 handleDisplayingTweets()
-
-handleDeletingTweet(159)

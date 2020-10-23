@@ -107,6 +107,7 @@ async function deleteTweet(form) {
     })
 
     const res = await conn.json()
+    res.status = conn.status
     return res
   } catch (error) {
     console.log(error)
