@@ -224,6 +224,19 @@ function getTweetImgClassName(images, index) {
   }
   return classes
 }
+function openUpdateTweetModal(tweetBody, tweetId) {
+  const updateTweetmodalContainer = document.getElementById(
+    'update-modal-container'
+  )
+  const updateTweetModal = document.getElementById('update-tweet-modal')
+  updateTweetmodalContainer.classList.remove('display-hidden')
+  updateTweetModal.classList.remove('display-hidden')
+
+  updateTweetModal.setAttribute('data-tweet-id', tweetId)
+
+  const newTweetInput = updateTweetModal.getElementsByTagName('input')[1]
+  newTweetInput.value = tweetBody
+}
 
 async function handleDeleteTweet(tweetId) {
   const userId = document.getElementById('user-id').getAttribute('data-user-id')

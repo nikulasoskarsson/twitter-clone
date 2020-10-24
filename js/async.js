@@ -62,12 +62,6 @@ async function getAllTweets(id) {
     const res = await conn.json()
     res.status = conn.status
     return res
-    if (res.status !== 200) {
-      console.log('running')
-      return `Error fetching the tweets status ${res.status}`
-    }
-
-    return res
   } catch (error) {
     console.log(error)
   }
@@ -113,5 +107,3 @@ async function deleteTweet(form) {
     console.log(error)
   }
 }
-
-getAllTweets(4)
