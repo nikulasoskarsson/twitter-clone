@@ -93,6 +93,25 @@ async function createTweet(userId, body, images) {
   }
 }
 
+async function updateTweet(form) {
+  try {
+    const conn = await fetch('php/api/api-update-tweet.php', {
+      method: 'POST',
+      body: form,
+    })
+
+    let res = await conn.json()
+
+    res.status = conn.status
+
+    return res
+
+    // TODO show user he has created a tweet
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 async function deleteTweet(form) {
   try {
     const conn = await fetch('php/api/api-delete-tweet.php', {

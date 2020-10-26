@@ -269,19 +269,7 @@ function createTweetCard(tweet, user) {
 </div>`
 }
 
-function openUpdateTweetModal(tweetBody, tweetId) {
-  const updateTweetmodalContainer = document.getElementById(
-    'update-modal-container'
-  )
-  const updateTweetModal = document.getElementById('update-tweet-modal')
-  updateTweetmodalContainer.classList.remove('display-hidden')
-  updateTweetModal.classList.remove('display-hidden')
 
-  updateTweetModal.setAttribute('data-tweet-id', tweetId)
-
-  const newTweetInput = updateTweetModal.getElementsByTagName('input')[1]
-  newTweetInput.value = tweetBody
-}
 
 function closeUpdateTweetModal() {
   const updateTweetmodalContainer = document.getElementById(

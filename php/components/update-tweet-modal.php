@@ -6,7 +6,7 @@
         <div class="tweet-modal__content">
             <img src="img/cat.jpg" alt="" class="tweet-modal__img img-round-md">
             <div>
-                <input type="file" name="tweet-image" id="update-tweet-image" class="display-hidden">
+                <input type="file" name="tweetImages[]" id="update-tweet-image" class="display-hidden">
                 <div class="tweet-modal__input-field">
 
                     <input type="text" class="tweet-modal__input input-placeholder-large" placeholder="">
@@ -63,7 +63,7 @@
                             </g>
                         </svg>
                     </div>
-                    <button onclick="updateTweet(); " class="button-primary-small" id="update-tweet-from-modal">Update</button>
+                    <button onclick="handleUpdateTweet(); " class="button-primary-small" id="update-tweet-from-modal">Update</button>
                 </div>
             </div>
         </div>

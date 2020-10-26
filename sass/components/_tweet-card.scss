@@ -131,11 +131,22 @@
     color: var(--color-light-gray);
     font-weight: 700;
     font-size: 0.8rem;
+    cursor: pointer;
     &-icon {
       width: 1.25rem;
       fill: var(--color-light-gray);
       margin-right: 0.5rem;
     }
+
+    &-heart:hover, &-heart-active{
+      .heart-icon{
+        fill:red;
+      }
+      .heart-text{
+        color:red;
+      }
+    }
+ 
   }
 
   &__dropdown {
