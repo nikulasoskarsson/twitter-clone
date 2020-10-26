@@ -28,6 +28,21 @@ foreach($rows as &$row){
         foreach($imgRows as $imgRow){
             array_push($row[5], $imgRow[1]);
         }
+        // Get all the likes for this tweet
+        $query = $db->prepare('SELECT * FROM tweet_likes WHERE tweet_id = :id');
+        $query->bindValue('id', $row[0]);
+        $query->execute();
+        $likeRows = $query->fetchAll();  
+        $row[6] = count($likeRows); // Add the amount of likes on the tweet to the res
+
+        // Find out if the user has liked this tweet
+        $row[7] = false; // If the user has liked the tweet, default false
+        foreach($likeRows as $likeRow){
+            if($likeRow[3] === $_GET['userId']){
+                $row[7] = true; // Change to true and break if match is found
+            break;
+            }
+        }
      }
    
 }
