@@ -17,4 +17,4 @@ $query->bindValue('tweetId', $_POST['tweetId']);
 $query->bindValue('tweeterId', $_POST['tweeterId']);
 $query->bindValue('userId', $_POST['userId']);
 $query->execute();
-$apiHelper->sendResponse(200, 'Tweet liked');
+$apiHelper->sendResponse(200, '{"message": "Tweet liked"}');
