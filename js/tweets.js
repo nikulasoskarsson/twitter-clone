@@ -5,24 +5,27 @@ const createTweetFromModalBtn = document.getElementById(
 )
 
 async function handleCreateTweet(e) {
-  console.log('handle create tweet running')
   const id = document.getElementById('user-id').getAttribute('data-user-id')
   const tweet = e.target.parentNode.parentNode.querySelectorAll('input')[1]
     .value
   const images = e.target.parentNode.parentNode.querySelectorAll('input')[0]
 
   const res = await createTweet(id, tweet, images)
-  console.log(res)
-  //   if (res.status === 200) {
-  //   }
+
+  if (res.status === 200) {
+    handleDisplayingTweets()
+  }
 }
 
 async function handleDisplayingTweets() {
   const id = document.getElementById('user-id').getAttribute('data-user-id')
   const tweets = await getAllTweets(id)
+  console.log(tweets)
+  const sortedTweets = tweets.sort((a, b) => b[1] - a[1])
+
   const user = await getUser(id)
 
-  displayTweets(tweets, user)
+  displayTweets(sortedTweets, user)
 }
 
 function displayTweets(tweets, user) {
@@ -46,13 +49,13 @@ function createTweetCard(tweet, user) {
                   <h3 class="tweet-card__user-name">${user[1]} ${user[2]}</h3>
                   <span class="tweet-card__user-handle">@${user[3]}</span>
               </div>
-              <span class="tweet-card__tweet-date">${tweet[3]}</span>
+              <span class="tweet-card__tweet-date">${tweet[4]}</span>
           </div>
 
           <p class="tweet-card__tweet">
               ${tweet[2]}
           </p>
-          ${tweet[4].length ? showTweetImages(tweet[4]) : ''}
+          ${tweet[5].length ? showTweetImages(tweet[5]) : ''}
           <div class="tweet-card__icon-container">
               <div class="tweet-card__icon-field">
                   <svg viewBox="0 0 24 24" class="tweet-card__icon-field-icon">
@@ -64,7 +67,7 @@ function createTweetCard(tweet, user) {
               </div>
 
               <div class="tweet-card__icon-field">
-                  <svg viewBox="0 0 24 24" class="tweet-card__icon-field-icon">
+                  <svg viewBox="0 0 24 24" class="tweet-card__icon-field-icon" >
                       <g>
                           <path d="M23.77 15.67c-.292-.293-.767-.293-1.06 0l-2.22 2.22V7.65c0-2.068-1.683-3.75-3.75-3.75h-5.85c-.414 0-.75.336-.75.75s.336.75.75.75h5.85c1.24 0 2.25 1.01 2.25 2.25v10.24l-2.22-2.22c-.293-.293-.768-.293-1.06 0s-.294.768 0 1.06l3.5 3.5c.145.147.337.22.53.22s.383-.072.53-.22l3.5-3.5c.294-.292.294-.767 0-1.06zm-10.66 3.28H7.26c-1.24 0-2.25-1.01-2.25-2.25V6.46l2.22 2.22c.148.147.34.22.532.22s.384-.073.53-.22c.293-.293.293-.768 0-1.06l-3.5-3.5c-.293-.294-.768-.294-1.06 0l-3.5 3.5c-.294.292-.294.767 0 1.06s.767.293 1.06 0l2.22-2.22V16.7c0 2.068 1.683 3.75 3.75 3.75h5.85c.414 0 .75-.336.75-.75s-.337-.75-.75-.75z"></path>
                       </g>
@@ -72,13 +75,21 @@ function createTweetCard(tweet, user) {
                   <span class="tweet-card-icon-field-nr">224</span>
               </div>
 
-              <div class="tweet-card__icon-field">
-                  <svg viewBox="0 0 24 24" class="tweet-card__icon-field-icon">
+              <div class="tweet-card__icon-field ${
+                tweet[7]
+                  ? 'tweet-card__icon-field-heart-active'
+                  : 'tweet-card__icon-field-heart'
+              } heart-${tweet[0]}" onclick="${tweet[8]} = handleLikingTweet('${
+    tweet[0]
+  }', '${tweet[3]}');">
+                  <svg viewBox="0 0 24 24" class="tweet-card__icon-field-icon heart-icon">
                       <g>
                           <path d="M12 21.638h-.014C9.403 21.59 1.95 14.856 1.95 8.478c0-3.064 2.525-5.754 5.403-5.754 2.29 0 3.83 1.58 4.646 2.73.814-1.148 2.354-2.73 4.645-2.73 2.88 0 5.404 2.69 5.404 5.755 0 6.376-7.454 13.11-10.037 13.157H12zM7.354 4.225c-2.08 0-3.903 1.988-3.903 4.255 0 5.74 7.034 11.596 8.55 11.658 1.518-.062 8.55-5.917 8.55-11.658 0-2.267-1.823-4.255-3.903-4.255-2.528 0-3.94 2.936-3.952 2.965-.23.562-1.156.562-1.387 0-.014-.03-1.425-2.965-3.954-2.965z"></path>
                       </g>
                   </svg>
-                  <span class="tweet-card-icon-field-nr">2k</span>
+                  <span class="tweet-card-icon-field-nr heart-text heart-text-${
+                    tweet[0]
+                  }">${getFormattedAmountOfLikes(tweet[6])}</span>
               </div>
 
               <div class="tweet-card__icon-field">
@@ -99,8 +110,8 @@ function createTweetCard(tweet, user) {
                 </svg>
                 <div class="dropdown-primary display-hidden">
                     <ul class="dropdown-primary__list">
-                        <li class="dropdown-primary__list-item"  onclick="deleteTweet('${
-                          tweet.id
+                        <li class="dropdown-primary__list-item"  onclick="handleDeleteTweet('${
+                          tweet[0]
                         }');">
                             <svg viewBox="0 0 24 24" class="dropdown-primary__icon dropdown-primary__icon-delete"">
                                 <g>
@@ -111,8 +122,8 @@ function createTweetCard(tweet, user) {
                             <a href="#" class="dropdown-primary__link dropdown-primary__link-delete">Delete</a>
                         </li>
                         <li class="dropdown-primary__list-item" onclick="openUpdateTweetModal('${
-                          tweet.body
-                        }','${tweet.id}');">
+                          tweet[2]
+                        }','${tweet[0]}');">
                             <svg class="dropdown-primary__icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="528.899px" height="528.899px" viewBox="0 0 528.899 528.899" style="enable-background:new 0 0 528.899 528.899;" xml:space="preserve">
                                 <g>
                                     <path d="M328.883,89.125l107.59,107.589l-272.34,272.34L56.604,361.465L328.883,89.125z M518.113,63.177l-47.981-47.981   c-18.543-18.543-48.653-18.543-67.259,0l-45.961,45.961l107.59,107.59l53.611-53.611   C532.495,100.753,532.495,77.559,518.113,63.177z M0.3,512.69c-1.958,8.812,5.998,16.708,14.811,14.565l119.891-29.069   L27.473,390.597L0.3,512.69z" />
@@ -165,6 +176,16 @@ function createTweetCard(tweet, user) {
   </div>
 </div>`
 }
+function getFormattedAmountOfLikes(likes) {
+  if (likes === 0) {
+    return ''
+  } else if (likes < 1000) {
+    return likes
+  } else if (likes < 1000000) {
+    return likes / 1000 + 'k'
+  }
+}
+
 function showTweetImages(images) {
   return images.length > 1
     ? showMultipleImages(images)
@@ -221,6 +242,78 @@ function getTweetImgClassName(images, index) {
     classes += ' tweet-card__img-mult-right'
   }
   return classes
+}
+function openUpdateTweetModal(tweetBody, tweetId) {
+  const updateTweetmodalContainer = document.getElementById(
+    'update-modal-container'
+  )
+  const updateTweetModal = document.getElementById('update-tweet-modal')
+  updateTweetmodalContainer.classList.remove('display-hidden')
+  updateTweetModal.classList.remove('display-hidden')
+
+  updateTweetModal.setAttribute('data-tweet-id', tweetId)
+
+  const newTweetInput = updateTweetModal.getElementsByTagName('input')[1]
+  newTweetInput.value = tweetBody
+}
+
+async function handleUpdateTweet() {
+  const userId = document.getElementById('user-id').getAttribute('data-user-id')
+
+  const updateTweetModal = document.getElementById('update-tweet-modal')
+
+  const tweetId = updateTweetModal.getAttribute('data-tweet-id')
+  const newTweet = updateTweetModal.getElementsByTagName('input')[1].value
+  const newImages = updateTweetModal.getElementsByTagName('input')[0]
+
+  const data = new FormData()
+
+  data.append('userId', userId)
+  data.append('tweetId', tweetId)
+  data.append('body', newTweet)
+  data.append('tweetImages', newImage.files)
+
+  const res = await updateTweet(userId, data)
+}
+
+async function handleLikingTweet(tweetId, tweeterId) {
+  const userId = document.getElementById('user-id').getAttribute('data-user-id')
+
+  const form = new FormData()
+  form.append('tweetId', tweetId)
+  form.append('tweeterId', tweeterId)
+  form.append('userId', userId)
+
+  const heartBtnEl = document.querySelector(`.heart-${tweetId}`)
+  const heartTextEl = document.querySelector(`.heart-text-${tweetId}`)
+  const amountOfLikes = heartTextEl.innerText // TODO replace letters for more then 999 tweets
+  const res = await (!heartBtnEl.classList.contains(
+    'tweet-card__icon-field-heart-active'
+  )
+    ? likeTweet(form)
+    : unlikeTweet(form))
+
+  if (res.message === 'Tweet liked') {
+    heartBtnEl.classList.remove('tweet-card__icon-field-heart')
+    heartBtnEl.classList.add('tweet-card__icon-field-heart-active')
+    heartTextEl.innerText = getFormattedAmountOfLikes(amountOfLikes + 1)
+  } else if (res.message === 'Tweet unliked') {
+    heartBtnEl.classList.remove('tweet-card__icon-field-heart-active')
+    heartBtnEl.classList.add('tweet-card__icon-field-heart')
+    heartTextEl.innerText = getFormattedAmountOfLikes(amountOfLikes - 1)
+  }
+}
+
+async function handleDeleteTweet(tweetId) {
+  const userId = document.getElementById('user-id').getAttribute('data-user-id')
+  const form = new FormData()
+  form.append('userId', userId)
+  form.append('tweetId', tweetId)
+
+  const res = await deleteTweet(form)
+  if (res.status === 200) {
+    handleDisplayingTweets()
+  }
 }
 
 createTweetBtn.addEventListener('click', (e) => handleCreateTweet(e))

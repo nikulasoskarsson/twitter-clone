@@ -3,13 +3,13 @@ require('php/isSignedIn.php');
 if (!$isSignedIn) {
   header('Location: auth.php');
 }
+require('php/components/update-tweet-modal.php');
 ?>
 
 <div id="modal-container" class="modal-container display-hidden">
   <?php
 require('php/components/header.php');
 require('php/components/tweet-modal.php');
-require('php/components/update-tweet-modal.php');
 require('php/components/image-modal.php');
 ?>
 </div>
@@ -114,7 +114,7 @@ require('php/components/image-modal.php');
     <div class="user__smaller-screen">
       <img src="img/placeholder.jpg" alt="Placeholder image" class="user__img user-img" />
     </div>
-    <div class="user" id="user-card" >
+    <div class="user" id="user-card">
       <div class="user__modal display-hidden" id="user-modal">
 
         <form action="php/actions/logout.php">

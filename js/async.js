@@ -62,12 +62,6 @@ async function getAllTweets(id) {
     const res = await conn.json()
     res.status = conn.status
     return res
-    if (res.status !== 200) {
-      console.log('running')
-      return `Error fetching the tweets status ${res.status}`
-    }
-
-    return res
   } catch (error) {
     console.log(error)
   }
@@ -99,4 +93,69 @@ async function createTweet(userId, body, images) {
   }
 }
 
-getAllTweets(4)
+async function updateTweet(form) {
+  try {
+    const conn = await fetch('php/api/api-update-tweet.php', {
+      method: 'POST',
+      body: form,
+    })
+
+    let res = await conn.json()
+
+    res.status = conn.status
+
+    return res
+
+    // TODO show user he has created a tweet
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+async function likeTweet(form) {
+  console.log('like ran')
+  try {
+    const conn = await fetch('php/api/api-like-tweet.php', {
+      method: 'POST',
+      body: form, // form should contain userId, tweetId and user id of the tweet creator
+    })
+
+    const res = await conn.json()
+
+    res.status = conn.status
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+async function unlikeTweet(form) {
+  try {
+    const conn = await fetch('php/api/api-unlike-tweet.php', {
+      method: 'POST',
+      body: form, // form should contain userId, tweetId and user id of the tweet creator
+    })
+
+    const res = await conn.json()
+
+    res.status = conn.status
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+async function deleteTweet(form) {
+  try {
+    const conn = await fetch('php/api/api-delete-tweet.php', {
+      method: 'POST',
+      body: form, // form should contain userId and tweetId
+    })
+
+    const res = await conn.json()
+    res.status = conn.status
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
