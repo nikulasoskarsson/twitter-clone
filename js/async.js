@@ -128,6 +128,23 @@ async function likeTweet(form) {
   }
 }
 
+async function unlikeTweet(form) {
+  console.log('ran')
+  try {
+    const conn = await fetch('php/api/api-unlike-tweet.php', {
+      method: 'POST',
+      body: form, // form should contain userId, tweetId and user id of the tweet creator
+    })
+
+    const res = await conn.json()
+
+    res.status = conn.status
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 async function deleteTweet(form) {
   try {
     const conn = await fetch('php/api/api-delete-tweet.php', {
