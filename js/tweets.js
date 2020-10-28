@@ -81,15 +81,15 @@ function createTweetCard(tweet, user) {
                   : 'tweet-card__icon-field-heart'
               } heart-${tweet[0]}" onclick="${tweet[8]} = handleLikingTweet('${
     tweet[0]
-  }', '${tweet[3]}', ${tweet[7]});">
+  }', '${tweet[3]}');">
                   <svg viewBox="0 0 24 24" class="tweet-card__icon-field-icon heart-icon">
                       <g>
                           <path d="M12 21.638h-.014C9.403 21.59 1.95 14.856 1.95 8.478c0-3.064 2.525-5.754 5.403-5.754 2.29 0 3.83 1.58 4.646 2.73.814-1.148 2.354-2.73 4.645-2.73 2.88 0 5.404 2.69 5.404 5.755 0 6.376-7.454 13.11-10.037 13.157H12zM7.354 4.225c-2.08 0-3.903 1.988-3.903 4.255 0 5.74 7.034 11.596 8.55 11.658 1.518-.062 8.55-5.917 8.55-11.658 0-2.267-1.823-4.255-3.903-4.255-2.528 0-3.94 2.936-3.952 2.965-.23.562-1.156.562-1.387 0-.014-.03-1.425-2.965-3.954-2.965z"></path>
                       </g>
                   </svg>
-                  <span class="tweet-card-icon-field-nr heart-text">${getFormattedAmountOfLikes(
-                    tweet[6]
-                  )}</span>
+                  <span class="tweet-card-icon-field-nr heart-text heart-text-${
+                    tweet[0]
+                  }">${getFormattedAmountOfLikes(tweet[6])}</span>
               </div>
 
               <div class="tweet-card__icon-field">
@@ -176,6 +176,16 @@ function createTweetCard(tweet, user) {
   </div>
 </div>`
 }
+function getFormattedAmountOfLikes(likes) {
+  if (likes === 0) {
+    return ''
+  } else if (likes < 1000) {
+    return likes
+  } else if (likes < 1000000) {
+    return likes / 1000 + 'k'
+  }
+}
+
 function showTweetImages(images) {
   return images.length > 1
     ? showMultipleImages(images)
@@ -275,6 +285,8 @@ async function handleLikingTweet(tweetId, tweeterId) {
   form.append('userId', userId)
 
   const heartBtnEl = document.querySelector(`.heart-${tweetId}`)
+  const heartTextEl = document.querySelector(`.heart-text-${tweetId}`)
+  const amountOfLikes = heartTextEl.innerText // TODO replace letters for more then 999 tweets
   const res = await (!heartBtnEl.classList.contains(
     'tweet-card__icon-field-heart-active'
   )
@@ -284,9 +296,11 @@ async function handleLikingTweet(tweetId, tweeterId) {
   if (res.message === 'Tweet liked') {
     heartBtnEl.classList.remove('tweet-card__icon-field-heart')
     heartBtnEl.classList.add('tweet-card__icon-field-heart-active')
+    heartTextEl.innerText = getFormattedAmountOfLikes(amountOfLikes + 1)
   } else if (res.message === 'Tweet unliked') {
     heartBtnEl.classList.remove('tweet-card__icon-field-heart-active')
     heartBtnEl.classList.add('tweet-card__icon-field-heart')
+    heartTextEl.innerText = getFormattedAmountOfLikes(amountOfLikes - 1)
   }
 }
 
