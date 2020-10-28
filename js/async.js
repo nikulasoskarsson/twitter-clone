@@ -130,7 +130,6 @@ async function likeTweet(form) {
 }
 
 async function unlikeTweet(form) {
-  console.log('unlike ran')
   try {
     const conn = await fetch('php/api/api-unlike-tweet.php', {
       method: 'POST',
