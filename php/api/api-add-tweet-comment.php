@@ -12,9 +12,18 @@ if(!isset($_POST['tweetId'])){
 // after more validation
 
 require(__DIR__ . '/../private/db.php');
-$query = $db->prepare('INSERT INTO tweet_comments VALUES(null, :tweetId, :tweeterId, :userId)');
+$query = $db->prepare('INSERT INTO tweet_comments VALUES(null, :tweetId, :commenterId, :userId)');
 $query->bindValue('tweetId', $_POST['tweetId']);
-$query->bindValue('tweeterId', $_POST['tweeterId']);
+$query->bindValue('commenterId', $_POST['commenterId']);
 $query->bindValue('userId', $_POST['userId']);
 $query->execute();
-$apiHelper->sendResponse(200, '{"message": "Tweet liked"}');
+
+
+if(isset($_POST['commentBody'])){
+    $query = $db->prepare('INSERT INTO comment_body VALUES(null, :commentId, :body)');
+    $query->bindValue(':commentId', $db->lastInsertId());
+    $query->bindValue(':body', $_POST['commentBody']);
+    $query->execute();
+}
+
+$apiHelper->sendResponse(200, '{"message": "Tweet Comment added"}');
