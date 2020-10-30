@@ -19,11 +19,17 @@ $query->bindValue('userId', $_POST['userId']);
 $query->execute();
 
 
-if(isset($_POST['commentBody'])){
+if(isset($_POST['body'])){
     $query = $db->prepare('INSERT INTO comment_body VALUES(null, :commentId, :body)');
     $query->bindValue(':commentId', $db->lastInsertId());
-    $query->bindValue(':body', $_POST['commentBody']);
+    $query->bindValue(':body', $_POST['body']);
     $query->execute();
+}
+
+if(isset($_FILES['images'])){
+    require_once(__DIR__ . '/../classes/db-helper.php');
+    $dbHelper = new DbHelper($db);
+    $dbHelper->insertOrUpdateMultipleImages($db->lastInsertId(),'images','comment_id','comments','comment_images');
 }
 
 $apiHelper->sendResponse(200, '{"message": "Tweet Comment added"}');
