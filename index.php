@@ -11,6 +11,7 @@ require('php/components/update-tweet-modal.php');
 require('php/components/header.php');
 require('php/components/tweet-modal.php');
 require('php/components/image-modal.php');
+require('php/components/add-comment-modal.php');
 ?>
 </div>
 

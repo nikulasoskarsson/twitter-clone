@@ -32,30 +32,9 @@
     }
   }
 }
-.tweet-modal {
-  &__header {
-    width: 100%;
-    border-bottom: var(--border-primary);
-    display: flex;
-    align-items: center;
-    height: 3rem;
-    h3 {
-      margin-left: 2rem;
-      font-size: 1.2rem;
-      color: var(--color-primary);
-      font-weight: var(--fw-bold);
-      cursor: pointer;
-    }
-  }
 
-  &__content {
-    padding: 1rem 2rem;
-    display: grid;
-    grid-template-columns: 1fr 8fr;
-    & > div {
-      padding-top: 1rem;
-    }
-  }
+.tweet-modal {
+
   &__img {
     object-fit: cover;
     margin-right: 2rem;
@@ -67,14 +46,12 @@
       margin: 1rem 0;
     }
   }
+
   &__input {
     padding-bottom: 8rem;
   }
-  &__menu {
-    display: flex;
-    justify-content: space-between;
-    align-self: center;
-  }
+
+
   svg {
     cursor: pointer;
   }
@@ -83,13 +60,17 @@
 .signup-modal {
   padding: 2rem;
   width: 40%;
+
   @media only screen and (max-width: $bp-smallest) {
     height: 100%;
     width: 100%;
   }
+
   position: relative;
+
   &__content {
     position: relative;
+
     @media only screen and (max-width: $bp-medium) {
       height: 100%;
       width: 100%;
@@ -106,10 +87,12 @@
       margin-right: 0 !important; // override utility class
     }
   }
+
   .signup-form {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+
     .button-primary-small {
       @media only screen and (max-width: $bp-large) {
         display: flex;
@@ -120,12 +103,15 @@
         align-items: center;
       }
     }
+
     &__input-field {
       margin: 1rem 0;
     }
   }
+
   select {
     position: relative;
+
     option {
       width: 100%;
     }
@@ -150,10 +136,12 @@
       margin-right: 2rem;
       color: var(--color-primary);
     }
+
     button {
       justify-self: flex-end;
     }
   }
+
   &__content {
     overflow-y: scroll;
     overflow-x: hidden;
@@ -164,9 +152,11 @@
   .update-user-modal__img-bar {
     position: relative;
     display: flex;
-    input{
-      max-height:2rem !important;
+
+    input {
+      max-height: 2rem !important;
     }
+
     &__background-img {
       position: absolute;
       top: 0;
@@ -195,6 +185,7 @@
       cursor: pointer;
     }
   }
+
   #update-user-form {
     margin-top: 250px;
     padding: 0 1rem;
@@ -210,9 +201,11 @@
 .display-hidden {
   display: none !important;
 }
+
 .display-inline-block {
   display: inline-block !important;
 }
+
 .display-flex {
   display: flex !important;
 }
@@ -224,37 +217,88 @@
   grid-template-rows: 1fr;
   align-items: center;
   gap: 30px;
+
   @media only screen and (max-width: $bp-smallest) {
     grid-template-columns: 1fr;
     gap: 15px;
     padding-top: 1rem;
   }
 }
+
 .dob-input-field {
   padding: 0.5rem 0 !important;
 }
 
-.image-modal{
-  height:80%;
-  width:80%;
-  margin:0 auto;
-  display:flex;
- align-items: center;
-  
-  &__icon{
-    width:2rem;
-    height:2rem;
-    background:rgba(#fff,0.4);
+.image-modal {
+  height: 80%;
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+
+  &__icon {
+    width: 2rem;
+    height: 2rem;
+    background: rgba(#fff, 0.4);
     border-radius: 50%;
     cursor: pointer;
   }
 
-  &__img{
-    height:100%;
-    width:90%;
-    object-fit:cover;
-    display:block;
-    margin:0 auto;
-   
+  &__img {
+    height: 100%;
+    width: 90%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+
+  }
+}
+
+.comment-modal {
+  height: 60%;
+  width: 40%;
+  background: #fff;
+
+  &__menu{
+    padding-top:8rem;
+  }
+}
+
+
+/*******************
+********************
+*******************/
+
+.tweet-modal,
+.comment-modal {
+  &__header {
+    width: 100%;
+    border-bottom: var(--border-primary);
+    display: flex;
+    align-items: center;
+    height: 3rem;
+
+    h3 {
+      margin-left: 2rem;
+      font-size: 1.2rem;
+      color: var(--color-primary);
+      font-weight: var(--fw-bold);
+      cursor: pointer;
+    }
+  }
+  &__content {
+    padding: 1rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 8fr;
+
+    &>div {
+      padding-top: 1rem;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
   }
 }
