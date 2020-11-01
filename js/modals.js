@@ -92,22 +92,22 @@ function addPrevAndNextEventListeners(imageEl, images, index) {
   rightBtn.addEventListener('click', () => showNextImg(imageEl, images, index))
 }
 
-function closeImageModal(e) {
-  const classList = e.target.classList
-  const elType = e.target.tagName
+// function closeImageModal(e) {
+//   const classList = e.target.classList
+//   const elType = e.target.tagName
 
-  console.log(elType)
+//   console.log(elType)
 
-  if (
-    !classList.contains('image-modal__icon') &&
-    !classList.contains('image-modal__img') &&
-    elType != 'g' &&
-    elType != 'path'
-  ) {
-    modalContainer.classList.add('display-hidden')
-    imageModal.classList.add('display-hidden')
-  }
-}
+//   if (
+//     !classList.contains('image-modal__icon') &&
+//     !classList.contains('image-modal__img') &&
+//     elType != 'g' &&
+//     elType != 'path'
+//   ) {
+//     modalContainer.classList.add('display-hidden')
+//     imageModal.classList.add('display-hidden')
+//   }
+// }
 
 function openLogoutModal() {
   console.log('ran')
@@ -134,5 +134,5 @@ if (openUserModal) {
 if (openLogoutModalBtn) {
   openLogoutModalBtn.addEventListener('click', openLogoutModal)
 }
-modalContainer.addEventListener('click', (e) => closeImageModal(e))
+// modalContainer.addEventListener('click', (e) => closeImageModal(e))
 openUpdateUserBtn.addEventListener('click', openUpdateUserModal)

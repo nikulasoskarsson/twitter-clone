@@ -9,6 +9,8 @@ async function handleCreateTweet(e) {
   const tweet = e.target.parentNode.parentNode.querySelectorAll('input')[1]
     .value
   const images = e.target.parentNode.parentNode.querySelectorAll('input')[0]
+  console.log(images)
+  console.log(images.files)
 
   const res = await createTweet(id, tweet, images)
 
@@ -281,20 +283,47 @@ function openCommentModal(tweet, user) {
   tweet = tweet.split(',')
   user = user.split(',')
 
-  // Display the modal
+  // Display the modal and put the tweet id as a data attribute
   const modalContainerEl = document.getElementById('modal-container')
   const commentModalEl = document.getElementById('comment-modal')
   modalContainerEl.classList.remove('display-hidden')
   commentModalEl.classList.remove('display-hidden')
-
+  commentModalEl.setAttribute('tweet-id', tweet[0])
+  commentModalEl.setAttribute('tweeter-id', user[0])
   // Show the correct data in the tweet card
   const tweetCard = document.getElementById('comment-modal-tweet-card')
+  tweetCard.querySelector('.tweet-card__user-img').src = 'img/user/' + user[9]
   tweetCard.querySelector('.tweet-card__user-name').innerText =
     user[1] + ' ' + user[2]
   tweetCard.querySelector('.tweet-card__user-handle').innerText = user[3]
   tweetCard.querySelector('.tweet-card__tweet-date').innerText = tweet[4]
   tweetCard.querySelector('.tweet-card__tweet').innerText = tweet[2]
   // TODO show images
+}
+
+async function handleCommentingOnTweet() {
+  const userId = document.getElementById('user-id').getAttribute('data-user-id')
+
+  const commentModal = document.getElementById('comment-modal')
+  const tweetId = commentModal.getAttribute('tweet-id')
+  const commenterId = commentModal.getAttribute('tweeter-id')
+  const body = commentModal.querySelector('.comment-modal__input').value
+  const images = document.getElementById('comment-modal-images')
+  console.log(images)
+  console.log(images.files)
+
+  const form = new FormData()
+  form.append('userId', userId)
+  form.append('tweetId', tweetId)
+  form.append('commenterId', commenterId)
+  form.append('body', body)
+  for (let i = 0; i < images.files.length; i++) {
+    console.log(images.files[i])
+    form.append('images[]', images.files[i])
+  }
+
+  const res = await addTweetComment(form)
+  console.log(res)
 }
 
 async function handleLikingTweet(tweetId, tweeterId) {

@@ -112,6 +112,23 @@ async function updateTweet(form) {
   }
 }
 
+async function addTweetComment(form) {
+  console.log(form)
+  try {
+    const conn = await fetch('php/api/api-add-tweet-comment.php', {
+      method: 'POST',
+      body: form, // form should contain userId, tweetId and user id of the tweet creator
+    })
+    console.log('conn', conn)
+    const res = await conn.json()
+
+    res.status = conn.status
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 async function likeTweet(form) {
   try {
     const conn = await fetch('php/api/api-like-tweet.php', {
