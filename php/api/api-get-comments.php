@@ -6,4 +6,9 @@ $apiHelper->validateUserId($_GET); // Exit if not provided with existing id of a
 
 
 require(__DIR__. '/../private/db.php');
-var_dump($db);
+
+if(!isset($_GET['tweetId'])){
+    $apiHelper->sendResponse(400,'{"message": "tweetId missing"}');
+}
+
+$query = $db->prepare('SELECT * FROM tweets');

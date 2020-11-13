@@ -117,7 +117,7 @@ async function addTweetComment(form) {
   try {
     const conn = await fetch('php/api/api-add-tweet-comment.php', {
       method: 'POST',
-      body: form, // form should contain userId, tweetId and user id of the tweet creator
+      body: form,
     })
     console.log('conn', conn)
     const res = await conn.json()
