@@ -3,7 +3,7 @@ function insertUserImg(user) {
   const userImgElements = document.querySelectorAll('.user-img')
   userImgElements.forEach(
     (userImgElement) =>
-      (userImgElement.src = `img/user/${user[9] ? user[9] : 'placeholder.jpg'}`)
+      (userImgElement.src = `img/user/${user[9] ? 'test' : 'placeholder.jpg'}`)
   )
 }
 
@@ -66,7 +66,6 @@ function insertUserWebsite(user) {
  
 }
 function inserUserLocation(user) {
-  console.log(user[11])
   const userLocationElements = document.querySelectorAll('.user-location')
   if(user[11]){
     userLocationElements.forEach(

@@ -6,7 +6,7 @@ $apiHelper = new ApiHelper();
 $apiHelper->validateUserId($_POST); // Exit if not provided with existing id of a user
 
 if(!isset($_POST['tweetId'])){
-    $apiHelper->sendResponse(400, 'Id of tweet missing');
+    $apiHelper->sendResponse(400, '{"message": "Id of tweet missing"}');
 }
 
 // after more validation

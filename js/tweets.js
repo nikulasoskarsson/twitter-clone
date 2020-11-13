@@ -309,8 +309,6 @@ async function handleCommentingOnTweet() {
   const commenterId = commentModal.getAttribute('tweeter-id')
   const body = commentModal.querySelector('.comment-modal__input').value
   const images = document.getElementById('comment-modal-images')
-  console.log(images)
-  console.log(images.files)
 
   const form = new FormData()
   form.append('userId', userId)
@@ -318,12 +316,20 @@ async function handleCommentingOnTweet() {
   form.append('commenterId', commenterId)
   form.append('body', body)
   for (let i = 0; i < images.files.length; i++) {
-    console.log(images.files[i])
     form.append('images[]', images.files[i])
   }
 
   const res = await addTweetComment(form)
-  console.log(res)
+  if(res.status !== 200){
+
+  }
+  else{
+    // Reset the form
+    console.log('the else')
+    commentModal.querySelector('.comment-modal__input').value = ''
+    document.getElementById('comment-modal-images').files = []
+  }
+ 
 }
 
 async function handleLikingTweet(tweetId, tweeterId) {
