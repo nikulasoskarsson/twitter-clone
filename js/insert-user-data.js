@@ -3,7 +3,7 @@ function insertUserImg(user) {
   const userImgElements = document.querySelectorAll('.user-img')
   userImgElements.forEach(
     (userImgElement) =>
-      (userImgElement.src = `img/user/${user[9] ? 'test' : 'placeholder.jpg'}`)
+      (userImgElement.src = `img/user/${user[9] ? user[9] : 'placeholder.jpg'}`)
   )
 }
 

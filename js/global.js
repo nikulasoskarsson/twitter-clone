@@ -28,3 +28,6 @@ function getDayAsString(dayInt) {
   ];
   return days[dayInt];
 }
+function getUserId(){
+   return document.getElementById('user-id').getAttribute('data-user-id')
+  }

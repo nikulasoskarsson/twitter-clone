@@ -14,7 +14,7 @@ class DbHelper
         foreach ($arrayOfFields as $i => $field) {
 
             $statement .= "$arrayOfRows[$i]=:$field" . (($i + 1 !== count($arrayOfFields)) ? ', ' :  ' ');
-            echo $statement;
+            
         }
 
 

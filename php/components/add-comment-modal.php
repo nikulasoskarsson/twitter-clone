@@ -5,7 +5,7 @@
     <div class="coment-modal__tweet">
         <div class="tweet-card" id="comment-modal-tweet-card">
             <div class="tweet-card__grid-container">
-                <img class="tweet-card__user-img">
+                <img class="tweet-card__user-img user-img">
                 <div>
                     <div class="tweet-card__info">
                         <div class="tweet-card__user">

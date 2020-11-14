@@ -39,9 +39,6 @@ class ImageUpload
 
     private function validateImage()
     {
-
-        var_dump($this->file);
-
         $this->fileName = $this->file['name'];
         $this->fileTmp = $this->file['tmp_name']; // Tempory location of the file
         $this->fileSize = $this->file['size'];

@@ -3,15 +3,15 @@
         <div class="update-user-modal__header">
             <h1 class="update-user-modal__header-close">X</h1>
             <h1 class="update-user-modal__header-heading header-primary">Edit Profile</h1>
-            <button class="button-primary-small ">Save</button>
+            <button id="update-user-button" class="button-primary-small">Save</button>
         </div>
         <div class="update-user-modal__content">
             <div class="update-user-modal__img-bar">
-                <label for="background-img">
-                    <img class="update-user-modal__img-bar__background-img user-bg" src="img/cat.jpg"></img>
+                <label for="backgroundImg">
+                    <img class="update-user-modal__img-bar__background-img user-bg"></img>
                 </label>
 
-                <label for="user-img">
+                <label for="userImg">
                     <img class="update-user-modal__img-bar__user-img user-img"></img>
                 </label>
             </div>
@@ -82,8 +82,8 @@
 
                 </div>
 
-                <input type="file" class="display-hidden" id="backgroundImg" name="background-img">
-                <input type="file" class="display-hidden" id="userImg" name="user-img">
+                <input type="file" class="display-hidden" id="backgroundImg" name="backgroundImg">
+                <input type="file" class="display-hidden" id="userImg" name="userImg">
             </form>
 
         </div>

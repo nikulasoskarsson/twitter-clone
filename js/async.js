@@ -43,13 +43,16 @@ async function getUser(id) {
   }
 }
 
-async function updateUser(id) {
+async function updateUser(form) {
   try {
-    const conn = await fetch(`php/api/api.update.user.php`, {
+    const conn = await fetch(`php/api/api-update-user.php`, {
       method: 'POST',
-      body: data,
+      body: form,
     })
-    const res = await conn.json()
+    console.log('conn', conn)
+    const res = await conn.text()
+    res.status = conn.status
+    console.log('res', res)
     return res
   } catch (error) {
     console.log(error)
