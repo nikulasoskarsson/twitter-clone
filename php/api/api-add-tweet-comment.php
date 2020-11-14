@@ -9,6 +9,11 @@ if(!isset($_POST['tweetId'])){
     $apiHelper->sendResponse(400, '{"message": "Id of tweet missing"}');
 }
 
+if(!isset($_POST['body']) || empty($_POST['body'])){
+    if(!isset($_FILES['images']) || $_FILES['images']['size'] < 0){
+        $apiHelper->sendResponse(200, '{"message": "Comment must include either an image or text"}');
+    }
+}
 // after more validation
 
 require(__DIR__ . '/../private/db.php');
@@ -19,14 +24,16 @@ $query->bindValue('userId', $_POST['userId']);
 $query->execute();
 
 
-if(isset($_POST['body'])){
+
+
+if(isset($_POST['body']) && strlen($_POST['body']) > 2){
     $query = $db->prepare('INSERT INTO comment_body VALUES(null, :commentId, :body)');
     $query->bindValue(':commentId', $db->lastInsertId());
     $query->bindValue(':body', $_POST['body']);
     $query->execute();
 }
 
-if(isset($_FILES['images'])){
+if(isset($_FILES['images']) && $_FILES['images']['size'] > 0){
     require_once(__DIR__ . '/../classes/db-helper.php');
     $dbHelper = new DbHelper($db);
     $dbHelper->insertOrUpdateMultipleImages($db->lastInsertId(),'images','comment_id','comments','comment_images');

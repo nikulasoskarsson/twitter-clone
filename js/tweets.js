@@ -320,12 +320,11 @@ async function handleCommentingOnTweet() {
   }
 
   const res = await addTweetComment(form)
+  console.log(res)
   if(res.status !== 200){
 
   }
   else{
-    // Reset the form
-    console.log('the else')
     commentModal.querySelector('.comment-modal__input').value = ''
     document.getElementById('comment-modal-images').files = []
   }

@@ -6,7 +6,5 @@ async function handleUpdateUser() {
     const formData = new FormData(updateUserForm)
     formData.append('userId', userId)
     const res = updateUser(formData)
-
-
 }
 updateUserBtn.addEventListener('click',handleUpdateUser)
