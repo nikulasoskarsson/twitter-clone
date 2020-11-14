@@ -116,15 +116,13 @@ async function updateTweet(form) {
 }
 
 async function addTweetComment(form) {
-  console.log(form)
   try {
     const conn = await fetch('php/api/api-add-tweet-comment.php', {
       method: 'POST',
       body: form,
     })
-    console.log('conn', conn)
+    
     const res = await conn.json()
-
     res.status = conn.status
     return res
   } catch (error) {

@@ -11,7 +11,7 @@ if(!isset($_POST['tweetId'])){
 
 if(!isset($_POST['body']) || empty($_POST['body'])){
     if(!isset($_FILES['images']) || $_FILES['images']['size'] < 0){
-        $apiHelper->sendResponse(200, '{"message": "Comment must include either an image or text"}');
+        $apiHelper->sendResponse(400, '{"message": "Comment must include either an image or text"}');
     }
 }
 // after more validation

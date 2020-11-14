@@ -301,6 +301,14 @@ function openCommentModal(tweet, user) {
   // TODO show images
 }
 
+function closeCommentModal(){
+  const modalContainerEl = document.getElementById('modal-container')
+  const commentModalEl = document.getElementById('comment-modal')
+
+  modalContainerEl.classList.add('display-hidden')
+  commentModalEl.classList.add('display-hidden')
+}
+
 async function handleCommentingOnTweet() {
   const userId = document.getElementById('user-id').getAttribute('data-user-id')
 
@@ -322,11 +330,14 @@ async function handleCommentingOnTweet() {
   const res = await addTweetComment(form)
   console.log(res)
   if(res.status !== 200){
-
+    // TODO error handling
   }
   else{
+    //reset the form values
     commentModal.querySelector('.comment-modal__input').value = ''
     images.value = ''
+    
+    closeCommentModal() // close the modal
   }
  
 }
