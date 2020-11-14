@@ -122,7 +122,8 @@ async function addTweetComment(form) {
       body: form,
     })
     
-    const res = await conn.json()
+    const res = await conn.text()
+    console.log(res)
     res.status = conn.status
     return res
   } catch (error) {
