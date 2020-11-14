@@ -326,7 +326,7 @@ async function handleCommentingOnTweet() {
   }
   else{
     commentModal.querySelector('.comment-modal__input').value = ''
-    document.getElementById('comment-modal-images').files = []
+    images.value = ''
   }
  
 }
