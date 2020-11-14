@@ -11,13 +11,20 @@ if(!isset($_GET['tweetId'])){
     $apiHelper->sendResponse(400,'{"message": "tweetId missing"}');
 }
 
-// $query = $db->prepare('SELECT tweet_comments.id AS comment_id, tweet_comments.tweeter_id, comment_body.body, users.first_name, users.last_name, users.username, user_images.url AS user_image
-// FROM tweet_comments 
-// LEFT OUTER JOIN users ON users.id = tweet_comments.commenter_id 
-// LEFT OUTER JOIN user_images ON user_images.user_id = users.id
-// LEFT OUTER JOIN comment_body ON comment_body.comment_id = tweet_comments.id 
-// WHERE tweet_comments.tweet_id = 178');
+$query = $db->prepare('SELECT tweet_comments.id AS comment_id, tweet_comments.tweeter_id, comment_body.body, users.first_name, users.last_name, users.username, user_images.url AS user_image
+FROM tweet_comments 
+LEFT OUTER JOIN users ON users.id = tweet_comments.commenter_id 
+LEFT OUTER JOIN user_images ON user_images.user_id = users.id
+LEFT OUTER JOIN comment_body ON comment_body.comment_id = tweet_comments.id 
+WHERE tweet_comments.tweet_id = :tweetId');
 
+ $query->bindValue('tweetId', $_GET['tweetId']);
+$query->execute();
+$rows = $query->fetchAll();
+
+foreach($rows as $row){
+    var_dump($row);
+}
 /* SELECT tweet_comments.id AS comment_id, tweet_comments.tweeter_id, comment_body.body, users.first_name, users.last_name, users.username, user_images.url AS user_image
 FROM tweet_comments 
 LEFT OUTER JOIN users ON users.id = tweet_comments.commenter_id 
