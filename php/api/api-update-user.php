@@ -1,6 +1,10 @@
 <?php
+
+require_once(__DIR__ . '/../classes/helper-api.php');
+$apiHelper = new ApiHelper();
+// TODO validate user id
 if (!isset($_POST) && !isset($_FILES['userImg']) && !isset($_FILES['backgroundImg'])) {
-    exit();
+    $apiHelper->sendResponse(400, '{"message": "data needed"}');
 }
 
 
@@ -16,21 +20,21 @@ require_once(__DIR__ . '/../classes/db-helper.php'); // class with helper functi
 $dbHelper = new DbHelper($db);
 
 
-if (isset($_FILES['userImg'])) {
+if (isset($_FILES['userImg']) && $_FILES['userImg']['size'] !== 0 ) {
     $dbHelper->insertOrUpdateImage($_POST['userId'], 'userImg', 'user_id', 'user', 'user_images');
 }
-if (isset($_FILES['backgroundImg'])) {
+if (isset($_FILES['backgroundImg']) && $_FILES['backgroundImg']['size'] !== 0 ) {
     $dbHelper->insertOrUpdateImage($_POST['userId'], 'backgroundImg', 'user_id', 'background', 'background_images');
 }
-if (isset($_POST['bio'])) {
+if (isset($_POST['bio']) && !empty($_POST['bio'])) {
     $dbHelper->insertOrUpdateTextFromFK($_POST['userId'], 'text', 'user_id', $_POST['bio'], 'user_bio');
 }
 
-if (isset($_POST['website'])) {
+if (isset($_POST['website']) && strlen($_POST['website']) > 4) {
     $dbHelper->insertOrUpdateTextFromFK($_POST['userId'], 'url', 'user_id',  $_POST['website'], 'user_website');
 }
 
-if (isset($_POST['location'])) {
+if (isset($_POST['location']) && strlen($_POST['location']) > 4) {
     $dbHelper->insertOrUpdateTextFromFK($_POST['userId'], 'location', 'user_id', $_POST['location'], 'user_location');
 }
 
@@ -48,6 +52,7 @@ foreach ($fields as $i=>$field) {
 }
 $dbHelper->updateMultipleFromPK($_POST['userId'], $fieldsToUpdate, $valuesToUpdate, $rowsToUpdate, 'users');
 
+$apiHelper->sendResponse(200, '{"message":"You have successfuly updated your information"}');
 
 
 
@@ -60,47 +65,3 @@ $dbHelper->updateMultipleFromPK($_POST['userId'], $fieldsToUpdate, $valuesToUpda
 
 
 
-
-
-
-
-
-
-
-
-//     $sUsers = file_get_contents('../../db/users.json');
-//     $aUsers = json_decode($sUsers);
-//     foreach ($aUsers as $jUser) {
-//         // If the user matches the user from the text file
-//         if ($jUser->id == $_POST['id']) {
-//             if (isset($_FILES['userImg'])) {
-//                 require('../classes/image-upload.php');
-//                 require('../classes/image-delete.php');
-
-//                 $imageUpload = new ImageUpload($_FILES['userImg'], '../../img/user/', '../../db/users.json');
-//                 $imageUpload->uploadImage();
-//                 $jUser->userImg = $imageUpload->getFileName();
-
-//                 //delete the old image
-//                 $deleteImage = new ImageDelete($_POST['id'], '../../img/user', 'userImg', '../../db/users.json');
-//                 $deleteImage->deleteSingleImage();
-
-//                 echo '{img delete}';
-//             }
-//             if (isset($_FILES['backgroundImg'])) {
-//                 require('../classes/image-upload.php');
-//                 require('../classes/image-delete.php');
-
-//                 $imageUpload = new ImageUpload($_FILES['backgroundImg'], '../../img/background/', '../../db/users.json');
-//                 $imageUpload->uploadImage();
-//                 $jUser->backgroundImg = $imageUpload->getFileName();
-
-//                 //delete the old image
-//                 $deleteImage = new ImageDelete($_POST['id'], '../../img/background', 'backgroundImg', '../../db/users.json');
-//                 $deleteImage->deleteSingleImage();
-//             }
-//         }
-//     }
-
-//     $sUsers = json_encode($aUsers);
-//     file_put_contents('../../db/users.json', $sUsers);

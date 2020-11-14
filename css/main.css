@@ -233,24 +233,6 @@ button {
       height: 100%;
       background: #fff; } }
 
-.tweet-modal__header {
-  width: 100%;
-  border-bottom: var(--border-primary);
-  display: flex;
-  align-items: center;
-  height: 3rem; }
-  .tweet-modal__header h3 {
-    margin-left: 2rem;
-    font-size: 1.2rem;
-    color: var(--color-primary);
-    font-weight: var(--fw-bold);
-    cursor: pointer; }
-.tweet-modal__content {
-  padding: 1rem 2rem;
-  display: grid;
-  grid-template-columns: 1fr 8fr; }
-  .tweet-modal__content > div {
-    padding-top: 1rem; }
 .tweet-modal__img {
   object-fit: cover;
   margin-right: 2rem; }
@@ -259,10 +241,6 @@ button {
   margin: 1rem 0; }
 .tweet-modal__input {
   padding-bottom: 8rem; }
-.tweet-modal__menu {
-  display: flex;
-  justify-content: space-between;
-  align-self: center; }
 .tweet-modal svg {
   cursor: pointer; }
 
@@ -403,6 +381,44 @@ button {
     object-fit: cover;
     display: block;
     margin: 0 auto; }
+
+.comment-modal {
+  height: 60%;
+  width: 40%;
+  background: #fff; }
+  .comment-modal__menu {
+    padding-top: 8rem; }
+
+/*******************
+********************
+*******************/
+.tweet-modal__header,
+.comment-modal__header {
+  width: 100%;
+  border-bottom: var(--border-primary);
+  display: flex;
+  align-items: center;
+  height: 3rem; }
+  .tweet-modal__header h3,
+  .comment-modal__header h3 {
+    margin-left: 2rem;
+    font-size: 1.2rem;
+    color: var(--color-primary);
+    font-weight: var(--fw-bold);
+    cursor: pointer; }
+.tweet-modal__content,
+.comment-modal__content {
+  padding: 1rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr 8fr; }
+  .tweet-modal__content > div,
+  .comment-modal__content > div {
+    padding-top: 1rem; }
+.tweet-modal__menu,
+.comment-modal__menu {
+  display: flex;
+  justify-content: space-between;
+  align-self: center; }
 
 .tweet-card, .retweet-card {
   position: relative;
@@ -1150,8 +1166,7 @@ button {
     border: none;
     background: transparent;
     padding-bottom: 0.5rem;
-    width: 100%;
-    height: 100%; }
+    width: 100%; }
     .form-input-field__input:focus,
     .form-select-input-field__input:focus {
       outline: none; }

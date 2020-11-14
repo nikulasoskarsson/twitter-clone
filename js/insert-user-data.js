@@ -8,11 +8,12 @@ function insertUserImg(user) {
 }
 
 function insertBackroundImg(user) {
+
   const backgroundImgElements = document.querySelectorAll('.user-bg')
   backgroundImgElements.forEach((backgroundImgElement) => {
     backgroundImgElement.src = user[13]
       ? `img/background/${user[13]}`
-      : 'placeholder.jpg'
+      : 'img/background/placeholder.jpg'
   })
 }
 
@@ -52,22 +53,37 @@ function insertNumberOfTweets(user) {
 
 function insertUserWebsite(user) {
   const userWebsiteElements = document.querySelectorAll('.user-website')
-  userWebsiteElements.forEach((userWebsiteElement) => {
-    userWebsiteElement.href = `http://www.${user[12]}`
-    userWebsiteElement.innerText = user[12]
-  })
+  if(user[12]){
+    userWebsiteElements.forEach((userWebsiteElement) => {
+      userWebsiteElement.href = `http://www.${user[12]}`
+      userWebsiteElement.innerText = user[12]
+    })
+  }
+  else{
+    document.getElementById('profile-website-container').style.display ='none'
+  }
+  
+ 
 }
 function inserUserLocation(user) {
   const userLocationElements = document.querySelectorAll('.user-location')
-  userLocationElements.forEach(
-    (userLocationElement) => (userLocationElement.innerText += user[11])
-  )
+  if(user[11]){
+    userLocationElements.forEach(
+      (userLocationElement) => (userLocationElement.innerText += user[11])
+    )
+  }
+ else{
+     document.getElementById('user-location-container').style.display ='none'
+  }
 }
 function insertUserBio(user) {
-  const userBioElements = document.querySelectorAll('.user-bio')
-  userBioElements.forEach(
-    (userBioElement) => (userBioElement.innerText += user[10])
-  )
+  if(user[10]){
+    const userBioElements = document.querySelectorAll('.user-bio')
+    userBioElements.forEach(
+      (userBioElement) => (userBioElement.innerText += user[10])
+    )
+  }
+
 }
 
 // Get the user data and pass it into the other functions to load the user data into the dom

@@ -11,6 +11,7 @@ require('php/components/update-tweet-modal.php');
 require('php/components/header.php');
 require('php/components/tweet-modal.php');
 require('php/components/image-modal.php');
+require('php/components/add-comment-modal.php');
 ?>
 </div>
 
@@ -307,6 +308,7 @@ require('php/components/image-modal.php');
 <script src="js/dropdowns.js"></script>
 <script src="js/async.js"></script>
 <script src="js/tweets.js"></script>
+<script src="js/users.js"></script> <?php //handler functions for user related endpoints?>
 <script src="js/insert-user-data.js"></script>
 </body>
 

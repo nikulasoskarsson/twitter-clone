@@ -14,7 +14,7 @@ class DbHelper
         foreach ($arrayOfFields as $i => $field) {
 
             $statement .= "$arrayOfRows[$i]=:$field" . (($i + 1 !== count($arrayOfFields)) ? ', ' :  ' ');
-            echo $statement;
+            
         }
 
 
@@ -22,7 +22,6 @@ class DbHelper
         foreach ($arrayOfFields as $index => $field) {
             $query->bindValue(":$field", $arrayOfValues[$index]);
         }
-        var_dump($query);
         $query->execute();
     }
 
@@ -95,7 +94,6 @@ class DbHelper
             $query = $this->connection->prepare("INSERT INTO $tableName VALUES(null, :$fkName, :url)");
             $query->bindValue(":$fkName", $id);
             $query->bindValue(':url', $image);
-            var_dump($query);
             $query->execute();
         }
     }
