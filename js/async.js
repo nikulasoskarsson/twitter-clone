@@ -69,6 +69,17 @@ async function getAllTweets(id) {
     console.log(error)
   }
 }
+
+async function getSingleTweet(id){
+  try {
+    const conn = await fetch(`php/api/api-get-single-tweet.php?userId=${id}`)
+    const res = await conn.json()
+    res.status = conn.status
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
 async function createTweet(userId, body, images) {
   const data = new FormData()
   data.append('userId', userId)
@@ -110,6 +121,16 @@ async function updateTweet(form) {
     return res
 
     // TODO show user he has created a tweet
+  } catch (error) {
+    console.log(error)
+  }
+}
+async function getAllComments(userId, tweetId) {
+  try {
+    const conn = await fetch(`php/api/api-get-tweets.php?userId=${userId}&tweetId=${tweetId}`)
+    const res = await conn.json()
+    res.status = conn.status
+    return res
   } catch (error) {
     console.log(error)
   }

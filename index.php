@@ -161,7 +161,7 @@ require('php/components/add-comment-modal.php');
     </div>
 
     <div class="subpage subpage-visible" id="subpage-profile">
-      <?php require_once('php/subpages/profile.php'); ?>
+      <?php require_once('php/subpages/single-tweet.php'); ?>
     </div>
 
  
@@ -310,6 +310,7 @@ require('php/components/add-comment-modal.php');
 <script src="js/tweets.js"></script>
 <script src="js/users.js"></script> <?php //handler functions for user related endpoints?>
 <script src="js/insert-user-data.js"></script>
+<script src="js/display-single-tweet"></script>
 </body>
 
 </html>
